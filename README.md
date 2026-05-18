@@ -46,17 +46,21 @@ python test_server.py
 
 ### 4. 重启 Claude Code
 
-在项目目录下重启 Claude Code，MCP 服务自动加载。你会看到类似提示：
+在项目目录下 `claude mcp list` ，你会看到类似提示：
 
 ```
-✓ MCP server "vex-api" connected
+vex-api: python server.py - ✓ Connected
+
 ```
+只要你当前所在的工程项目根目录下存在 .mcp.json文件，它就会在**启动时自动读取**这个文件，并在后台静默拉起并连接里面配置好的 MCP 服务器。
 
 之后你就可以直接问 Claude Code 写 VEX 代码了。
 
 ## 在多个项目中使用
 
-如果你想在**另一个 VEX 编程目录**中也使用此 MCP（不需要重新安装），只需复制两个文件：
+如果你想在**另一个 VEX 编程目录**中也使用此 MCP（不需要重新安装），复制以下文件并修改路径：
+
+**步骤 1：复制文件**
 
 ```bash
 # 从 VEXmcp 目录
@@ -64,7 +68,22 @@ cp .mcp.json 你的VEX工作目录/
 cp CLAUDE.md 你的VEX工作目录/
 ```
 
-> **注意**：`.mcp.json` 中的 `command` 为 `"python"`，如果你的系统中 Python 命令是 `python3`，请修改对应字段。
+**步骤 2：修改 `.mcp.json` 中的路径**
+
+复制后的 `.mcp.json` 里 `server.py` 是相对路径，在别的目录找不到。需要改成 `server.py` 的**绝对路径**：
+
+```json
+{
+  "mcpServers": {
+    "vex-api": {
+      "command": "python",
+      "args": ["C:\\Users\\你的用户名\\...\\VEXmcp\\server.py"]
+    }
+  }
+}
+```
+
+> **提示**：在 VEXmcp 目录下运行 `pwd` 获取完整路径，然后拼接 `/server.py`。
 
 ## 可用工具
 
