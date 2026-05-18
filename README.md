@@ -15,7 +15,7 @@ Claude Code → 自动调用 MCP 工具
   └── 输出正确合规的代码
 ```
 
-## 快速开始（给队友用）
+## 快速开始
 
 ### 前提条件
 
@@ -26,7 +26,7 @@ Claude Code → 自动调用 MCP 工具
 ### 1. 克隆项目
 
 ```bash
-git clone <你的仓库地址>
+git clone https://github.com/JiHuiYiYou/VEXmcp.git
 cd VEXmcp
 ```
 
@@ -112,7 +112,7 @@ VEXmcp/
     └── V5RC 26-27 OVERRIDE-0.1 CN.md   # 中文翻译
 ```
 
-## 维护（给项目维护者）
+## 维护
 
 ### 更新 API 数据
 
