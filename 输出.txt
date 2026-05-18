@@ -1,0 +1,68 @@
+(base) PS C:\Users\liuzhen\Desktop\coding\projects\VEXmcp> & c:\Users\liuzhen\miniconda3\python.exe c:/Users/liuzhen/Desktop/coding/projects/VEXmcp/diagnose_motor.py
+Page title (h1): Motor and Motor Group
+
+Direct child sections: 4
+Has h2: True, Has h3: False
+
+  [0] id='introduction' h2='Introduction'
+      sub-sections: 0, code blocks: 0
+
+  [1] id='motor' h2='Motor'
+      sub-sections: 5, code blocks: 6
+        [0] id='class-constructors' heading='Class Constructors' codes:4
+        [1] id='class-destructor' heading='Class Destructor' codes:1
+        [2] id='parameters' heading='Parameters' codes:0
+        [3] id='notes' heading='Notes' codes:0
+        [4] id='example' heading='Example' codes:1
+      code (parent=pre): motor(int32_tindex);...
+      code (parent=pre): motor(int32_tindex,boolreverse);...
+      code (parent=pre): motor(int32_tindex,gearSetting gears);...
+
+  [2] id='motor-group' h2='Motor Group'
+      sub-sections: 4, code blocks: 3
+        [0] id='id1' heading='Class Constructors' codes:1
+        [1] id='id2' heading='Class Destructor' codes:1
+        [2] id='id3' heading='Parameters' codes:0
+        [3] id='id4' heading='Example' codes:1
+      code (parent=pre): motor_group(motor&m1,Args&...m2);...
+      code (parent=pre): ~motor_group();...
+      code (parent=pre): // Create individualmotorinstancesmotorLeftMotor=motor(PORT1);motorRightMotor=motor(PORT2);// Create...
+
+  [3] id='member-functions' h2='Member Functions'
+      sub-sections: 22, code blocks: 47
+        [0] id='spin' heading='spin' codes:4
+        [1] id='spinfor' heading='spinFor' codes:9
+        [2] id='spintoposition' heading='spinToPosition' codes:3
+        [3] id='stop' heading='stop' codes:3
+        [4] id='setposition' heading='setPosition' codes:1
+        [5] id='setvelocity' heading='setVelocity' codes:2
+        [6] id='setstopping' heading='setStopping' codes:1
+        [7] id='setmaxtorque' heading='setMaxTorque' codes:3
+        [8] id='settimeout' heading='setTimeout' codes:2
+        [9] id='isdone' heading='isDone' codes:2
+        [10] id='isspinning' heading='isSpinning' codes:2
+        [11] id='position' heading='position' codes:2
+        [12] id='velocity' heading='velocity' codes:1
+        [13] id='current' heading='current' codes:2
+        [14] id='power' heading='power' codes:1
+        [15] id='torque' heading='torque' codes:1
+        [16] id='efficiency' heading='efficiency' codes:1
+        [17] id='temperature' heading='temperature' codes:2
+        [18] id='voltage' heading='voltage' codes:1
+        [19] id='direction' heading='direction' codes:1
+        [20] id='installed' heading='installed' codes:1
+        [21] id='count' heading='count' codes:1
+      code (parent=pre): /* This constructor is required when using VS Code.
+Motor and Motor Group configuration is generated...
+      code (parent=pre): voidspin(directionType dir);...
+      code (parent=pre): voidspin(directionType dir,doublevelocity,velocityUnits units);...
+
+
+=== Simulating crawler decision ===
+Parser would use: _parse_simple_page (Structure B)
+This means each child section is treated as ONE function.
+Checking what each section would produce...
+  [0] SKIPPED (id=introduction)
+  [1] MEMBER FN (h2='Motor'): ['motor(int32_tindex);', 'motor(int32_tindex,boolreverse);', 'motor(int32_tindex,gearSetting gears);', 'motor(int32_tindex,gearSetting gears,boolreverse);', '~motor();', '// Create themotorinstanceinSmart Port 1motorLeftMotor=motor(PORT1);// Creates t']
+  [2] MEMBER FN (h2='Motor Group'): ['motor_group(motor&m1,Args&...m2);', '~motor_group();', '// Create individualmotorinstancesmotorLeftMotor=motor(PORT1);motorRightMotor=mo']
+  [3] MEMBER FN (h2='Member Functions'): ['/* This constructor is required when using VS Code.\nMotor and Motor Group config', 'voidspin(directionType dir);', 'voidspin(directionType dir,doublevelocity,velocityUnits units);', 'voidspin(directionType dir,doublevoltage,voltageUnits  units);', '// Spinforward, thenstopMotor1.spin(forward);wait(1,seconds);Motor1.stop();', 'boolspinFor(doublerotation,rotationUnits units,doublevelocity,velocityUnits unit', 'boolspinFor(directionType dir,doublerotation,rotationUnits units,doublevelocity,', 'boolspinFor(doublerotation,rotationUnits units,boolwaitForCompletion=true);', 'boolspinFor(directionType dir,doublerotation,rotationUnits units,boolwaitForComp', 'boolspinFor(doubletime,timeUnits     units,doublevelocity,velocityUnits units_v)', 'boolspinFor(directionType dir,doubletime,timeUnits     units,doublevelocity,velo', 'boolspinFor(doubletime,timeUnits units);', 'boolspinFor(directionType dir,doubletime,timeUnits     units);', '// Spin 1turnfast, then 1turnslowMotor1.spinFor(forward,1,turns,true);Motor1.spi', 'boolspinToPosition(doublerotation,rotationUnits units,doublevelocity,velocityUni', 'boolspinToPosition(doublerotation,rotationUnits units,boolwaitForCompletion=true', '// Spinforward, then go to 90°Motor1.spin(forward);wait(1,seconds);Motor1.spinTo', 'voidstop();', 'voidstop(brakeType mode);', '// Spin andcoastto astopMotor1.setVelocity(100,percent);Motor1.spin(forward);wai', 'voidsetPosition(doublevalue,rotationUnits units);', 'voidsetVelocity(doublevelocity,velocityUnits units);', '// Trydefault, then slow, then fastMotor1.spinFor(forward,180,degrees);wait(1,se', 'voidsetStopping(brakeType mode);', 'voidsetMaxTorque(doublevalue,percentUnits units);', 'voidsetMaxTorque(doublevalue,torqueUnits units);', 'voidsetMaxTorque(doublevalue,currentUnits units);', 'voidsetTimeout(int32_ttime,timeUnits units);', '// Stop a long move after 1secondsMotor1.setTimeout(1,seconds);Motor1.spinFor(fo', 'boolisDone();', '// Spinforwarduntil themotoris done spinningMotor1.spinFor(forward,200,degrees,f', 'boolisSpinning();', '// Spinforwarduntil themotoris done spinningMotor1.spinFor(forward,200,degrees,f', 'doubleposition(rotationUnits units);', '// Spin, then show thefinalpositionMotor1.spin(forward);wait(1,seconds);Motor1.s', 'doublevelocity(velocityUnits units);', 'doublecurrent(currentUnits units=amp);', 'doublecurrent(percentUnits units);', 'doublepower(powerUnits units=watt);', 'doubletorque(torqueUnits units=Nm);', 'doubleefficiency(percentUnits units=percent);', 'doubletemperature(percentUnits units=percent);', 'doubletemperature(temperatureUnits units);', 'doublevoltage(voltageUnits units=volt);', 'directionTypedirection();', 'boolinstalled();', 'int32_tcount();']

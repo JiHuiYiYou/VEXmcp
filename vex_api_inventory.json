@@ -1,0 +1,1829 @@
+[
+  {
+    "name": "draw-image-from-file",
+    "domain": "std",
+    "role": "label",
+    "priority": -1,
+    "uri": "home/python/SDcard.html#$",
+    "anchor": "$",
+    "display_name": "draw_image_from_file"
+  },
+  {
+    "name": "genindex",
+    "domain": "std",
+    "role": "label",
+    "priority": -1,
+    "uri": "genindex.html",
+    "anchor": "",
+    "display_name": "Index"
+  },
+  {
+    "name": "home/blocks/3-wire/accelerometer",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/blocks/3-wire/accelerometer.html",
+    "anchor": "",
+    "display_name": "Accelerometer"
+  },
+  {
+    "name": "home/blocks/3-wire/bumper",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/blocks/3-wire/bumper.html",
+    "anchor": "",
+    "display_name": "Bumper"
+  },
+  {
+    "name": "home/blocks/3-wire/digital-in",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/blocks/3-wire/digital-in.html",
+    "anchor": "",
+    "display_name": "Digital In"
+  },
+  {
+    "name": "home/blocks/3-wire/digital-out",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/blocks/3-wire/digital-out.html",
+    "anchor": "",
+    "display_name": "Digital Out"
+  },
+  {
+    "name": "home/blocks/3-wire/encoder",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/blocks/3-wire/encoder.html",
+    "anchor": "",
+    "display_name": "Encoder"
+  },
+  {
+    "name": "home/blocks/3-wire/index",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/blocks/3-wire/index.html",
+    "anchor": "",
+    "display_name": "3-Wire Devices"
+  },
+  {
+    "name": "home/blocks/3-wire/led",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/blocks/3-wire/led.html",
+    "anchor": "",
+    "display_name": "LED Indicator"
+  },
+  {
+    "name": "home/blocks/3-wire/light-sensor",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/blocks/3-wire/light-sensor.html",
+    "anchor": "",
+    "display_name": "Light Sensor"
+  },
+  {
+    "name": "home/blocks/3-wire/limit-switch",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/blocks/3-wire/limit-switch.html",
+    "anchor": "",
+    "display_name": "Limit Switch"
+  },
+  {
+    "name": "home/blocks/3-wire/line-tracker",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/blocks/3-wire/line-tracker.html",
+    "anchor": "",
+    "display_name": "Line Tracker"
+  },
+  {
+    "name": "home/blocks/3-wire/potentiometer",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/blocks/3-wire/potentiometer.html",
+    "anchor": "",
+    "display_name": "Potentiometer"
+  },
+  {
+    "name": "home/blocks/3-wire/range-finder",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/blocks/3-wire/range-finder.html",
+    "anchor": "",
+    "display_name": "Range Finder"
+  },
+  {
+    "name": "home/blocks/Console",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/blocks/Console.html",
+    "anchor": "",
+    "display_name": "Console"
+  },
+  {
+    "name": "home/blocks/Help_Landing",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/blocks/Help_Landing.html",
+    "anchor": "",
+    "display_name": "Blocks Help"
+  },
+  {
+    "name": "home/blocks/Logic/Comments",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/blocks/Logic/Comments.html",
+    "anchor": "",
+    "display_name": "Comments"
+  },
+  {
+    "name": "home/blocks/Logic/Control",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/blocks/Logic/Control.html",
+    "anchor": "",
+    "display_name": "Control"
+  },
+  {
+    "name": "home/blocks/Logic/Events",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/blocks/Logic/Events.html",
+    "anchor": "",
+    "display_name": "Events"
+  },
+  {
+    "name": "home/blocks/Logic/My_Blocks",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/blocks/Logic/My_Blocks.html",
+    "anchor": "",
+    "display_name": "My Blocks"
+  },
+  {
+    "name": "home/blocks/Logic/Operators",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/blocks/Logic/Operators.html",
+    "anchor": "",
+    "display_name": "Operators"
+  },
+  {
+    "name": "home/blocks/Logic/Timer",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/blocks/Logic/Timer.html",
+    "anchor": "",
+    "display_name": "Timer"
+  },
+  {
+    "name": "home/blocks/Logic/Variables",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/blocks/Logic/Variables.html",
+    "anchor": "",
+    "display_name": "Variables"
+  },
+  {
+    "name": "home/blocks/Logic/index",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/blocks/Logic/index.html",
+    "anchor": "",
+    "display_name": "Logic"
+  },
+  {
+    "name": "home/blocks/arm",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/blocks/arm.html",
+    "anchor": "",
+    "display_name": "Arm"
+  },
+  {
+    "name": "home/blocks/controller",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/blocks/controller.html",
+    "anchor": "",
+    "display_name": "Controller"
+  },
+  {
+    "name": "home/blocks/drivetrain",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/blocks/drivetrain.html",
+    "anchor": "",
+    "display_name": "Drivetrain"
+  },
+  {
+    "name": "home/blocks/index",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/blocks/index.html",
+    "anchor": "",
+    "display_name": "Blocks"
+  },
+  {
+    "name": "home/blocks/inertial_gyro",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/blocks/inertial_gyro.html",
+    "anchor": "",
+    "display_name": "Inertial and Gyro Sensor"
+  },
+  {
+    "name": "home/blocks/magnet",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/blocks/magnet.html",
+    "anchor": "",
+    "display_name": "Magnet"
+  },
+  {
+    "name": "home/blocks/motion/index",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/blocks/motion/index.html",
+    "anchor": "",
+    "display_name": "Motion"
+  },
+  {
+    "name": "home/blocks/motion/mc55",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/blocks/motion/mc55.html",
+    "anchor": "",
+    "display_name": "Motor Controller 55"
+  },
+  {
+    "name": "home/blocks/motion/motor_393",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/blocks/motion/motor_393.html",
+    "anchor": "",
+    "display_name": "Motor 393"
+  },
+  {
+    "name": "home/blocks/motion/servo_motor",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/blocks/motion/servo_motor.html",
+    "anchor": "",
+    "display_name": "Servo Motor"
+  },
+  {
+    "name": "home/blocks/motion/smart_motor",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/blocks/motion/smart_motor.html",
+    "anchor": "",
+    "display_name": "Smart Motor"
+  },
+  {
+    "name": "home/blocks/screen",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/blocks/screen.html",
+    "anchor": "",
+    "display_name": "Screen"
+  },
+  {
+    "name": "home/blocks/sensing/brain",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/blocks/sensing/brain.html",
+    "anchor": "",
+    "display_name": "Brain"
+  },
+  {
+    "name": "home/blocks/sensing/distance-sensor",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/blocks/sensing/distance-sensor.html",
+    "anchor": "",
+    "display_name": "Distance Sensor"
+  },
+  {
+    "name": "home/blocks/sensing/gps-sensor",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/blocks/sensing/gps-sensor.html",
+    "anchor": "",
+    "display_name": "GPS Sensor"
+  },
+  {
+    "name": "home/blocks/sensing/index",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/blocks/sensing/index.html",
+    "anchor": "",
+    "display_name": "Sensing"
+  },
+  {
+    "name": "home/blocks/sensing/optical-sensor",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/blocks/sensing/optical-sensor.html",
+    "anchor": "",
+    "display_name": "Optical Sensor"
+  },
+  {
+    "name": "home/blocks/sensing/rotation-sensor",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/blocks/sensing/rotation-sensor.html",
+    "anchor": "",
+    "display_name": "Rotation Sensor"
+  },
+  {
+    "name": "home/blocks/switch",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/blocks/switch.html",
+    "anchor": "",
+    "display_name": "Switch"
+  },
+  {
+    "name": "home/blocks/vision/aivision",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/blocks/vision/aivision.html",
+    "anchor": "",
+    "display_name": "AI Vision Sensor"
+  },
+  {
+    "name": "home/blocks/vision/index",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/blocks/vision/index.html",
+    "anchor": "",
+    "display_name": "Vision"
+  },
+  {
+    "name": "home/blocks/vision/vision",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/blocks/vision/vision.html",
+    "anchor": "",
+    "display_name": "Vision Sensor"
+  },
+  {
+    "name": "home/cpp/3-Wire_Devices/3-Wire_Expander",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/cpp/3-Wire_Devices/3-Wire_Expander.html",
+    "anchor": "",
+    "display_name": "3-Wire Expander"
+  },
+  {
+    "name": "home/cpp/3-Wire_Devices/Accelerometer",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/cpp/3-Wire_Devices/Accelerometer.html",
+    "anchor": "",
+    "display_name": "Accelerometer"
+  },
+  {
+    "name": "home/cpp/3-Wire_Devices/AnalogIn",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/cpp/3-Wire_Devices/AnalogIn.html",
+    "anchor": "",
+    "display_name": "Analog In"
+  },
+  {
+    "name": "home/cpp/3-Wire_Devices/Bumper",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/cpp/3-Wire_Devices/Bumper.html",
+    "anchor": "",
+    "display_name": "Bumper Switch"
+  },
+  {
+    "name": "home/cpp/3-Wire_Devices/DigitalIn",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/cpp/3-Wire_Devices/DigitalIn.html",
+    "anchor": "",
+    "display_name": "Digital In"
+  },
+  {
+    "name": "home/cpp/3-Wire_Devices/DigitalOut",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/cpp/3-Wire_Devices/DigitalOut.html",
+    "anchor": "",
+    "display_name": "Digital Out"
+  },
+  {
+    "name": "home/cpp/3-Wire_Devices/Encoder",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/cpp/3-Wire_Devices/Encoder.html",
+    "anchor": "",
+    "display_name": "Encoder"
+  },
+  {
+    "name": "home/cpp/3-Wire_Devices/Gyro",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/cpp/3-Wire_Devices/Gyro.html",
+    "anchor": "",
+    "display_name": "Gyro Sensor"
+  },
+  {
+    "name": "home/cpp/3-Wire_Devices/LED",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/cpp/3-Wire_Devices/LED.html",
+    "anchor": "",
+    "display_name": "LED Indicator"
+  },
+  {
+    "name": "home/cpp/3-Wire_Devices/Light",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/cpp/3-Wire_Devices/Light.html",
+    "anchor": "",
+    "display_name": "Light Sensor"
+  },
+  {
+    "name": "home/cpp/3-Wire_Devices/Limit",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/cpp/3-Wire_Devices/Limit.html",
+    "anchor": "",
+    "display_name": "Limit Switch"
+  },
+  {
+    "name": "home/cpp/3-Wire_Devices/Line",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/cpp/3-Wire_Devices/Line.html",
+    "anchor": "",
+    "display_name": "Line Tracker"
+  },
+  {
+    "name": "home/cpp/3-Wire_Devices/PWM",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/cpp/3-Wire_Devices/PWM.html",
+    "anchor": "",
+    "display_name": "PWM Out"
+  },
+  {
+    "name": "home/cpp/3-Wire_Devices/Pneumatics",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/cpp/3-Wire_Devices/Pneumatics.html",
+    "anchor": "",
+    "display_name": "Pneumatics"
+  },
+  {
+    "name": "home/cpp/3-Wire_Devices/Potentiometer",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/cpp/3-Wire_Devices/Potentiometer.html",
+    "anchor": "",
+    "display_name": "Potentiometer"
+  },
+  {
+    "name": "home/cpp/3-Wire_Devices/Range_Finder",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/cpp/3-Wire_Devices/Range_Finder.html",
+    "anchor": "",
+    "display_name": "Range Finder"
+  },
+  {
+    "name": "home/cpp/3-Wire_Devices/index",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/cpp/3-Wire_Devices/index.html",
+    "anchor": "",
+    "display_name": "3-Wire Devices"
+  },
+  {
+    "name": "home/cpp/Brain/Battery",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/cpp/Brain/Battery.html",
+    "anchor": "",
+    "display_name": "Battery"
+  },
+  {
+    "name": "home/cpp/Brain/SDcard",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/cpp/Brain/SDcard.html",
+    "anchor": "",
+    "display_name": "SDcard"
+  },
+  {
+    "name": "home/cpp/Brain/Screen",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/cpp/Brain/Screen.html",
+    "anchor": "",
+    "display_name": "Screen"
+  },
+  {
+    "name": "home/cpp/Brain/index",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/cpp/Brain/index.html",
+    "anchor": "",
+    "display_name": "Brain"
+  },
+  {
+    "name": "home/cpp/Brain/timer",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/cpp/Brain/timer.html",
+    "anchor": "",
+    "display_name": "Timer"
+  },
+  {
+    "name": "home/cpp/CTE_Workcell/Arm",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/cpp/CTE_Workcell/Arm.html",
+    "anchor": "",
+    "display_name": "CTE Arm"
+  },
+  {
+    "name": "home/cpp/CTE_Workcell/ObjectDetector",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/cpp/CTE_Workcell/ObjectDetector.html",
+    "anchor": "",
+    "display_name": "Object Sensor"
+  },
+  {
+    "name": "home/cpp/CTE_Workcell/Pneumatics",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/cpp/CTE_Workcell/Pneumatics.html",
+    "anchor": "",
+    "display_name": "Pneumatics"
+  },
+  {
+    "name": "home/cpp/CTE_Workcell/SignalTower",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/cpp/CTE_Workcell/SignalTower.html",
+    "anchor": "",
+    "display_name": "Signal Tower"
+  },
+  {
+    "name": "home/cpp/CTE_Workcell/index",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/cpp/CTE_Workcell/index.html",
+    "anchor": "",
+    "display_name": "CTE Workcell"
+  },
+  {
+    "name": "home/cpp/Competition",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/cpp/Competition.html",
+    "anchor": "",
+    "display_name": "Competition"
+  },
+  {
+    "name": "home/cpp/Console",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/cpp/Console.html",
+    "anchor": "",
+    "display_name": "Console"
+  },
+  {
+    "name": "home/cpp/Controller/Axis",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/cpp/Controller/Axis.html",
+    "anchor": "",
+    "display_name": "Axis"
+  },
+  {
+    "name": "home/cpp/Controller/Button",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/cpp/Controller/Button.html",
+    "anchor": "",
+    "display_name": "Button"
+  },
+  {
+    "name": "home/cpp/Controller/Screen",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/cpp/Controller/Screen.html",
+    "anchor": "",
+    "display_name": "Screen"
+  },
+  {
+    "name": "home/cpp/Controller/index",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/cpp/Controller/index.html",
+    "anchor": "",
+    "display_name": "Controller"
+  },
+  {
+    "name": "home/cpp/Drivetrain/index",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/cpp/Drivetrain/index.html",
+    "anchor": "",
+    "display_name": "Drivetrain"
+  },
+  {
+    "name": "home/cpp/Drivetrain/smartdrive",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/cpp/Drivetrain/smartdrive.html",
+    "anchor": "",
+    "display_name": "smartdrive"
+  },
+  {
+    "name": "home/cpp/Logic/Comments",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/cpp/Logic/Comments.html",
+    "anchor": "",
+    "display_name": "Comments"
+  },
+  {
+    "name": "home/cpp/Logic/Control",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/cpp/Logic/Control.html",
+    "anchor": "",
+    "display_name": "Control"
+  },
+  {
+    "name": "home/cpp/Logic/Custom_color",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/cpp/Logic/Custom_color.html",
+    "anchor": "",
+    "display_name": "Custom Colors"
+  },
+  {
+    "name": "home/cpp/Logic/Custom_formatting",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/cpp/Logic/Custom_formatting.html",
+    "anchor": "",
+    "display_name": "Custom String Formatting"
+  },
+  {
+    "name": "home/cpp/Logic/Custom_timer",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/cpp/Logic/Custom_timer.html",
+    "anchor": "",
+    "display_name": "Custom Timer"
+  },
+  {
+    "name": "home/cpp/Logic/Events",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/cpp/Logic/Events.html",
+    "anchor": "",
+    "display_name": "Events"
+  },
+  {
+    "name": "home/cpp/Logic/Functions",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/cpp/Logic/Functions.html",
+    "anchor": "",
+    "display_name": "Functions"
+  },
+  {
+    "name": "home/cpp/Logic/Math",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/cpp/Logic/Math.html",
+    "anchor": "",
+    "display_name": "Math"
+  },
+  {
+    "name": "home/cpp/Logic/Operators",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/cpp/Logic/Operators.html",
+    "anchor": "",
+    "display_name": "Operators"
+  },
+  {
+    "name": "home/cpp/Logic/Random",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/cpp/Logic/Random.html",
+    "anchor": "",
+    "display_name": "Random"
+  },
+  {
+    "name": "home/cpp/Logic/Threads",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/cpp/Logic/Threads.html",
+    "anchor": "",
+    "display_name": "Threads"
+  },
+  {
+    "name": "home/cpp/Logic/Variables",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/cpp/Logic/Variables.html",
+    "anchor": "",
+    "display_name": "Variables"
+  },
+  {
+    "name": "home/cpp/Logic/index",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/cpp/Logic/index.html",
+    "anchor": "",
+    "display_name": "Logic"
+  },
+  {
+    "name": "home/cpp/Motors_and_MotorControllers/index",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/cpp/Motors_and_MotorControllers/index.html",
+    "anchor": "",
+    "display_name": "Motors and Motor Controllers"
+  },
+  {
+    "name": "home/cpp/Motors_and_MotorControllers/mc55",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/cpp/Motors_and_MotorControllers/mc55.html",
+    "anchor": "",
+    "display_name": "Motor Controller 55"
+  },
+  {
+    "name": "home/cpp/Motors_and_MotorControllers/motor_393",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/cpp/Motors_and_MotorControllers/motor_393.html",
+    "anchor": "",
+    "display_name": "Motor 393 (Motor Controller 29)"
+  },
+  {
+    "name": "home/cpp/Motors_and_MotorControllers/motor_and_motor_group",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/cpp/Motors_and_MotorControllers/motor_and_motor_group.html",
+    "anchor": "",
+    "display_name": "Motor and Motor Group"
+  },
+  {
+    "name": "home/cpp/Motors_and_MotorControllers/servo_motor",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/cpp/Motors_and_MotorControllers/servo_motor.html",
+    "anchor": "",
+    "display_name": "Servo Motor"
+  },
+  {
+    "name": "home/cpp/Motors_and_MotorControllers/victor_motor",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/cpp/Motors_and_MotorControllers/victor_motor.html",
+    "anchor": "",
+    "display_name": "Victor 883 Motor"
+  },
+  {
+    "name": "home/cpp/Smart_Port_Devices/AI_Vision_Sensor",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/cpp/Smart_Port_Devices/AI_Vision_Sensor.html",
+    "anchor": "",
+    "display_name": "AI Vision Sensor"
+  },
+  {
+    "name": "home/cpp/Smart_Port_Devices/Distance_Sensor",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/cpp/Smart_Port_Devices/Distance_Sensor.html",
+    "anchor": "",
+    "display_name": "Distance Sensor"
+  },
+  {
+    "name": "home/cpp/Smart_Port_Devices/GPS_Sensor",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/cpp/Smart_Port_Devices/GPS_Sensor.html",
+    "anchor": "",
+    "display_name": "GPS Sensor"
+  },
+  {
+    "name": "home/cpp/Smart_Port_Devices/Inertial_Sensor",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/cpp/Smart_Port_Devices/Inertial_Sensor.html",
+    "anchor": "",
+    "display_name": "Inertial Sensor"
+  },
+  {
+    "name": "home/cpp/Smart_Port_Devices/Optical_Sensor",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/cpp/Smart_Port_Devices/Optical_Sensor.html",
+    "anchor": "",
+    "display_name": "Optical Sensor"
+  },
+  {
+    "name": "home/cpp/Smart_Port_Devices/Rotation_Sensor",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/cpp/Smart_Port_Devices/Rotation_Sensor.html",
+    "anchor": "",
+    "display_name": "Rotation Sensor"
+  },
+  {
+    "name": "home/cpp/Smart_Port_Devices/Vision_Sensor",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/cpp/Smart_Port_Devices/Vision_Sensor.html",
+    "anchor": "",
+    "display_name": "Vision Sensor"
+  },
+  {
+    "name": "home/cpp/Smart_Port_Devices/index",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/cpp/Smart_Port_Devices/index.html",
+    "anchor": "",
+    "display_name": "Smart Port Devices"
+  },
+  {
+    "name": "home/cpp/VEXlink/MessageLink",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/cpp/VEXlink/MessageLink.html",
+    "anchor": "",
+    "display_name": "Message Link"
+  },
+  {
+    "name": "home/cpp/VEXlink/SerialLink",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/cpp/VEXlink/SerialLink.html",
+    "anchor": "",
+    "display_name": "Serial Link"
+  },
+  {
+    "name": "home/cpp/VEXlink/index",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/cpp/VEXlink/index.html",
+    "anchor": "",
+    "display_name": "VEXlink"
+  },
+  {
+    "name": "home/cpp/index",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/cpp/index.html",
+    "anchor": "",
+    "display_name": "C++"
+  },
+  {
+    "name": "home/index",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/index.html",
+    "anchor": "",
+    "display_name": "Welcome to the API Reference Site for VEX V5"
+  },
+  {
+    "name": "home/python/3-wire/accelerometer",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/python/3-wire/accelerometer.html",
+    "anchor": "",
+    "display_name": "Accelerometer"
+  },
+  {
+    "name": "home/python/3-wire/addressable_led",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/python/3-wire/addressable_led.html",
+    "anchor": "",
+    "display_name": "Addressable LED"
+  },
+  {
+    "name": "home/python/3-wire/analog",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/python/3-wire/analog.html",
+    "anchor": "",
+    "display_name": "Analog"
+  },
+  {
+    "name": "home/python/3-wire/bumper",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/python/3-wire/bumper.html",
+    "anchor": "",
+    "display_name": "Bumper Switch"
+  },
+  {
+    "name": "home/python/3-wire/digital-in",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/python/3-wire/digital-in.html",
+    "anchor": "",
+    "display_name": "Digital In"
+  },
+  {
+    "name": "home/python/3-wire/digital-out",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/python/3-wire/digital-out.html",
+    "anchor": "",
+    "display_name": "Digital Out"
+  },
+  {
+    "name": "home/python/3-wire/encoder",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/python/3-wire/encoder.html",
+    "anchor": "",
+    "display_name": "Encoder"
+  },
+  {
+    "name": "home/python/3-wire/expander",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/python/3-wire/expander.html",
+    "anchor": "",
+    "display_name": "3-Wire Expander"
+  },
+  {
+    "name": "home/python/3-wire/gyro",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/python/3-wire/gyro.html",
+    "anchor": "",
+    "display_name": "Gyro Sensor"
+  },
+  {
+    "name": "home/python/3-wire/index",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/python/3-wire/index.html",
+    "anchor": "",
+    "display_name": "3-Wire Devices"
+  },
+  {
+    "name": "home/python/3-wire/led",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/python/3-wire/led.html",
+    "anchor": "",
+    "display_name": "LED Indicator"
+  },
+  {
+    "name": "home/python/3-wire/light-sensor",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/python/3-wire/light-sensor.html",
+    "anchor": "",
+    "display_name": "Light Sensor"
+  },
+  {
+    "name": "home/python/3-wire/limit-switch",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/python/3-wire/limit-switch.html",
+    "anchor": "",
+    "display_name": "Limit Switch"
+  },
+  {
+    "name": "home/python/3-wire/line-tracker",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/python/3-wire/line-tracker.html",
+    "anchor": "",
+    "display_name": "Line Tracker"
+  },
+  {
+    "name": "home/python/3-wire/object_sensor",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/python/3-wire/object_sensor.html",
+    "anchor": "",
+    "display_name": "Object Sensor"
+  },
+  {
+    "name": "home/python/3-wire/potentiometer",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/python/3-wire/potentiometer.html",
+    "anchor": "",
+    "display_name": "Potentiometer"
+  },
+  {
+    "name": "home/python/3-wire/pwm",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/python/3-wire/pwm.html",
+    "anchor": "",
+    "display_name": "Pulse Width Modulation (PWM)"
+  },
+  {
+    "name": "home/python/3-wire/range-finder",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/python/3-wire/range-finder.html",
+    "anchor": "",
+    "display_name": "Range Finder"
+  },
+  {
+    "name": "home/python/Brain",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/python/Brain.html",
+    "anchor": "",
+    "display_name": "Brain"
+  },
+  {
+    "name": "home/python/Competition",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/python/Competition.html",
+    "anchor": "",
+    "display_name": "Competition"
+  },
+  {
+    "name": "home/python/Console",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/python/Console.html",
+    "anchor": "",
+    "display_name": "Console"
+  },
+  {
+    "name": "home/python/Controller",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/python/Controller.html",
+    "anchor": "",
+    "display_name": "Controller"
+  },
+  {
+    "name": "home/python/Drivetrain",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/python/Drivetrain.html",
+    "anchor": "",
+    "display_name": "Drivetrain"
+  },
+  {
+    "name": "home/python/Help_Landing",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/python/Help_Landing.html",
+    "anchor": "",
+    "display_name": "Command Help"
+  },
+  {
+    "name": "home/python/Inertial",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/python/Inertial.html",
+    "anchor": "",
+    "display_name": "Inertial"
+  },
+  {
+    "name": "home/python/Logic/Color_objects",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/python/Logic/Color_objects.html",
+    "anchor": "",
+    "display_name": "Custom Colors"
+  },
+  {
+    "name": "home/python/Logic/Comments",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/python/Logic/Comments.html",
+    "anchor": "",
+    "display_name": "Comments"
+  },
+  {
+    "name": "home/python/Logic/Control",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/python/Logic/Control.html",
+    "anchor": "",
+    "display_name": "Control"
+  },
+  {
+    "name": "home/python/Logic/Custom_formatting",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/python/Logic/Custom_formatting.html",
+    "anchor": "",
+    "display_name": "String Formatting"
+  },
+  {
+    "name": "home/python/Logic/Events",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/python/Logic/Events.html",
+    "anchor": "",
+    "display_name": "Events"
+  },
+  {
+    "name": "home/python/Logic/Functions",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/python/Logic/Functions.html",
+    "anchor": "",
+    "display_name": "Functions"
+  },
+  {
+    "name": "home/python/Logic/Math",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/python/Logic/Math.html",
+    "anchor": "",
+    "display_name": "Math"
+  },
+  {
+    "name": "home/python/Logic/Operators",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/python/Logic/Operators.html",
+    "anchor": "",
+    "display_name": "Operators"
+  },
+  {
+    "name": "home/python/Logic/Random",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/python/Logic/Random.html",
+    "anchor": "",
+    "display_name": "Random"
+  },
+  {
+    "name": "home/python/Logic/Threads",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/python/Logic/Threads.html",
+    "anchor": "",
+    "display_name": "Threads"
+  },
+  {
+    "name": "home/python/Logic/Timer",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/python/Logic/Timer.html",
+    "anchor": "",
+    "display_name": "Timer"
+  },
+  {
+    "name": "home/python/Logic/Variables",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/python/Logic/Variables.html",
+    "anchor": "",
+    "display_name": "Variables"
+  },
+  {
+    "name": "home/python/Logic/index",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/python/Logic/index.html",
+    "anchor": "",
+    "display_name": "Logic"
+  },
+  {
+    "name": "home/python/Magnet",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/python/Magnet.html",
+    "anchor": "",
+    "display_name": "Magnet"
+  },
+  {
+    "name": "home/python/Micropython_libraries",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/python/Micropython_libraries.html",
+    "anchor": "",
+    "display_name": "MicroPython Libraries"
+  },
+  {
+    "name": "home/python/Motion/index",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/python/Motion/index.html",
+    "anchor": "",
+    "display_name": "Motion"
+  },
+  {
+    "name": "home/python/Motion/mc55",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/python/Motion/mc55.html",
+    "anchor": "",
+    "display_name": "Motor Controller 55"
+  },
+  {
+    "name": "home/python/Motion/motor_393",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/python/Motion/motor_393.html",
+    "anchor": "",
+    "display_name": "Motor 393"
+  },
+  {
+    "name": "home/python/Motion/motor_and_motor_group",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/python/Motion/motor_and_motor_group.html",
+    "anchor": "",
+    "display_name": "Motor and Motor Group"
+  },
+  {
+    "name": "home/python/Motion/servo_motor",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/python/Motion/servo_motor.html",
+    "anchor": "",
+    "display_name": "Servo Motor"
+  },
+  {
+    "name": "home/python/Motion/victor_motor",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/python/Motion/victor_motor.html",
+    "anchor": "",
+    "display_name": "Victor Motor"
+  },
+  {
+    "name": "home/python/Pneumatics/cte_pneumatics",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/python/Pneumatics/cte_pneumatics.html",
+    "anchor": "",
+    "display_name": "CTE Pneumatics"
+  },
+  {
+    "name": "home/python/Pneumatics/index",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/python/Pneumatics/index.html",
+    "anchor": "",
+    "display_name": "Pneumatics"
+  },
+  {
+    "name": "home/python/Pneumatics/v5_pneumatics",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/python/Pneumatics/v5_pneumatics.html",
+    "anchor": "",
+    "display_name": "V5 Pneumatics"
+  },
+  {
+    "name": "home/python/SDcard",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/python/SDcard.html",
+    "anchor": "",
+    "display_name": "SD Card"
+  },
+  {
+    "name": "home/python/Screen",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/python/Screen.html",
+    "anchor": "",
+    "display_name": "Screen"
+  },
+  {
+    "name": "home/python/Sensing/Battery",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/python/Sensing/Battery.html",
+    "anchor": "",
+    "display_name": "V5 Robot Battery"
+  },
+  {
+    "name": "home/python/Sensing/distance-sensor",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/python/Sensing/distance-sensor.html",
+    "anchor": "",
+    "display_name": "Distance Sensor"
+  },
+  {
+    "name": "home/python/Sensing/gps-sensor",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/python/Sensing/gps-sensor.html",
+    "anchor": "",
+    "display_name": "GPS Sensor"
+  },
+  {
+    "name": "home/python/Sensing/index",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/python/Sensing/index.html",
+    "anchor": "",
+    "display_name": "Sensing"
+  },
+  {
+    "name": "home/python/Sensing/optical-sensor",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/python/Sensing/optical-sensor.html",
+    "anchor": "",
+    "display_name": "Optical Sensor"
+  },
+  {
+    "name": "home/python/Sensing/rotation-sensor",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/python/Sensing/rotation-sensor.html",
+    "anchor": "",
+    "display_name": "Rotation Sensor"
+  },
+  {
+    "name": "home/python/VEXlink/MessageLink",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/python/VEXlink/MessageLink.html",
+    "anchor": "",
+    "display_name": "MessageLink"
+  },
+  {
+    "name": "home/python/VEXlink/SerialLink",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/python/VEXlink/SerialLink.html",
+    "anchor": "",
+    "display_name": "SerialLink"
+  },
+  {
+    "name": "home/python/VEXlink/index",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/python/VEXlink/index.html",
+    "anchor": "",
+    "display_name": "VEXlink"
+  },
+  {
+    "name": "home/python/Vision/AiVision",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/python/Vision/AiVision.html",
+    "anchor": "",
+    "display_name": "AI Vision"
+  },
+  {
+    "name": "home/python/Vision/Vision",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/python/Vision/Vision.html",
+    "anchor": "",
+    "display_name": "Vision"
+  },
+  {
+    "name": "home/python/Vision/index",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/python/Vision/index.html",
+    "anchor": "",
+    "display_name": "Vision"
+  },
+  {
+    "name": "home/python/index",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/python/index.html",
+    "anchor": "",
+    "display_name": "Python"
+  },
+  {
+    "name": "home/vexcode_tutorials/arm",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/vexcode_tutorials/arm.html",
+    "anchor": "",
+    "display_name": "Arm"
+  },
+  {
+    "name": "home/vexcode_tutorials/basic-movement",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/vexcode_tutorials/basic-movement.html",
+    "anchor": "",
+    "display_name": "Basic Movement"
+  },
+  {
+    "name": "home/vexcode_tutorials/broadcasting",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/vexcode_tutorials/broadcasting.html",
+    "anchor": "",
+    "display_name": "Broadcasting"
+  },
+  {
+    "name": "home/vexcode_tutorials/claw",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/vexcode_tutorials/claw.html",
+    "anchor": "",
+    "display_name": "Claw"
+  },
+  {
+    "name": "home/vexcode_tutorials/competition",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/vexcode_tutorials/competition.html",
+    "anchor": "",
+    "display_name": "Competition"
+  },
+  {
+    "name": "home/vexcode_tutorials/device-setup-controller",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/vexcode_tutorials/device-setup-controller.html",
+    "anchor": "",
+    "display_name": "Device Setup: Controller"
+  },
+  {
+    "name": "home/vexcode_tutorials/device-setup-drivetrain",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/vexcode_tutorials/device-setup-drivetrain.html",
+    "anchor": "",
+    "display_name": "Device Setup: Drivetrain"
+  },
+  {
+    "name": "home/vexcode_tutorials/device-setup-motors",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/vexcode_tutorials/device-setup-motors.html",
+    "anchor": "",
+    "display_name": "Device Setup: Motors"
+  },
+  {
+    "name": "home/vexcode_tutorials/device-setup-sensors",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/vexcode_tutorials/device-setup-sensors.html",
+    "anchor": "",
+    "display_name": "Device Setup: Sensors"
+  },
+  {
+    "name": "home/vexcode_tutorials/download-and-run-a-project",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/vexcode_tutorials/download-and-run-a-project.html",
+    "anchor": "",
+    "display_name": "Downloading and Running a Project"
+  },
+  {
+    "name": "home/vexcode_tutorials/getting-started",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/vexcode_tutorials/getting-started.html",
+    "anchor": "",
+    "display_name": "Getting Started"
+  },
+  {
+    "name": "home/vexcode_tutorials/if-then-else",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/vexcode_tutorials/if-then-else.html",
+    "anchor": "",
+    "display_name": "If Then Else"
+  },
+  {
+    "name": "home/vexcode_tutorials/index",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/vexcode_tutorials/index.html",
+    "anchor": "",
+    "display_name": "VEXcode Tutorials"
+  },
+  {
+    "name": "home/vexcode_tutorials/moving-and-removing-blocks",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/vexcode_tutorials/moving-and-removing-blocks.html",
+    "anchor": "",
+    "display_name": "Moving and Removing Blocks"
+  },
+  {
+    "name": "home/vexcode_tutorials/my-blocks",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/vexcode_tutorials/my-blocks.html",
+    "anchor": "",
+    "display_name": "My Blocks"
+  },
+  {
+    "name": "home/vexcode_tutorials/turning",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/vexcode_tutorials/turning.html",
+    "anchor": "",
+    "display_name": "Turning"
+  },
+  {
+    "name": "home/vexcode_tutorials/using-examples-and-templates",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/vexcode_tutorials/using-examples-and-templates.html",
+    "anchor": "",
+    "display_name": "Using Examples and Templates"
+  },
+  {
+    "name": "home/vexcode_tutorials/using-help",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/vexcode_tutorials/using-help.html",
+    "anchor": "",
+    "display_name": "Using Help"
+  },
+  {
+    "name": "home/vexcode_tutorials/using-loops",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/vexcode_tutorials/using-loops.html",
+    "anchor": "",
+    "display_name": "Using Loops"
+  },
+  {
+    "name": "home/vexcode_tutorials/variable-lists",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "home/vexcode_tutorials/variable-lists.html",
+    "anchor": "",
+    "display_name": "Variable Lists"
+  },
+  {
+    "name": "if-elif-else",
+    "domain": "std",
+    "role": "label",
+    "priority": -1,
+    "uri": "home/python/Logic/Control.html#$",
+    "anchor": "$",
+    "display_name": "if/elif/else"
+  },
+  {
+    "name": "if-else",
+    "domain": "std",
+    "role": "label",
+    "priority": -1,
+    "uri": "home/python/Logic/Control.html#$",
+    "anchor": "$",
+    "display_name": "if/else"
+  },
+  {
+    "name": "index",
+    "domain": "std",
+    "role": "doc",
+    "priority": -1,
+    "uri": "index.html",
+    "anchor": "",
+    "display_name": "Home"
+  },
+  {
+    "name": "modindex",
+    "domain": "std",
+    "role": "label",
+    "priority": -1,
+    "uri": "py-modindex.html",
+    "anchor": "",
+    "display_name": "Module Index"
+  },
+  {
+    "name": "py-modindex",
+    "domain": "std",
+    "role": "label",
+    "priority": -1,
+    "uri": "py-modindex.html",
+    "anchor": "",
+    "display_name": "Python Module Index"
+  },
+  {
+    "name": "search",
+    "domain": "std",
+    "role": "label",
+    "priority": -1,
+    "uri": "search.html",
+    "anchor": "",
+    "display_name": "Search Page"
+  }
+]

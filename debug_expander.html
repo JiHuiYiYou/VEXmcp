@@ -1,0 +1,964 @@
+<!DOCTYPE html><html lang="en" data-content_root=""><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/">
+
+    
+        <title>3-Wire Expander | VEX V5 - C++ API — VEXcode Documentation</title>
+    
+  
+  
+  
+  <script data-cfasync="false">
+    (function() {
+      const savedMode = localStorage.getItem('theme-mode') || '';
+      document.documentElement.setAttribute('data-mode', savedMode);
+      document.documentElement.setAttribute('data-theme', savedMode);
+    })();
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet">
+<link href="../../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet">
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet">
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet">
+  <link rel="preload" as="font" type="font/woff2" crossorigin="" href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin="" href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin="" href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css">
+    <link rel="stylesheet" type="text/css" href="../../../_static/dist/css/custom.min.css?v=20260515160232">
+    <link rel="stylesheet" type="text/css" href="../../../_static/tabs.css">
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae">
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae">
+  <script src="../../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../_static/dist/js/custom.min.js?v=20260515160232"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'home/cpp/3-Wire_Devices/3-Wire_Expander';</script>
+    <link rel="canonical" href="https://api.vex.com/v5/home/cpp/3-Wire_Devices/3-Wire_Expander.html">
+    <link rel="index" title="Index" href="../../../genindex.html">
+    <link rel="search" title="Search" href="../../../search.html">
+    <link rel="next" title="Accelerometer" href="Accelerometer.html">
+    <link rel="prev" title="3-Wire Devices" href="index.html">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="docsearch:language" content="en">
+  <link rel="icon" type="image/x-icon" href="../../../_static/imgs/favicon.ico">
+    <meta name="description" content="Reference documentation for the triport class in VEX V5 C++. Includes constructors, functions, parameters, notes, and member functions.">
+  <script type="text/javascript">
+    var _iub = _iub || [];
+    _iub.csConfiguration = {"countryDetection":true,"enableFadp":true,"enableUspr":true,"gdprAppliesGlobally":false,"lang":"en","siteId":3775706,"whitelabel":false,"cookiePolicyId":71234363,"banner":{"acceptButtonCaptionColor":"white","acceptButtonColor":"#0073CE","acceptButtonDisplay":true,"backgroundColor":"white","closeButtonRejects":true,"customizeButtonCaptionColor":"#4D4D4D","customizeButtonColor":"#DADADA","customizeButtonDisplay":true,"position":"float-bottom-center","rejectButtonCaptionColor":"white","rejectButtonColor":"#0073CE","rejectButtonDisplay":true,"textColor":"black"}};
+</script><script type="text/javascript" src="https://cs.iubenda.com/autoblocking/3775706.js"></script><script type="text/javascript" src="//cdn.iubenda.com/cs/gpp/stub.js"></script><script type="text/javascript" src="//cdn.iubenda.com/cs/iubenda_cs.js" charset="UTF-8" async=""></script><script src="https://content.vexrobotics.com/assets/vex-api/prism-python-10-09-25.min.js?v=1778875804519"></script>
+            <link rel="stylesheet" href="https://content.vexrobotics.com/assets/vex-api/prism-python.min.css?v=86753091"><script src="https://content.vexrobotics.com/assets/vex-api/prism-cpp.min.js"></script>
+            <link rel="stylesheet" href="https://content.vexrobotics.com/assets/vex-api/prism-cpp.min.css">
+                        <script>
+              document.addEventListener("DOMContentLoaded", function() {
+                document.querySelectorAll(".language-cpp .token.operator").forEach(function(op) {
+                  if (op.textContent === "&amp;&amp;") {
+                    op.innerHTML = "&&";
+                  }
+                  if (op.textContent === "&amp;") {
+                    op.innerHTML = "&";
+                  }
+                });
+              });
+            </script></head>
+
+
+
+<body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode=""><div class="home-template sticky">
+  <nav class="navbar navbar-light pt-0 pb-0 vex-platform-top-navigation desktop">
+    <div class="container-fluid justify-content-center" style="justify-content: space-between !important;align-items: center; max-width: 1400px;width:100%;">
+      <ul class="navbar-nav d-flex flex-row">
+        <li class="nav-item vex-general">
+          <a class="nav-link" href="https://vex.com">
+            <img src="https://content.vexrobotics.com/assets/vex-api/homepage/img/vex-logo.svg" alt="VEXcode Robotics Logo" class="platform-logo-nav light" role="img" style="height: 26px">
+           <img src="https://content.vexrobotics.com/assets/vex-api/homepage/img/vex-logo-dark.svg" alt="VEX Robotics Logo" class="platform-logo-nav dark" role="img" style="height: 26px">
+          </a>
+        </li>
+      </ul>
+      <ul class="navbar-nav d-flex flex-row">
+        <li class="nav-item vex-general" style="color: #fff">
+           <a class="nav-link" href="https://api.vex.com">
+            <img src="https://content.vexrobotics.com/assets/vex-api/homepage/img/home.svg" alt="VEX API Home Button" class="platform-logo-nav light home-img" style="width:35px;height:16px;" role="img">
+           <img src="https://content.vexrobotics.com/assets/vex-api/homepage/img/home-dark.svg" alt="VEX API Home Button" class="platform-logo-nav dark home-img" style="width:35px;height:16px;" role="img">
+          </a>
+        </li>
+        <span class="home-link-dash"></span>
+        <li class="nav-item vex-one-two-three">
+          <a class="nav-link" href="/123/home">
+            <img src="https://content.vexrobotics.com/vexheader/123purple.svg" alt="VEX 123 logo in purple" class="platform-logo-nav light" role="img">
+            <img src="https://content.vexrobotics.com/vexheader/123white.svg" alt="VEX 123 logo in white" class="platform-logo-nav dark" role="img">
+          </a>
+        </li>
+        <li class="nav-item vex-go">
+          <a class="nav-link" href="/go/home">
+            <img src="https://content.vexrobotics.com/vexheader/GOlime.svg" alt="VEX GO logo in lime green" class="platform-logo-nav light" role="img">
+            <img src="https://content.vexrobotics.com/vexheader/GOwhite.svg" alt="VEX GO logo in white" class="platform-logo-nav dark" role="img">
+          </a>
+        </li>
+        <li class="nav-item vex-aim">
+          <a class="nav-link" href="/aim/home">
+            <img src="https://content.vexrobotics.com/vexheader/aim.svg" alt="VEXcode AIM logo in blue" class="platform-logo-nav light" role="img">
+            <img src="https://content.vexrobotics.com/vexheader/aimhover.svg" alt="VEXcode AIM logo in white" class="platform-logo-nav dark" role="img">
+          </a>
+        </li>
+        <li class="nav-item vex-iq">
+          <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#vexIqModal">
+            <img src="https://content.vexrobotics.com/vexheader/iqBlue2.svg" alt="VEX IQ logo in blue" class="platform-logo-nav light" role="img">
+            <img src="https://content.vexrobotics.com/vexheader/iqWhite2.svg" alt="VEX IQ logo in white" class="platform-logo-nav dark" role="img">
+          </a>
+        </li>
+        <li class="nav-item vex-exp">
+          <a class="nav-link" href="/exp/home">
+            <img src="https://content.vexrobotics.com/vexheader/expRed.svg" alt="VEX EXP logo in red" class="platform-logo-nav light" role="img">
+            <img src="https://content.vexrobotics.com/vexheader/expWhite.svg" alt="VEX EXP logo in white" class="platform-logo-nav dark" role="img">
+          </a>
+        </li>
+        <li class="nav-item vex-v5 active">
+          <a class="nav-link" href="/v5/home">
+            <img src="https://content.vexrobotics.com/vexheader/v5Red.svg" alt="VEX V5 logo in red" class="platform-logo-nav light" role="img">
+            <img src="https://content.vexrobotics.com/vexheader/v5White.svg" alt="VEX V5 logo in white" class="platform-logo-nav dark" role="img">
+          </a>
+        </li>
+        <li class="nav-item vex-cte">
+          <a class="nav-link" href="/cte/home">
+            <img src="https://content.vexrobotics.com/vexheader/cteGreen.svg" alt="VEX CTE logo in green" class="platform-logo-nav light" role="img">
+            <img src="https://content.vexrobotics.com/vexheader/cteWhite.svg" alt="VEX CTE logo in white" class="platform-logo-nav dark" role="img">
+          </a>
+        </li>
+        <li class="nav-item vex-air">
+          <a class="nav-link" href="/air/home">
+            <img src="https://content.vexrobotics.com/vexheader/air.svg" alt="VEX AIR logo in orange" class="platform-logo-nav light" role="img">
+            <img src="https://content.vexrobotics.com/vexheader/airhover.svg" alt="VEX AIR logo in white" class="platform-logo-nav dark" role="img">
+          </a>
+        </li>
+        <li class="nav-item vexcode-vr">
+          <a class="nav-link" href="/vr/home">
+            <img src="https://content.vexrobotics.com/vexheader/vr-gold.svg" alt="VEXcode VR logo in gold" class="platform-logo-nav light" role="img">
+            <img src="https://content.vexrobotics.com/vexheader/vr-white.svg" alt="VEXcode VR logo in white" class="platform-logo-nav dark" role="img">
+          </a>
+        </li>
+      </ul>
+      <ul class="navbar-nav d-flex flex-row" style="padding: .5em;">
+        <button class="feedbackFormButton">Feedback</button>
+      </ul>
+    </div>
+  </nav>
+</div>
+  
+  
+  
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox" class="sidebar-toggle" name="__primary" id="__primary">
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox" class="sidebar-toggle" name="__secondary" id="__secondary">
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  <div class="header-breadcrumb-wrapper">
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item d-none">
+
+   
+
+<a class="navbar-brand logo" href="/">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">&lt; Back to Platform Select</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+        <a href="../../../index.html"><svg xmlns="http://www.w3.org/2000/svg" id="topCenterLogo" width="340.32939" height="70" viewBox="0 0 340.32939 70"><defs></defs><g id="c"><path class="g" d="M302.03213,43.86113h21.57458c6.75041,0,11.4094,6.76045,9.00629,13.06863h0s-.9957,2.61374-.9957,2.61374h0c-2.39805,6.29492-8.43444,10.45492-15.17066,10.45492h-37.30863l3.98279-10.45485,32.76238-.00006c1.68405,0,3.19315-1.04,3.79267-2.61373h0c.48062-1.26164-.45118-2.61373-1.80126-2.61373h-32.7624l9.95698-26.13704h45.26023l-3.98279,10.45485h-32.32308l-1.9914,5.22727Z"></path><polygon class="g" points="288.59318 28.18009 274.66022 28.18032 259.70635 54.147 249.81404 28.18009 236.89059 28.18009 252.82182 69.99977 264.50958 70 288.59318 28.18009"></polygon><g id="d"><g id="e"><path class="f" d="M201.25776,28.18875c-.16715,0-.32882.05216-.46653.14702,0,0-18.44182,12.82305-19.3308,13.44071-.88899-.61629-19.42172-13.44195-19.42172-13.44195-.13908-.09362-.29952-.14578-.46653-.14578h-17.06495c-.35962,0-.67776.23532-.7833.57755-.02408.08021-.03477.16044-.03477.24066,0,.26598.13101.52128.35825.67639,0,0,25.78504,17.45127,27.65529,18.71849-1.88626,1.26474-30.00684,20.10357-30.00684,20.10357-.23121.15509-.36359.41177-.36359.67639,0,.08159.01205.1618.03737.23806.10295.34483.41985.58015.77947.58015h17.44045c.16715,0,.32882-.05079.46393-.1458,0,0,20.51124-14.19855,21.40557-14.81894.89294.62574,21.21706,14.81772,21.21706,14.81772.1377.09624.30088.14702.46926.14702h17.15709c.35961,0,.67775-.23532.78069-.57755.02546-.07886.03751-.15907.03751-.24066,0-.26461-.13236-.5213-.36098-.67502,0,0-27.94016-18.83484-29.82367-20.1022,1.87148-1.26202,27.75014-18.72122,27.75014-18.72122.22998-.15374.35963-.41041.35963-.67639,0-.08022-.01329-.16045-.03478-.23806-.10554-.34483-.42368-.58015-.7807-.58015h-16.97255Z"></path><path class="f" d="M67.0905,28.18875c-.246,0-.47721.10965-.63231.29952,0,0-24.35341,29.78751-25.56985,31.27417-1.20192-1.49596-25.10332-31.26623-25.10332-31.26623-.15647-.19521-.39042-.30746-.63902-.30746H.81769c-.31691,0-.60562.18316-.73922.4679-.13512.28871-.09364.6256.10828.869l33.08952,40.17757c.15373.18713.38645.29678.63108.29678h13.95269c.24053,0,.47051-.10568.62697-.29418l33.56016-40.17484c.20452-.24339.2486-.58288.11362-.87036-.13498-.28734-.42245-.47187-.74059-.47187h-14.32969Z"></path><path class="g" d="M89.73672,28.18204c-1.64162-3.01726-2.63629-7.01166-2.63629-11.34583,0-9.152,4.584-16.83621,10.16665-16.83621h35.31157c1.88091,0,3.42766,2.56141,3.42766,5.67353,0,3.10953-1.54675,5.6723-3.42766,5.6723h-35.31157c-1.88091,0-3.31939,2.56141-3.31939,5.49037,0,2.92636,1.33156,5.76457,3.31939,5.76457h35.31157c1.88091,0,3.42766,2.5213,3.42766,5.58537v.0026c0,3.06668-1.54675,5.58798-3.42766,5.58798h-35.31157c-1.98783,0-3.31939,2.8382-3.31939,5.76457,0,2.92773,1.43848,5.489,3.31939,5.489h35.31157c1.88091,0,3.42766,2.56141,3.42766,5.6723s-1.54675,5.6749-3.42766,5.6749h-35.31157c-5.58265,0-10.16665-7.68682-10.16665-16.83621,0-4.3354.99467-8.32857,2.63629-11.3472v-.01205Z"></path></g></g></g></svg></a>
+        
+        
+        
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </header>
+  
+<div class="outer-grey-container">
+    <div class="container">
+        
+        <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+
+
+<div class="header-article-items header-article__inner" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+
+  <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+    
+    <div class="header-article-items__start" style="display: flex; align-items: center; flex-grow: 1; width:100%">
+      <nav aria-label="Breadcrumb">
+        <ul class="bd-breadcrumbs" style="display: flex; align-items: center;">
+
+          
+          
+          <li class="breadcrumb-item">
+            <a href="../../../index.html" class="nav-link" aria-label="VEX V5">
+              VEX V5
+            </a>
+          </li>
+          
+          <li class="breadcrumb-item"><i class="fa-solid fa-ellipsis"></i></li>
+          <li class="breadcrumb-item"><a href="index.html" class="nav-link">3-Wire Devices</a></li>
+          <li class="breadcrumb-item active" aria-current="page">3-Wire Expander</li>
+        </ul>
+      </nav>
+    </div>
+
+    
+    <div class="navbar-header-items__end" style="display: flex; align-items: center; margin-left: auto;">
+      
+      
+      <div class="navbar-item navbar-persistent--container" style="margin-left: 1rem;">
+        
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+      </div>
+      
+      
+      <div class="navbar-item" style="margin-left: 1rem;">
+        
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+      </div>
+      
+      
+    </div>
+  </div>
+
+</div>
+</div>
+      
+    </div>
+  
+  
+  <div class="category_links ms-auto d-flex">
+    <div id="langSwitcher" aria-label="Language Switcher">
+      <div class="current-language" role="button" aria-haspopup="true" aria-expanded="false" tabindex="0">
+        <span>English</span>
+      </div>
+      <ul class="links nav" role="menu">
+        
+        <!-- Add col-6 back when more langs on nav-item-->
+        <li role="menuitem" class="nav-item">
+          <span>
+            <a href="/es/v5/home/cpp/3-Wire_Devices/3-Wire_Expander.html" class="language-link" hreflang="es">
+              Spanish
+            </a>
+          </span>
+        </li>
+        
+        <!-- Add col-6 back when more langs on nav-item-->
+        <li role="menuitem" class="nav-item">
+          <span>
+            <a href="/zh-CN/v5/home/cpp/3-Wire_Devices/3-Wire_Expander.html" class="language-link" hreflang="zh-CN">
+              简体中文
+            </a>
+          </span>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+  
+</div>
+</div>  
+    </div>
+</div>
+</div>
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary pt-3 bd-sidebar">
+        <!-- Dummy div to prevent JS error -->
+        <div id="pst-nav-more-links-fake" style="display: none;"></div>
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        <ul class="navbar-nav d-flex flex-row justify-content-center">
+          <li class="nav-item vex-general">
+            <a class="nav-link" href="https://vex.com">
+              <img src="https://content.vexrobotics.com/assets/vex-api/homepage/img/vex-logo.svg" alt="VEXcode Robotics Logo" class="platform-logo-nav light" role="img" style="height: 17px">
+            </a>
+          </li>
+        </ul>        
+        
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+      <div class="sidebar-primary-item">
+        
+<nav class="bd-docs-nav bd-links" aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../blocks/index.html">Blocks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/index.html">Python</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">C++</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../Drivetrain/index.html">Drivetrain</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Motors_and_MotorControllers/index.html">Motors and Motor Controllers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Controller/index.html">Controller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Brain/index.html">Brain</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Competition.html">Competition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Smart_Port_Devices/index.html">Smart Port Devices</a></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html">3-Wire Devices</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">3-Wire Expander</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Accelerometer.html">Accelerometer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="AnalogIn.html">Analog In</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Bumper.html">Bumper Switch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DigitalIn.html">Digital In</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DigitalOut.html">Digital Out</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Encoder.html">Encoder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Gyro.html">Gyro Sensor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="LED.html">LED Indicator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Light.html">Light Sensor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Limit.html">Limit Switch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Line.html">Line Tracker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Potentiometer.html">Potentiometer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Pneumatics.html">Pneumatics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="PWM.html">PWM Out</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Range_Finder.html">Range Finder</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Console.html">Console</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Logic/index.html">Logic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../VEXlink/index.html">VEXlink</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../CTE_Workcell/index.html">CTE Workcell</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../vexcode_tutorials/index.html">VEXcode Tutorials</a></li>
+</ul>
+</div>
+</nav>
+      </div>
+      <div class="sidebar-primary-items__start sidebar-primary__section vex-platform-top-navigation mobile" style="background: none;">
+  <p class="bd-links__title mb-0" role="heading" aria-level="1" style="font-weight: bold; padding-top: 0.5rem; font-size: 1.2rem">Platform Navigation</p>
+</div>
+<nav class="navbar navbar-light pt-0 pb-0 vex-platform-top-navigation mobile" style="background: none;">
+  <div class="container-fluid justify-content-center">
+    <ul class="navbar-nav d-flex flex-row">
+      <li class="nav-item vex-one-two-three">
+        <a class="nav-link" href="/123/home">
+          <img src="https://content.vexrobotics.com/vexheader/123purple.svg" alt="VEX 123 logo in purple" class="platform-logo-nav light" role="img">
+          <img src="https://content.vexrobotics.com/vexheader/123white.svg" alt="VEX 123 logo in white" class="platform-logo-nav dark" role="img">
+        </a>
+      </li>
+      <li class="nav-item vex-go">
+        <a class="nav-link" href="/go/home">
+          <img src="https://content.vexrobotics.com/vexheader/GOlime.svg" alt="VEX GO logo in lime green" class="platform-logo-nav light" role="img">
+          <img src="https://content.vexrobotics.com/vexheader/GOwhite.svg" alt="VEX GO logo in white" class="platform-logo-nav dark" role="img">
+        </a>
+      </li>
+      <li class="nav-item vex-aim">
+        <a class="nav-link" href="/aim/home">
+          <img src="https://content.vexrobotics.com/vexheader/aim.svg" alt="VEXcode AIM logo in blue" class="platform-logo-nav light" role="img">
+          <img src="https://content.vexrobotics.com/vexheader/aimhover.svg" alt="VEXcode AIM logo in white" class="platform-logo-nav dark" role="img">
+        </a>
+      </li>
+      <li class="nav-item vex-iq">
+        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#vexIqModal">
+          <img src="https://content.vexrobotics.com/vexheader/iqBlue2.svg" alt="VEX IQ logo in blue" class="platform-logo-nav light" role="img">
+          <img src="https://content.vexrobotics.com/vexheader/iqWhite2.svg" alt="VEX IQ logo in white" class="platform-logo-nav dark" role="img">
+        </a>
+      </li>
+      <li class="nav-item vex-exp">
+        <a class="nav-link" href="/exp/home">
+          <img src="https://content.vexrobotics.com/vexheader/expRed.svg" alt="VEX EXP logo in red" class="platform-logo-nav light" role="img">
+          <img src="https://content.vexrobotics.com/vexheader/expWhite.svg" alt="VEX EXP logo in white" class="platform-logo-nav dark" role="img">
+        </a>
+      </li>
+      <li class="nav-item vex-v5 active">
+        <a class="nav-link" href="/v5/home">
+          <img src="https://content.vexrobotics.com/vexheader/v5Red.svg" alt="VEX V5 logo in red" class="platform-logo-nav light" role="img">
+          <img src="https://content.vexrobotics.com/vexheader/v5White.svg" alt="VEX V5 logo in white" class="platform-logo-nav dark" role="img">
+        </a>
+      </li>
+      <li class="nav-item vex-cte">
+        <a class="nav-link" href="/cte/home">
+          <img src="https://content.vexrobotics.com/vexheader/cteGreen.svg" alt="VEX CTE logo in green" class="platform-logo-nav light" role="img">
+          <img src="https://content.vexrobotics.com/vexheader/cteWhite.svg" alt="VEX CTE logo in white" class="platform-logo-nav dark" role="img">
+        </a>
+      </li>
+      <li class="nav-item vex-air">
+        <a class="nav-link" href="/air/home">
+          <img src="https://content.vexrobotics.com/vexheader/air.svg" alt="VEX AIR logo in orange" class="platform-logo-nav light" role="img">
+          <img src="https://content.vexrobotics.com/vexheader/airhover.svg" alt="VEX AIR logo in white" class="platform-logo-nav dark" role="img">
+        </a>
+      </li>
+      <li class="nav-item vexcode-vr">
+        <a class="nav-link" href="/vr/home">
+          <img src="https://content.vexrobotics.com/vexheader/vr-gold.svg" alt="VEXcode VR logo in gold" class="platform-logo-nav light" role="img">
+          <img src="https://content.vexrobotics.com/vexheader/vr-white.svg" alt="VEXcode VR logo in white" class="platform-logo-nav dark" role="img">
+        </a>
+      </li>
+    </ul>
+    <hr style="border-top: 1px solid;">
+    <ul class="navbar-nav d-flex flex-row">
+      <button class="feedbackFormButton">Feedback</button>
+    </ul>
+  </div>
+</nav>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+        <div class="scroll-indicator">
+          <svg class="svg-inline--fa fa-chevron-down" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-down" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
+            <path fill="currentColor" d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z">
+            </path>
+          </svg>
+        </div>
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="wire-expander">
+<h1>3-Wire Expander<a class="headerlink" href="#wire-expander" title="Permalink to this heading">#</a></h1>
+<nav class="contents local" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#introduction" id="id1">Introduction</a></p></li>
+<li><p><a class="reference internal" href="#class-constructor" id="id2">Class Constructor</a></p></li>
+<li><p><a class="reference internal" href="#class-destructor" id="id3">Class Destructor</a></p></li>
+<li><p><a class="reference internal" href="#parameters" id="id4">Parameters</a></p></li>
+<li><p><a class="reference internal" href="#examples" id="id5">Examples</a></p></li>
+</ul>
+</nav>
+<section id="introduction">
+<h2><a class="toc-backref" href="#id1" role="doc-backlink">Introduction</a><a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<p>The <code>triport</code> class is used to configure a 3-Wire Expander, allowing additional 3-Wire ports to be used with the V5 Brain.</p>
+</section>
+<section id="class-constructor">
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">Class Constructor</a><a class="headerlink" href="#class-constructor" title="Permalink to this heading">#</a></h2>
+<div class="highlight-cpp notranslate">
+<pre class="line-numbers"><code class="language-cpp">triport( 
+  int32_t index );
+</code>
+</pre>
+</div>
+</section>
+<section id="class-destructor">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">Class Destructor</a><a class="headerlink" href="#class-destructor" title="Permalink to this heading">#</a></h2>
+<p>Destroys the <code>triport</code> object and releases associated resources.</p>
+<div class="highlight-cpp notranslate">
+<pre class="line-numbers"><code class="language-cpp">virtual ~triport();
+</code>
+</pre>
+</div>
+</section>
+<section id="parameters">
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">Parameters</a><a class="headerlink" href="#parameters" title="Permalink to this heading">#</a></h2>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Parameter</p></th>
+<th class="head text-center"><p>Type</p></th>
+<th class="head text-left"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p><code>index</code></p></td>
+<td class="text-center"><p><code>int32_t</code></p></td>
+<td class="text-left"><p>The Smart Port that the 3-Wire Expander is connected to, written as <code>PORTx</code>, where <code>x</code> is the port number (for example, <code>PORT1</code>).</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="examples">
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">Examples</a><a class="headerlink" href="#examples" title="Permalink to this heading">#</a></h2>
+<div class="highlight-cpp notranslate">
+<pre class="line-numbers"><code class="language-cpp">// Create a triport instance in Port 1.
+triport Expander1 = triport(PORT1);
+</code>
+</pre>
+</div>
+<!-- <span style="font-size: 1.5rem; ">
+  Notes
+</span>
+
+- After a <code>triport</code> instance has been created, an additional option will appear in the Devices window in VEXcode, allowing 3-Wire devices to connect to the ports on the expander. -->
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev" href="index.html" title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">3-Wire Devices</p>
+      </div>
+    </a>
+    <a class="right-next" href="Accelerometer.html" title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Accelerometer</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div id="pst-page-navigation-heading-2" class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#class-constructor">Class Constructor</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#class-destructor">Class Destructor</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parameters">Parameters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer"><footer class="vexFooter page__footer">
+    <div class="container">
+        <div class="d-flex justify-content-md-between align-items-md-center">
+            <footer id="footer.html" role="contentinfo">
+                <div class="container p-0 pb-2">
+                    <div class="footer--topBorder pt-4 text-center">
+                        <div class="col-12 col-lg-3">
+                            <a href="https://www.innovationfirst.com" target="_blank"><img class="footer--logo mx-auto mb-3" src="https://content.vexrobotics.com/assets/vex-api/IFI-subsidiary.svg?v=1" alt="Innovation First, International"></a>
+                        </div>
+                        <div class="footer--text col-12 col-lg-6">
+                          <p>VEX and VEX Robotics are trademarks or service marks of Innovation First, Inc. <a href="https://www.vexrobotics.com/copyright-notice">Copyright ©2026</a>. All Rights Reserved. VEX Robotics, Inc. is a subsidiary of Innovation First International, Inc. All other product names / marks of others are the property of their respective owners. Patents and / or Patents Pending - <a href="https://www.innovationfirst.com/patents">innovationfirst.com/patents</a><br><a href="https://api.vex.com/privacy-policy.html">Site Privacy Policy</a> / <a href="https://api.vex.com/terms-and-conditions.html">Site Terms of Use</a> / <a href="https://api.vex.com/cookie-policy.html">Cookie Policy</a> / <a href="https://www.vexrobotics.com/software-privacy-policy">Software Privacy Policy</a></p>
+                        </div>
+                        <div class="col-12 col-lg-3">
+                            <div class="d-flex flex-row justify-content-center mt-3 mt-lg-3">
+                                <a class="p-1 socialIcon external" role="button" rel="noopener noreferrer nofollow" href="https://www.facebook.com/vexrobotics" target="_blank">
+                                    <svg class="social-icon" aria-labelledby="socialFacebook" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 455.7 455.7" style="enable-background:new 0 0 455.7 455.7;" xml:space="preserve">
+                                    <style type="text/css">
+                                    .st0{fill:#FFFFFF;}
+                                    .st1{fill:#007278;}
+                                    </style>
+                                    <title id="socialFacebook">Visit the VEX Robotics Facebook Page</title>
+                                    <path class="st0" d="M0,0h455.7v455.7H0V0z"></path>
+                                    <path class="st1" d="M0,0v455.7h242.7v-176h-59.3v-71.9h59.3v-60.4c0-43.9,35.6-79.5,79.5-79.5h62v64.6h-44.4
+                                    c-13.9,0-25.3,11.3-25.3,25.3v50H383l-9.5,71.9h-59.1v176h141.2V0H0z"></path>
+                                    </svg>
+                                </a>
+                                <a class="p-1 socialIcon external" role="button" rel="noopener noreferrer nofollow" href="https://www.twitter.com/vexrobotics" target="_blank">
+                                    <svg class="social-icon" aria-labelledby="socialTwitter" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 455.7 455.7" style="enable-background:new 0 0 455.7 455.7;" xml:space="preserve">
+                                    <style type="text/css">
+                                    .st0{fill:#FFFFFF;}
+                                    .st1{fill:#007278;}
+                                    </style>
+                                    <title id="socialTwitter">Visit the VEX Robotics Twitter Page</title>
+                                    <path class="st0" d="M0,0h455.7v455.7H0V0z"></path>
+                                    <path class="st1" d="M0,0h455.7v455.7H0V0z M60.4,337.8c30.3,19.2,66.3,30.4,104.9,30.4c108.3,0,196.2-87.8,196.2-196.2
+                                    c0-2.7-0.1-5.4-0.2-8.1c3.9-3.1,28.2-22.5,34.1-35c0,0-19.7,8.2-38.9,10.1h-0.1l0.1-0.1c1.8-1.2,26.6-18.1,30-38.2
+                                    c0,0-13.9,7.4-33.4,13.9c-3.2,1.1-6.6,2.1-10.1,3.1C330.3,104.4,312.4,96,292.6,96c-38,0-68.8,30.8-68.8,68.8
+                                    c0,5.4,0.6,10.6,1.8,15.6c-5.3-0.2-86.2-4.8-141.3-71.4c0,0-32.9,44.9,19.6,91.1c0,0-16-0.6-29.7-8.9c0,0-5.1,54.4,54.4,68.3
+                                    c0,0-11.7,4.4-30.4,1.3c0,0,10.4,44,63.3,48.1C161.4,308.9,119.7,346.7,60.4,337.8z"></path>
+                                    </svg>
+                                </a>
+                                <a class="p-1 socialIcon external" role="button" rel="noopener noreferrer nofollow" href="https://www.instagram.com/vexrobotics" target="_blank">
+                                    <svg class="social-icon" aria-labelledby="socialInstagram" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 455.7 455.7" style="enable-background:new 0 0 455.7 455.7;" xml:space="preserve">
+                                    <style type="text/css">
+                                    .st0{fill:#FFFFFF;}
+                                    .st1{fill:#007278;}
+                                    </style>
+                                    <title id="socialInstagram">Visit the VEX Robotics Instagram Page</title>
+                                    <path class="st0" d="M381.2,303.4c0,42.4-34.5,76.9-76.9,76.9h-151c-42.4,0-76.9-34.5-76.9-76.9v-151c0-42.4,34.5-76.9,76.9-76.9
+                                    h151c42.4,0,76.9,34.5,76.9,76.9V303.4z"></path>
+                                    <path class="st1" d="M228.8,182.5c-25,0-45.3,20.3-45.3,45.3s20.3,45.3,45.3,45.3s45.3-20.3,45.3-45.3
+                                    C274.1,202.9,253.8,182.5,228.8,182.5z M228.8,182.5c-25,0-45.3,20.3-45.3,45.3s20.3,45.3,45.3,45.3s45.3-20.3,45.3-45.3
+                                    C274.1,202.9,253.8,182.5,228.8,182.5z M304.3,108.7h-151c-24.1,0-43.7,19.6-43.7,43.7v151c0,24.1,19.6,43.7,43.7,43.7h151
+                                    c24.1,0,43.7-19.6,43.7-43.7v-151C348,128.3,328.4,108.7,304.3,108.7z M228.8,306.4c-43.3,0-78.5-35.2-78.5-78.5
+                                    s35.2-78.5,78.5-78.5s78.5,35.2,78.5,78.5C307.3,271.1,272.1,306.4,228.8,306.4z M309.8,165.6c-10.2,0-18.6-8.3-18.6-18.6
+                                    s8.3-18.6,18.6-18.6s18.6,8.3,18.6,18.6S320.1,165.6,309.8,165.6z M228.8,182.5c-25,0-45.3,20.3-45.3,45.3s20.3,45.3,45.3,45.3
+                                    s45.3-20.3,45.3-45.3C274.1,202.9,253.8,182.5,228.8,182.5L228.8,182.5z M304.3,108.7h-151c-24.1,0-43.7,19.6-43.7,43.7v151
+                                    c0,24.1,19.6,43.7,43.7,43.7h151c24.1,0,43.7-19.6,43.7-43.7v-151C348,128.3,328.4,108.7,304.3,108.7L304.3,108.7z M228.8,306.4
+                                    c-43.3,0-78.5-35.2-78.5-78.5s35.2-78.5,78.5-78.5s78.5,35.2,78.5,78.5C307.3,271.1,272.1,306.4,228.8,306.4z M309.8,165.6
+                                    c-10.2,0-18.6-8.3-18.6-18.6s8.3-18.6,18.6-18.6s18.6,8.3,18.6,18.6S320.1,165.6,309.8,165.6z M228.8,182.5
+                                    c-25,0-45.3,20.3-45.3,45.3s20.3,45.3,45.3,45.3s45.3-20.3,45.3-45.3C274.1,202.9,253.8,182.5,228.8,182.5L228.8,182.5z M1,0v455.7
+                                    h455.7V0H1z M381.2,303.4c0,42.4-34.5,76.9-76.9,76.9h-151c-42.4,0-76.9-34.5-76.9-76.9v-151c0-42.4,34.5-76.9,76.9-76.9h151
+                                    c42.4,0,76.9,34.5,76.9,76.9V303.4z M304.3,108.7h-151c-24.1,0-43.7,19.6-43.7,43.7v151c0,24.1,19.6,43.7,43.7,43.7h151
+                                    c24.1,0,43.7-19.6,43.7-43.7v-151C348,128.3,328.4,108.7,304.3,108.7z M228.8,306.4c-43.3,0-78.5-35.2-78.5-78.5
+                                    s35.2-78.5,78.5-78.5s78.5,35.2,78.5,78.5C307.3,271.1,272.1,306.4,228.8,306.4z M309.8,165.6c-10.2,0-18.6-8.3-18.6-18.6
+                                    s8.3-18.6,18.6-18.6s18.6,8.3,18.6,18.6S320.1,165.6,309.8,165.6z M228.8,182.5c-25,0-45.3,20.3-45.3,45.3s20.3,45.3,45.3,45.3
+                                    s45.3-20.3,45.3-45.3C274.1,202.9,253.8,182.5,228.8,182.5L228.8,182.5z M228.8,182.5c-25,0-45.3,20.3-45.3,45.3
+                                    s20.3,45.3,45.3,45.3s45.3-20.3,45.3-45.3C274.1,202.9,253.8,182.5,228.8,182.5L228.8,182.5z M228.8,182.5
+                                    c-25,0-45.3,20.3-45.3,45.3s20.3,45.3,45.3,45.3s45.3-20.3,45.3-45.3C274.1,202.9,253.8,182.5,228.8,182.5L228.8,182.5z
+                                    M304.3,108.7h-151c-24.1,0-43.7,19.6-43.7,43.7v151c0,24.1,19.6,43.7,43.7,43.7h151c24.1,0,43.7-19.6,43.7-43.7v-151
+                                    C348,128.3,328.4,108.7,304.3,108.7L304.3,108.7z M228.8,306.4c-43.3,0-78.5-35.2-78.5-78.5s35.2-78.5,78.5-78.5
+                                    s78.5,35.2,78.5,78.5C307.3,271.1,272.1,306.4,228.8,306.4z M309.8,165.6c-10.2,0-18.6-8.3-18.6-18.6s8.3-18.6,18.6-18.6
+                                    s18.6,8.3,18.6,18.6S320.1,165.6,309.8,165.6z M228.8,182.5c-25,0-45.3,20.3-45.3,45.3s20.3,45.3,45.3,45.3s45.3-20.3,45.3-45.3
+                                    C274.1,202.9,253.8,182.5,228.8,182.5L228.8,182.5z M228.8,182.5c-25,0-45.3,20.3-45.3,45.3s20.3,45.3,45.3,45.3
+                                    s45.3-20.3,45.3-45.3C274.1,202.9,253.8,182.5,228.8,182.5L228.8,182.5z M228.8,182.5c-25,0-45.3,20.3-45.3,45.3
+                                    s20.3,45.3,45.3,45.3s45.3-20.3,45.3-45.3C274.1,202.9,253.8,182.5,228.8,182.5L228.8,182.5z M304.3,108.7h-151
+                                    c-24.1,0-43.7,19.6-43.7,43.7v151c0,24.1,19.6,43.7,43.7,43.7h151c24.1,0,43.7-19.6,43.7-43.7v-151
+                                    C348,128.3,328.4,108.7,304.3,108.7L304.3,108.7z M228.8,306.4c-43.3,0-78.5-35.2-78.5-78.5s35.2-78.5,78.5-78.5
+                                    s78.5,35.2,78.5,78.5C307.3,271.1,272.1,306.4,228.8,306.4z M309.8,165.6c-10.2,0-18.6-8.3-18.6-18.6s8.3-18.6,18.6-18.6
+                                    s18.6,8.3,18.6,18.6S320.1,165.6,309.8,165.6z M228.8,182.5c-25,0-45.3,20.3-45.3,45.3s20.3,45.3,45.3,45.3s45.3-20.3,45.3-45.3
+                                    C274.1,202.9,253.8,182.5,228.8,182.5L228.8,182.5z"></path>
+                                    </svg>
+                                </a>
+                                <a class="p-1 socialIcon external" role="button" rel="noopener noreferrer nofollow" href="https://www.youtube.com/vexroboticstv" target="_blank">
+                                    <svg class="social-icon" aria-labelledby="socialYouTube" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+                                    <style type="text/css">
+                                    .st0{fill:#FFFFFF;}
+                                    .st1{fill:#007278;}
+                                    </style>
+                                    <title id="socialYouTube">Visit the VEX Robotics YouTube Page</title>
+                                    <path class="st0" d="M0,0h512v512H0V0z"></path>
+                                    <path class="st1" d="M416,0H96C43,0,0,43,0,96v320c0,53,43,96,96,96h320c53,0,96-43,96-96V96C512,43,469,0,416,0z M413.3,313.3
+                                    c-1.7,21.3-17.9,48.5-40.5,52.4c-72.5,5.6-158.4,4.9-233.4,0c-23.4-2.9-38.8-31.2-40.5-52.4c-3.6-44.7-3.6-70.2,0-114.9
+                                    c1.7-21.3,17.5-49.3,40.5-51.9c74.2-6.2,160.6-4.9,233.4,0c26,1,38.8,27.8,40.5,49.1C416.9,240.3,416.9,268.6,413.3,313.3z"></path>
+                                    <path class="st1" d="M224,320l96-64l-96-64V320z M0,0h512v116H0V0z M0,396h512v116H0V396z"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <div class="modal fade" id="feedbackModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="feedBackFormLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="feedBackFormLabel">VEX API Feedback Form</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">×</button>
+            </div>
+            <div class="modal-body">
+              <form id="feedbackForm" action="#" method="POST">
+                <!-- Intro Text -->
+                <p style="color: #000000; font-weight:400">We value your feedback! Use this form to share suggestions, compliments, or report errors with the VEX API. Your input helps us enhance the VEX API documentation.</p>
+                <p style="color: #000000; font-weight:400">If you are experiencing technical issues or require customer support, please visit <a href="https://www.vexrobotics.com/support" target="_blank">support.vex.com</a>.</p>
+    
+                <!-- Feedback Options -->
+                <ul class="feedback-options list-unstyled d-flex justify-content-evenly" style="margin-bottom: 1.5em;">
+                  <li class="feedback-option happy-feedback happy-face" id="happyFace" title="Send a Smile" data-feedback="Happy" tabindex="0" role="button">
+                    <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30.85 30.85" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="">
+                      <title>Send Happy Feedback</title>
+                      <path class="face" fill="" d="M30.85,15.42A15.43,15.43,0,1,1,15.42,0,15.43,15.43,0,0,1,30.85,15.42Zm-2.57,0A12.86,12.86,0,1,0,15.42,28.28,12.87,12.87,0,0,0,28.28,15.42Zm-5.14-5.14a2.58,2.58,0,1,1-2.57-2.57A2.56,2.56,0,0,1,23.14,10.28Zm-10.29,0a2.57,2.57,0,1,1-2.57-2.57A2.56,2.56,0,0,1,12.85,10.28ZM22.77,19a7.7,7.7,0,0,1-14.7,0,1.28,1.28,0,1,1,2.45-.76,5.14,5.14,0,0,0,9.8,0A1.3,1.3,0,0,1,22,17.41,1.27,1.27,0,0,1,22.77,19Z">
+                      </path>
+                    </svg>
+                  </li>
+                  <li class="feedback-option sad-feedback sad-face" id="sadFace" title="Send a Frown" data-feedback="Sad" tabindex="0" role="button">
+                    <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30.85 30.85" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="">
+                      <title>Send Sad Feedback</title>
+                      <path class="face" fill="" d="M7.71,10.28a2.57,2.57,0,1,1,2.57,2.57A2.57,2.57,0,0,1,7.71,10.28Zm10.29,0a2.57,2.57,0,1,1,2.57,2.57A2.56,2.56,0,0,1,18,10.28Zm2.32,12.24a5.13,5.13,0,0,0-9.8,0,1.28,1.28,0,0,1-2.45-.77,7.71,7.71,0,0,1,14.71,0A1.28,1.28,0,0,1,22,23.36a1.32,1.32,0,0,1-.39.06A1.31,1.31,0,0,1,20.32,22.52ZM2.57,15.42A12.86,12.86,0,1,0,15.43,2.57,12.87,12.87,0,0,0,2.57,15.42ZM0,15.42A15.43,15.43,0,1,1,15.43,30.85,15.43,15.43,0,0,1,0,15.42Z">
+                      </path>
+                    </svg>
+                  </li>
+                </ul>
+    
+                <!-- Feedback Textarea -->
+                <div class="mb-3">
+                  <label for="feedback" style="color: #000000; font-weight:600; margin-bottom:2px;">Please share your feedback below</label>
+                  <p style="color: #000000; font-size: small; margin-bottom: 0.4rem;">
+                    <em>Note: the current URL will be shared with your message</em>
+                  </p>
+                  <textarea id="feedback" name="feedback" class="form-control mb-2" placeholder="Your Feedback" aria-describedby="feedbackHelp"></textarea>
+                </div>
+    
+                <!-- Name -->
+                <div class="mb-3">
+                  <label for="name" style="color: #000000; font-weight:600">Please leave your name below (optional)</label>
+                  <input type="text" id="name" name="name" class="form-control mb-2" placeholder="Your Name">
+                </div>
+    
+                <!-- Email -->
+                <div class="mb-3" id="emailContainer">
+                  <label for="email" style="color: #000000; font-weight:600">Please provide your email address (optional)</label>
+                  <input type="email" id="email" name="email" class="form-control mb-2" placeholder="Your Email">
+                  <div class="form-text" style="color: #000000; font-weight:400">
+                    By including your email address, you agree that VEX may send you email emails if we have questions about your feedback.
+                  </div>
+                </div>
+    
+                <input type="hidden" id="pageURL" name="pageURL">
+                <div class="d-flex justify-content-between">
+                  <button type="submit" class="btn btn-primary" id="submitButton">Submit</button>
+                  <div class="mt-2">
+                    <a href="https://www.vexrobotics.com/software-privacy-policy" target="_blank">Privacy Policy&nbsp;&gt;</a>
+                  </div>
+                </div>
+              </form>
+              <span id="missing-feedback" class="d-none">Please provide your feedback.</span>
+              <span id="success-message" class="d-none">Feedback submitted successfully!</span>
+            </div>
+          </div>
+        </div>
+      </div>
+        <!-- VEX IQ Modal -->
+  <div class="vex-platform-header-modal">
+    <div class="modal fade" id="vexIqModal" tabindex="-1" aria-labelledby="generationModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="generationModalLabel">Choose Which VEX IQ Generation to View</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-12 col-md-6 vex-logo-wrapper iq enabled">
+                <a href="/iq1/home">
+                  <svg xmlns="http://www.w3.org/2000/svg" id="b" width="484" height="71" viewBox="0 0 484 71">
+                    <defs>
+                      <style>
+                        .d {
+                          fill: #fff;
+                        }
+                      </style>
+                    </defs>
+                    <g id="c">
+                      <path class="d" d="M201.52095,28.68761c-.16677,0-.32801.05131-.4672.1466,0,0-18.43873,12.82004-19.32727,13.43928-.89032-.61643-19.4206-13.43928-19.4206-13.43928-.13882-.0953-.3009-.1466-.46673-.1466h-17.06387c-.36093,0-.67871.23543-.78311.57713-.02298.07963-.03574.1603-.03574.24087,0,.26469.13094.52123.35812.67505,0,0,25.78264,17.45134,27.65492,18.7191-1.88691,1.264-30.00715,20.10025-30.00715,20.10025-.2299.1558-.36187.41224-.36187.67881,0,.07963.01191.16124.03668.23815.10355.34442.41955.57976.78039.57976h17.43943c.16761,0,.32791-.04943.46355-.14651,0,0,20.51023-14.19772,21.40421-14.81697.8922.6229,21.21419,14.81509,21.21419,14.81509.13919.09717.30221.14839.46898.14839h17.15813c.35915,0,.67787-.23534.78049-.57798.0256-.0787.03658-.1603.03658-.23993,0-.26657-.13188-.52123-.36084-.67599,0,0-27.93931-18.83259-29.82078-20.10222,1.8704-1.26222,27.74693-18.71807,27.74693-18.71807.22905-.15392.35905-.41224.35905-.67693,0-.08057-.01097-.16124-.03292-.23909-.10628-.34348-.42322-.57891-.78039-.57891h-16.97317Z">
+                      </path>
+                      <path class="d" d="M67.3614,28.68761c-.24406,0-.47677.11181-.63247.29959,0,0-24.3514,29.78495-25.56691,31.27256-1.20135-1.49578-25.10346-31.26619-25.10346-31.26619-.1557-.19416-.39019-.30596-.63754-.30596H1.09283c-.31741,0-.60508.18318-.73968.46814-.13554.28664-.09211.62281.10805.86828l33.08809,40.17509c.15383.18863.38607.29762.63106.29762h13.95047c.24228,0,.4717-.10618.62787-.29311l33.56026-40.17499c.20241-.24275.24865-.58257.11312-.86921-.13507-.28767-.42321-.4718-.74052-.4718h-14.33016Z">
+                      </path>
+                      <path class="d" d="M90.00823,28.68029c-1.64285-3.01725-2.63718-7.00999-2.63718-11.34537,0-9.14977,4.58365-16.83575,10.16465-16.83575h35.3107c1.88147,0,3.42677,2.56196,3.42677,5.67264s-1.5453,5.67367-3.42677,5.67367h-35.3107c-1.87997,0-3.31674,2.56102-3.31674,5.48945,0,2.92571,1.32957,5.76334,3.31674,5.76334h35.3107c1.88147,0,3.42677,2.52266,3.42677,5.58662v.00272c0,3.0649-1.5453,5.58756-3.42677,5.58756h-35.3107c-1.98718,0-3.31674,2.83679-3.31674,5.7624,0,2.92936,1.43678,5.48954,3.31674,5.48954h35.3107c1.88147,0,3.42677,2.56196,3.42677,5.67264,0,3.11161-1.5453,5.67357-3.42677,5.67357h-35.3107c-5.581,0-10.16465-7.68598-10.16465-16.83575,0-4.3335.99434-8.32718,2.63718-11.34537v-.01191Z">
+                      </path>
+                      <polygon class="d" points="250.04032 28.68031 246.05758 39.13503 252.51972 39.13503 244.55728 60.04446 238.0921 60.04446 234.10936 70.49917 259.97358 70.49917 263.95632 60.04446 257.49154 60.04446 265.45702 39.13503 271.92179 39.13503 275.90453 28.68031 250.04032 28.68031">
+                      </polygon>
+                      <path class="d" d="M320.10287,28.68033h-26.54167c-6.73606,0-12.77234,4.15992-15.17031,10.45471h-.00005l-7.34508,19.28091c-2.22194,5.83256,2.08579,12.08318,8.32714,12.08318h27.59589c3.24088,0,6.31823-.96513,8.90785-2.66542l2.27921,2.66518h6.4652l1.99132-5.22729-4.47252-5.22902,6.96907-18.29389c2.40311-6.30808-2.25582-13.06838-9.00606-13.06838ZM308.72799,44.36228l-3.98268,10.45466,3.32702,3.89055c-1.29528.85101-2.83297,1.33697-4.45427,1.33697h-14.66156c-2.70009,0-4.56367-2.70416-3.60247-5.22733v-.00005l3.97379-10.4621c1.20488-3.14407,4.22337-5.21994,7.59044-5.21994h14.66526c2.70013,0,4.56367,2.70411,3.60242,5.22733l-1.98996,5.22364-4.46798-5.22373Z">
+                      </path>
+                    </g>
+                    <path class="d" d="M436.96289,49.20605c-1.00781,0-1.69238.67578-2.05176,2.02539h3.375c.05371-.21582.08105-.41406.08105-.59375,0-.4502-.12109-.80078-.36426-1.05273s-.58984-.37891-1.04004-.37891Z">
+                    </path>
+                    <path class="d" d="M419.70996,49.85449c-.57617,0-1.06641.28809-1.47168.86426-.4043.57617-.60742,1.27832-.60742,2.10547,0,.52246.13574.94141.40527,1.25586.26953.31543.63867.47266,1.10742.47266.95312,0,1.59277-.68457,1.91699-2.05176l.05371-.27051c.05371-.21582.08105-.43164.08105-.64844,0-.52148-.13477-.93945-.40527-1.25488-.26953-.31445-.62988-.47266-1.08008-.47266Z">
+                    </path>
+                    <path class="d" d="M359.76636,28.67999l-14.92999,41.82001h124.12994l14.92993-41.82001h-124.12988ZM372.73047,59.97949h-5.83203l2.51074-11.98828-3.02344,1.70117-2.26855-4.23926,7.69529-4.13086h4.86038l-3.94238,18.65723ZM385.00195,50.4082c.18848.13477.51758.24707.98535.33691l1.02637.2168c1.60156.3418,2.78027.86816,3.53711,1.5791.75586.71094,1.13379,1.63379,1.13379,2.76758,0,1.58398-.63477,2.83105-1.90332,3.73926-1.26953.90918-3.01074,1.36328-5.22461,1.36328-2.08887,0-3.72656-.44043-4.91406-1.32227-1.18848-.88184-1.80957-2.11523-1.86328-3.69922h5.4541c.1084.73828.56738,1.10645,1.37695,1.10645.79199,0,1.18848-.29688,1.18848-.89062,0-.46777-.28906-.75586-.86426-.86426l-1.43164-.29688c-1.42188-.28711-2.49707-.79199-3.22559-1.51172-.72949-.71973-1.09375-1.6377-1.09375-2.75391,0-.97266.26562-1.82227.7959-2.55176.53125-.72852,1.30566-1.2998,2.32227-1.71484,1.0166-.41309,2.21875-.62109,3.60449-.62109,1.96191,0,3.51465.3877,4.65723,1.16113,1.14355.77441,1.74219,1.85449,1.7959,3.24023l-5.26465.43164c-.07227-.77344-.48633-1.16016-1.24219-1.16016-.36035,0-.63965.07617-.83691.22949-.19824.15234-.29688.36426-.29688.63379,0,.25293.09375.44629.2832.58105ZM404.58984,50.23242h-2.94238l-.7832,3.72559c-.05371.2168-.08105.41504-.08105.59473,0,.68359.37793,1.02539,1.13379,1.02539.32422,0,.73828-.0625,1.24219-.18848l.56738,4.23926c-.46875.17969-1.06738.32324-1.7959.43164-.72949.1084-1.43555.16211-2.11914.16211-1.65625,0-2.90723-.3418-3.75293-1.02637-.84668-.68359-1.26953-1.69141-1.26953-3.02344,0-.50391.0625-1.0625.18945-1.6748l.89062-4.26562h-2.32227l.97266-4.50879h2.32129l.7832-3.69922h5.77832l-.7832,3.69922h2.94336l-.97266,4.50879ZM425.37988,58.89941c-.48535,2.26855-1.37695,3.9375-2.67285,5.00879-1.2959,1.07031-3.06055,1.60645-5.29199,1.60645-2.14258,0-3.82031-.46875-5.03516-1.4043s-1.82227-2.23242-1.82227-3.8877h5.50781c.01758.39551.14844.70605.3916.93164.24219.22461.57129.33691.98535.33691.55762,0,1.00781-.19824,1.34961-.59375.3418-.39648.6123-1.02637.81055-1.88965l.29688-1.37695c-1.02637,1.06152-2.25098,1.59277-3.67188,1.59277-1.42285,0-2.53809-.47656-3.34863-1.43066-.80957-.9541-1.21484-2.28613-1.21484-3.99609,0-1.5127.28809-2.91211.86426-4.19922.5752-1.28613,1.38086-2.32617,2.41602-3.11816s2.19141-1.18848,3.46973-1.18848c.90039,0,1.6875.18945,2.3623.56738s1.1748.91797,1.49902,1.62012l.37793-1.75488h5.53516l-2.80859,13.17578ZM443.2002,53.41895l-.13477.6748h-8.74805v.32422c0,.68359.13867,1.19238.41797,1.52539s.70605.49902,1.2832.49902c.79102,0,1.31348-.38672,1.56543-1.16113h5.29199c-.32422,1.62012-1.13379,2.88086-2.42969,3.78027-1.2959.90039-2.91602,1.34961-4.86035,1.34961-2.12402,0-3.76172-.55273-4.91406-1.66016s-1.72754-2.66797-1.72754-4.68457c0-1.60156.3418-3.06445,1.02539-4.3877.68457-1.32227,1.66113-2.38477,2.92969-3.18555,1.26953-.80078,2.71387-1.20215,4.33398-1.20215,1.90723,0,3.41504.53613,4.52246,1.60742,1.10645,1.07031,1.66016,2.5332,1.66016,4.38672,0,.70215-.07227,1.41406-.21582,2.13379ZM460.39941,51.04297l-1.86328,8.93652h-5.77832l1.78223-8.39746c.01758-.08984.03125-.17969.04102-.26953.00879-.08984.0127-.17969.0127-.26953,0-.68457-.30566-1.02637-.91797-1.02637-.46777,0-.88184.14453-1.24219.43164-.21582.16211-.37793.34668-.48535.55371-.1084.20703-.19824.47266-.27051.79688l-1.72754,8.18066h-5.77832l3.02441-14.25586h5.61621l-.32422,1.48438c1.16992-1.27734,2.51953-1.91699,4.0498-1.91699,1.24219,0,2.22266.37891,2.94336,1.13477.71973.75586,1.08008,1.79102,1.08008,3.10449,0,.46875-.05469.97266-.16211,1.5127Z">
+                    </path>
+                  </svg>
+                </a>
+                <p>VEX IQ (1st gen)</p>
+              </div>
+              <div class="col-md-6 vex-logo-wrapper iq enabled">
+                <a href="/iq2/home">
+                  <svg xmlns="http://www.w3.org/2000/svg" id="b" width="484" height="71" viewBox="0 0 484 71">
+                    <defs>
+                      <style>
+                        .d {
+                          fill: #fff;
+                        }
+                      </style>
+                    </defs>
+                    <g id="c">
+                      <path class="d" d="M201.52095,28.68761c-.16677,0-.32801.05131-.4672.1466,0,0-18.43873,12.82004-19.32727,13.43928-.89032-.61643-19.4206-13.43928-19.4206-13.43928-.13882-.0953-.3009-.1466-.46673-.1466h-17.06387c-.36093,0-.67871.23543-.78311.57713-.02298.07963-.03574.1603-.03574.24087,0,.26469.13094.52123.35812.67505,0,0,25.78264,17.45134,27.65492,18.7191-1.88691,1.264-30.00715,20.10025-30.00715,20.10025-.2299.1558-.36187.41224-.36187.67881,0,.07963.01191.16124.03668.23815.10355.34442.41955.57976.78039.57976h17.43943c.16761,0,.32791-.04943.46355-.14651,0,0,20.51023-14.19772,21.40421-14.81697.8922.6229,21.21419,14.81509,21.21419,14.81509.13919.09717.30221.14839.46898.14839h17.15813c.35915,0,.67787-.23534.78049-.57798.0256-.0787.03658-.1603.03658-.23993,0-.26657-.13188-.52123-.36084-.67599,0,0-27.93931-18.83259-29.82078-20.10222,1.8704-1.26222,27.74693-18.71807,27.74693-18.71807.22905-.15392.35905-.41224.35905-.67693,0-.08057-.01097-.16124-.03292-.23909-.10628-.34348-.42322-.57891-.78039-.57891h-16.97317Z">
+                      </path>
+                      <path class="d" d="M67.3614,28.68761c-.24406,0-.47677.11181-.63247.29959,0,0-24.3514,29.78495-25.56691,31.27256-1.20135-1.49578-25.10346-31.26619-25.10346-31.26619-.1557-.19416-.39019-.30596-.63754-.30596H1.09283c-.31741,0-.60508.18318-.73968.46814-.13554.28664-.09211.62281.10805.86828l33.08809,40.17509c.15383.18863.38607.29762.63106.29762h13.95047c.24228,0,.4717-.10618.62787-.29311l33.56026-40.17499c.20241-.24275.24865-.58257.11312-.86921-.13507-.28767-.42321-.4718-.74052-.4718h-14.33016Z">
+                      </path>
+                      <path class="d" d="M90.00823,28.68029c-1.64285-3.01725-2.63718-7.00999-2.63718-11.34537,0-9.14977,4.58365-16.83575,10.16465-16.83575h35.3107c1.88147,0,3.42677,2.56196,3.42677,5.67264s-1.5453,5.67367-3.42677,5.67367h-35.3107c-1.87997,0-3.31674,2.56102-3.31674,5.48945,0,2.92571,1.32957,5.76334,3.31674,5.76334h35.3107c1.88147,0,3.42677,2.52266,3.42677,5.58662v.00272c0,3.0649-1.5453,5.58756-3.42677,5.58756h-35.3107c-1.98718,0-3.31674,2.83679-3.31674,5.7624,0,2.92936,1.43678,5.48954,3.31674,5.48954h35.3107c1.88147,0,3.42677,2.56196,3.42677,5.67264,0,3.11161-1.5453,5.67357-3.42677,5.67357h-35.3107c-5.581,0-10.16465-7.68598-10.16465-16.83575,0-4.3335.99434-8.32718,2.63718-11.34537v-.01191Z">
+                      </path>
+                      <polygon class="d" points="250.04032 28.68031 246.05758 39.13503 252.51972 39.13503 244.55728 60.04446 238.0921 60.04446 234.10936 70.49917 259.97358 70.49917 263.95632 60.04446 257.49154 60.04446 265.45702 39.13503 271.92179 39.13503 275.90453 28.68031 250.04032 28.68031">
+                      </polygon>
+                      <path class="d" d="M320.10287,28.68033h-26.54167c-6.73606,0-12.77234,4.15992-15.17031,10.45471h-.00005l-7.34508,19.28091c-2.22194,5.83256,2.08579,12.08318,8.32714,12.08318h27.59589c3.24088,0,6.31823-.96513,8.90785-2.66542l2.27921,2.66518h6.4652l1.99132-5.22729-4.47252-5.22902,6.96907-18.29389c2.40311-6.30808-2.25582-13.06838-9.00606-13.06838ZM308.72799,44.36228l-3.98268,10.45466,3.32702,3.89055c-1.29528.85101-2.83297,1.33697-4.45427,1.33697h-14.66156c-2.70009,0-4.56367-2.70416-3.60247-5.22733v-.00005l3.97379-10.4621c1.20488-3.14407,4.22337-5.21994,7.59044-5.21994h14.66526c2.70013,0,4.56367,2.70411,3.60242,5.22733l-1.98996,5.22364-4.46798-5.22373Z">
+                      </path>
+                    </g>
+                    <path class="d" d="M442.98242,49.20588c-1.00781,0-1.69238.67578-2.05176,2.02539h3.375c.05371-.21582.08105-.41406.08105-.59375,0-.4502-.12109-.80078-.36426-1.05273s-.58984-.37891-1.04004-.37891Z">
+                    </path>
+                    <path class="d" d="M425.72949,49.85431c-.57617,0-1.06641.28809-1.47168.86426-.4043.57617-.60742,1.27832-.60742,2.10547,0,.52246.13574.94141.40527,1.25586.26953.31543.63867.47266,1.10742.47266.95312,0,1.59277-.68457,1.91699-2.05176l.05371-.27051c.05371-.21582.08105-.43164.08105-.64844,0-.52148-.13477-.93945-.40527-1.25488-.26953-.31445-.62988-.47266-1.08008-.47266Z">
+                    </path>
+                    <path class="d" d="M402.88867,49.85431c-.64844,0-1.20215.40039-1.66113,1.20117-.45898.80176-.68848,1.76855-.68848,2.90234,0,.63086.09473,1.08984.2832,1.37793.18945.28809.5.43164.93164.43164.52246,0,.96777-.2207,1.33691-.66113.36816-.44141.625-1.04883.76953-1.82324l.13477-.70215c.07227-.41309.1084-.78223.1084-1.10645,0-1.08008-.40527-1.62012-1.21484-1.62012Z">
+                    </path>
+                    <path class="d" d="M359.76636,28.68l-14.92999,41.82007h124.12994l14.92993-41.82007h-124.12988ZM375.67285,55.25471l-1.26953,4.72461h-14.12109l.91797-4.34668,5.12988-3.53711c1.36816-.9541,2.38574-1.70996,3.05176-2.26855.66504-.55762,1.12402-1.04297,1.37695-1.45801.25195-.41309.37793-.8457.37793-1.2959,0-.93555-.44141-1.40332-1.32324-1.40332-.99023,0-1.6377.6748-1.94434,2.02441l-5.42676-.5127c.3418-1.98047,1.21484-3.53711,2.61914-4.6709s3.17676-1.70117,5.31934-1.70117c2.01562,0,3.59961.49902,4.75195,1.49805,1.15137.99902,1.72754,2.37207,1.72754,4.11816,0,1.25977-.33691,2.40723-1.0127,3.44238-.6748,1.03516-1.8584,2.21875-3.5498,3.55078-.90039.70117-1.71094,1.31348-2.43066,1.83594h5.80566ZM392.84473,51.04279l-1.86328,8.93652h-5.77832l1.78223-8.39746c.01758-.08984.03125-.17969.04102-.26953.00879-.08984.0127-.17969.0127-.26953,0-.68457-.30566-1.02637-.91797-1.02637-.46777,0-.88184.14453-1.24219.43164-.21582.16211-.37793.34668-.48535.55371-.1084.20703-.19824.47266-.27051.79688l-1.72754,8.18066h-5.77832l3.02441-14.25586h5.61621l-.32422,1.48438c1.16992-1.27734,2.51953-1.91699,4.0498-1.91699,1.24219,0,2.22266.37891,2.94336,1.13477.71973.75586,1.08008,1.79102,1.08008,3.10449,0,.46875-.05469.97266-.16211,1.5127ZM408.15332,59.97931h-5.5625l.32422-1.59277c-.50391.64746-1.09766,1.14746-1.78223,1.49805-.68359.35156-1.41309.52637-2.18652.52637-1.38672,0-2.44824-.48535-3.18652-1.45801-.73828-.97168-1.10645-2.35742-1.10645-4.15723,0-1.6748.29688-3.23145.89062-4.67188.59473-1.43945,1.42676-2.60547,2.49805-3.49609,1.07031-.89062,2.27246-1.33691,3.60449-1.33691.7373,0,1.41309.16699,2.02441.5.6123.33301,1.08887.77832,1.43164,1.33691l1.34961-6.42676h5.77832l-4.07715,19.27832ZM431.39941,58.89924c-.48535,2.26855-1.37695,3.9375-2.67285,5.00879-1.2959,1.07031-3.06055,1.60645-5.29199,1.60645-2.14258,0-3.82031-.46875-5.03516-1.4043s-1.82227-2.23242-1.82227-3.8877h5.50781c.01758.39551.14844.70605.3916.93164.24219.22461.57129.33691.98535.33691.55762,0,1.00781-.19824,1.34961-.59375.3418-.39648.6123-1.02637.81055-1.88965l.29688-1.37695c-1.02637,1.06152-2.25098,1.59277-3.67188,1.59277-1.42285,0-2.53809-.47656-3.34863-1.43066-.80957-.9541-1.21484-2.28613-1.21484-3.99609,0-1.5127.28809-2.91211.86426-4.19922.5752-1.28613,1.38086-2.32617,2.41602-3.11816s2.19141-1.18848,3.46973-1.18848c.90039,0,1.6875.18945,2.3623.56738s1.1748.91797,1.49902,1.62012l.37793-1.75488h5.53516l-2.80859,13.17578ZM449.21973,53.41877l-.13477.6748h-8.74805v.32422c0,.68359.13867,1.19238.41797,1.52539s.70605.49902,1.2832.49902c.79102,0,1.31348-.38672,1.56543-1.16113h5.29199c-.32422,1.62012-1.13379,2.88086-2.42969,3.78027-1.2959.90039-2.91602,1.34961-4.86035,1.34961-2.12402,0-3.76172-.55273-4.91406-1.66016s-1.72754-2.66797-1.72754-4.68457c0-1.60156.3418-3.06445,1.02539-4.3877.68457-1.32227,1.66113-2.38477,2.92969-3.18555,1.26953-.80078,2.71387-1.20215,4.33398-1.20215,1.90723,0,3.41504.53613,4.52246,1.60742,1.10645,1.07031,1.66016,2.5332,1.66016,4.38672,0,.70215-.07227,1.41406-.21582,2.13379ZM466.41895,51.04279l-1.86328,8.93652h-5.77832l1.78223-8.39746c.01758-.08984.03125-.17969.04102-.26953.00879-.08984.0127-.17969.0127-.26953,0-.68457-.30566-1.02637-.91797-1.02637-.46777,0-.88184.14453-1.24219.43164-.21582.16211-.37793.34668-.48535.55371-.1084.20703-.19824.47266-.27051.79688l-1.72754,8.18066h-5.77832l3.02441-14.25586h5.61621l-.32422,1.48438c1.16992-1.27734,2.51953-1.91699,4.0498-1.91699,1.24219,0,2.22266.37891,2.94336,1.13477.71973.75586,1.08008,1.79102,1.08008,3.10449,0,.46875-.05469.97266-.16211,1.5127Z">
+                    </path>
+                  </svg>
+                </a>
+                <p>VEX IQ (2nd gen)</p>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary vex-close-btn" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>  
+  </footer>
+  
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9fd7f78bbfadaf4b',t:'MTc3OTA3Njk1Mg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"4da5d35b04564da19708a57ef06c01fb","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body></html>

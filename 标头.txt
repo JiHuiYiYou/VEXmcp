@@ -1,0 +1,97 @@
+常规
+•   请求 URL: https://api.vex.com/v5/searchindex.js
+
+•   请求方法: GET
+
+•   状态代码: 200 OK
+
+•   远程地址: 172.64.148.98:443
+
+•   引用站点策略: strict-origin-when-cross-origin
+
+响应头
+•   Access-Control-Allow-Credentials: false
+
+•   Access-Control-Allow-Headers: *
+
+•   Access-Control-Allow-Methods: GET,POST,OPTIONS
+
+•   Access-Control-Allow-Origin: *
+
+•   Access-Control-Max-Age: 86400
+
+•   Alt-Svc: h3=":443"; ma=86400
+
+•   Cache-Control: public, max-age=14400
+
+•   Cf-Cache-Status: HIT
+
+•   Cf-Ray: 9fd0fa7e69311e0f-LAX
+
+•   Content-Encoding: zstd
+
+•   Content-Type: application/javascript; charset=UTF-8
+
+•   Date: Sun, 17 May 2026 07:41:13 GMT
+
+•   Etag: W/"6a077e2d-335e1"
+
+•   Expires: Sun, 17 May 2026 11:41:13 GMT
+
+•   Last-Modified: Fri, 15 May 2026 20:12:29 GMT
+
+•   Priority: u=1,i=?0
+
+•   Server: cloudflare
+
+•   Server-Timing: cfExtPri
+
+•   Strict-Transport-Security: max-age=15552000; includeSubDomains; preload
+
+•   Vary: accept-encoding
+
+•   X-Content-Type-Options: nosniff
+
+•   X-Orig-Forward: 152.157.135.249, 162.159.106.125, 152.157.135.249, 152.157.135.249
+
+•   X-Origin: nginx-br1
+
+
+请求头
+•   :authority: api.vex.com
+
+•   :method: GET
+
+•   :path: /v5/searchindex.js
+
+•   :scheme: https
+
+•   Accept: */*
+
+•   Accept-Encoding: gzip, deflate, br, zstd
+
+•   Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+
+•   Cache-Control: no-cache
+
+•   Cookie: _ga=GA1.1.511505595.1778859563; _ga_LL95TVTM1K=GS2.1.s1778859561$o1$g1$t1778859595$j26$l0$h0; _cf_clearance=WW2iZtT135zF4SVjPCwrJQ8ru1You8ePN9.CNicDM-1779002877-1.2.1.1-1QZY7A7M_Tv8sr7VPTM1wAa.pZ2CQtqhh3mGeYUKsAlnfM7jQ9uwZRAgg5gx2t1zHEbuP_Jq8LgRYPb8j4hH2RuFb73pbkHlPGcNurEqWRlGwNnNtcl7BuPEONYQpblt2e3epdhoD61Oh6rgUV571uh5zQQOgbLjW6IHSz2JAz5h_ldldNSUPVWbm6s8kbUscHoICFQAn5YFsWqji05aKRG7sQhi79djHciE3E6QdFFpwk0nihr3GuBofeXc4BOWwOlgBcgnvwmYlYKuxReJLFOzYT0jEPLUoRcAY.mP4wQdBVnaGTJUucN7JNmSKcWvSV2Dzwxqul39Ja1BqiDg; _cf_bm=2WiOBsrIQyEoLp1WTib1nPUfaw8.vkk7lnA6Xem5prI-1779002877.09344-1.0.1.1-wSr0sg8Ayu8lCDEaESk4YQb2WhkYAD0QB1GlVePx6i_PqaDPIU.JVcQ6IZStV48TlgHafgh6SQZBPriqUF9pSe.tpNJuBYdFJPUkY1sO6uB5qvl4CYCaAQVw_D1aH4
+
+•   Pragma: no-cache
+
+•   Priority: u=1
+
+•   Referer: https://api.vex.com/v5/search.html?q=111
+
+•   Sec-Ch-Ua: "Chromium";v="148", "Microsoft Edge";v="148", "Not/A)Brand";v="99"
+
+•   Sec-Ch-Ua-Mobile: ?0
+
+•   Sec-Ch-Ua-Platform: "Windows"
+
+•   Sec-Fetch-Dest: script
+
+•   Sec-Fetch-Mode: no-cors
+
+•   Sec-Fetch-Site: same-origin
+
+•   User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36 Edg/148.0.0.0

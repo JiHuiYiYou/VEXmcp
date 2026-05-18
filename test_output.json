@@ -1,0 +1,716 @@
+[
+  {
+    "name": "Motor",
+    "class": "Motor",
+    "page": "home/cpp/Motors_and_MotorControllers/motor_and_motor_group",
+    "page_title": "Motor and Motor Group",
+    "url": "https://api.vex.com/v5/home/cpp/Motors_and_MotorControllers/motor_and_motor_group.html",
+    "signatures": [
+      "motor(int32_t index);",
+      "motor(int32_t index, bool reverse);",
+      "motor(int32_t index, gearSetting gears);",
+      "motor(int32_t index, gearSetting gears, bool reverse);"
+    ],
+    "description": "1—Creates amotorobject for the V5 Smart Motor connected to the specified Smart Port.The motor automatically uses the detected internalgearSetting.",
+    "parameters": [
+      {
+        "name": "index",
+        "type": "int32_t",
+        "description": "The Smart Port that the motor is connected to, written as PORTx , where x is the port number (for example, PORT1 )."
+      },
+      {
+        "name": "reverse",
+        "type": "bool",
+        "description": "Sets the positive direction of motor rotation: false (default) — Clockwise rotation is treated as forward (positive direction). true — Counterclockwise rotation is treated as forward (positive direction)."
+      },
+      {
+        "name": "gears",
+        "type": "gearSetting",
+        "description": "Specifies the internal gear cartridge ratio. ratio36_1 — The red 36:1 gear cartridge ratio18_1 — The green 18:1 gear cartridge ratio6_1 — The blue 6:1 gear cartridge"
+      }
+    ],
+    "return_value": "",
+    "notes": [],
+    "examples": [],
+    "is_constructor": true
+  },
+  {
+    "name": "~Motor",
+    "class": "Motor",
+    "page": "home/cpp/Motors_and_MotorControllers/motor_and_motor_group",
+    "page_title": "Motor and Motor Group",
+    "url": "https://api.vex.com/v5/home/cpp/Motors_and_MotorControllers/motor_and_motor_group.html",
+    "signatures": [
+      "~motor();"
+    ],
+    "description": "Destroys themotorobject and releases associated resources.",
+    "parameters": [],
+    "return_value": "",
+    "notes": [],
+    "examples": [],
+    "is_destructor": true
+  },
+  {
+    "name": "Motor Group",
+    "class": "Motor Group",
+    "page": "home/cpp/Motors_and_MotorControllers/motor_and_motor_group",
+    "page_title": "Motor and Motor Group",
+    "url": "https://api.vex.com/v5/home/cpp/Motors_and_MotorControllers/motor_and_motor_group.html",
+    "signatures": [
+      "motor_group(motor&m1, Args&... m2);"
+    ],
+    "description": "Creates a Motor Group object.",
+    "parameters": [],
+    "return_value": "",
+    "notes": [],
+    "examples": [],
+    "is_constructor": true
+  },
+  {
+    "name": "~Motor Group",
+    "class": "Motor Group",
+    "page": "home/cpp/Motors_and_MotorControllers/motor_and_motor_group",
+    "page_title": "Motor and Motor Group",
+    "url": "https://api.vex.com/v5/home/cpp/Motors_and_MotorControllers/motor_and_motor_group.html",
+    "signatures": [
+      "~motor_group();"
+    ],
+    "description": "Destroys themotor_groupobject and releases associated resources.",
+    "parameters": [],
+    "return_value": "",
+    "notes": [],
+    "examples": [],
+    "is_destructor": true
+  },
+  {
+    "name": "spin",
+    "class": "",
+    "page": "home/cpp/Motors_and_MotorControllers/motor_and_motor_group",
+    "page_title": "Motor and Motor Group",
+    "url": "https://api.vex.com/v5/home/cpp/Motors_and_MotorControllers/motor_and_motor_group.html",
+    "signatures": [
+      "void spin(directionType dir);",
+      "void spin(directionType dir, double velocity, velocityUnits units);",
+      "void spin(directionType dir, double voltage, voltageUnits units);"
+    ],
+    "description": "Spins the motor or motor group in the specified direction indefinitely.",
+    "parameters": [
+      {
+        "name": "dir",
+        "type": "directionType",
+        "description": "The direction in which the motor or motor group spins: forward reverse"
+      },
+      {
+        "name": "velocity",
+        "type": "double",
+        "description": "The velocity value applied to the motor or motor group."
+      },
+      {
+        "name": "units",
+        "type": "velocityUnits",
+        "description": "The unit used to represent velocity: percent / pct — percent rpm — rotations per minute dps — degrees per second"
+      },
+      {
+        "name": "voltage",
+        "type": "double",
+        "description": "The voltage value applied to the motor or motor group."
+      },
+      {
+        "name": "units",
+        "type": "voltageUnits",
+        "description": "The unit used to represent voltage: volt — volts voltageUnits::mV — millivolts"
+      }
+    ],
+    "return_value": "This function does not return a value.",
+    "notes": [
+      "This function is non-waiting and the project will continue executing immediately after the call.",
+      "The motor or motor group will continue spinning untilstopis called or another movement function is executed.",
+      "Functions such asisDoneandisSpinningare not applicable tospin, since it does not use target-based movement (doesn’t have arotationortimeparameter)."
+    ],
+    "examples": [
+      "// Spin forward, then stop Motor1.spin(forward); wait(1, seconds); Motor1.stop();"
+    ]
+  },
+  {
+    "name": "spinFor",
+    "class": "",
+    "page": "home/cpp/Motors_and_MotorControllers/motor_and_motor_group",
+    "page_title": "Motor and Motor Group",
+    "url": "https://api.vex.com/v5/home/cpp/Motors_and_MotorControllers/motor_and_motor_group.html",
+    "signatures": [
+      "bool spinFor(double rotation, rotationUnits units, double velocity, velocityUnits units_v, bool waitForCompletion = true);",
+      "bool spinFor(directionType dir, double rotation, rotationUnits units, double velocity, velocityUnits units_v, bool waitForCompletion = true);",
+      "bool spinFor(double rotation, rotationUnits units, bool waitForCompletion = true);",
+      "bool spinFor(directionType dir, double rotation, rotationUnits units, bool waitForCompletion = true);",
+      "bool spinFor(double time, timeUnits units, double velocity, velocityUnits units_v);",
+      "bool spinFor(directionType dir, double time, timeUnits units, double velocity, velocityUnits units_v);",
+      "bool spinFor(double time, timeUnits units);",
+      "bool spinFor(directionType dir, double time, timeUnits units);"
+    ],
+    "description": "Spins a motor or motor group for a set amount in a specified direction.",
+    "parameters": [
+      {
+        "name": "dir",
+        "type": "directionType",
+        "description": "The direction in which the motor or motor group spins: forward reverse"
+      },
+      {
+        "name": "rotation",
+        "type": "double",
+        "description": "The target rotation amount."
+      },
+      {
+        "name": "units",
+        "type": "rotationUnits",
+        "description": "The unit used to represent rotation : deg / degrees — degrees turns / rev — revolutions"
+      },
+      {
+        "name": "time",
+        "type": "double",
+        "description": "The amount of time that the motor or motor group will spin for."
+      },
+      {
+        "name": "units",
+        "type": "timeUnits",
+        "description": "The unit used to represent time : seconds / sec — seconds msec — milliseconds"
+      },
+      {
+        "name": "velocity",
+        "type": "double",
+        "description": "The velocity value applied to the motor or motor group."
+      },
+      {
+        "name": "units_v",
+        "type": "velocityUnits",
+        "description": "The unit used to represent velocity : percent / pct — percent rpm — rotations per minute dps — degrees per second"
+      },
+      {
+        "name": "waitForCompletion",
+        "type": "bool",
+        "description": "true (default) — The project waits until the movement completes before executing the next line of code. false — The movement starts and the project continues immediately."
+      }
+    ],
+    "return_value": "Returns a Boolean indicating whether the motor or motor group was able to reach the target value.",
+    "notes": [
+      "Executing another motor movement function (such asspinorstop) whilespinForis in progress will interrupt the current movement.",
+      "BecausespinForis target-based (uses arotationortimeparameter), functions such asisDoneandisSpinningwork withspinFor."
+    ],
+    "examples": [
+      "// Spin 1 turn fast, then 1 turn slow Motor1.spinFor(forward, 1, turns, true); Motor1.spinFor(reverse, 1, turns, 20, velocityUnits::pct, true);"
+    ]
+  },
+  {
+    "name": "spinToPosition",
+    "class": "",
+    "page": "home/cpp/Motors_and_MotorControllers/motor_and_motor_group",
+    "page_title": "Motor and Motor Group",
+    "url": "https://api.vex.com/v5/home/cpp/Motors_and_MotorControllers/motor_and_motor_group.html",
+    "signatures": [
+      "bool spinToPosition(double rotation, rotationUnits units, double velocity, velocityUnits units_v, bool waitForCompletion = true);",
+      "bool spinToPosition(double rotation, rotationUnits units, bool waitForCompletion = true);"
+    ],
+    "description": "Spins the motor or motor group to a specified position.",
+    "parameters": [
+      {
+        "name": "rotation",
+        "type": "double",
+        "description": "The absolute target rotation value."
+      },
+      {
+        "name": "units",
+        "type": "rotationUnits",
+        "description": "The unit used to represent rotation : deg / degrees — degrees turns / rev — revolutions"
+      },
+      {
+        "name": "velocity",
+        "type": "double",
+        "description": "The velocity value applied to the motor or motor group."
+      },
+      {
+        "name": "units_v",
+        "type": "velocityUnits",
+        "description": "The unit used to represent velocity : pct — percent rpm — rotations per minute dps — degrees per second"
+      },
+      {
+        "name": "waitForCompletion",
+        "type": "bool",
+        "description": "true (default) — The project waits until the motor or motor group reaches the target position. false — The movement starts and the project continues immediately."
+      }
+    ],
+    "return_value": "Returns a Boolean indicating whether the call was successful.",
+    "notes": [
+      "Executing another motor movement function (such asspinorspinFor) whilespinToPositionis in progress will interrupt the current movement.",
+      "BecausespinToPositionis target-based (uses arotationparameter), functions such asisDoneandisSpinningwork withspinToPosition."
+    ],
+    "examples": [
+      "// Spin forward, then go to 90° Motor1.spin(forward); wait(1, seconds); Motor1.spinToPosition(90, degrees);"
+    ]
+  },
+  {
+    "name": "stop",
+    "class": "",
+    "page": "home/cpp/Motors_and_MotorControllers/motor_and_motor_group",
+    "page_title": "Motor and Motor Group",
+    "url": "https://api.vex.com/v5/home/cpp/Motors_and_MotorControllers/motor_and_motor_group.html",
+    "signatures": [
+      "void stop();",
+      "void stop(brakeType mode);"
+    ],
+    "description": "Stops the motor or motor group from spinning.",
+    "parameters": [
+      {
+        "name": "mode",
+        "type": "brakeType",
+        "description": "The brake mode used when stopping the motor or motor group: coast — Motor or motor group coasts to a stop brake — Motor or motor group stops quickly using braking hold — Motor or motor group actively holds its position"
+      }
+    ],
+    "return_value": "This function does not return a value.",
+    "notes": [
+      "Callingstopimmediately stops any current motor movement.",
+      "If no brake mode is specified, the motor or motor group uses thecurrently configured brake mode.",
+      "stopinterrupts any active target-based movement (such asspinFororspinToPosition)."
+    ],
+    "examples": [
+      "// Spin and coast to a stop Motor1.setVelocity(100, percent); Motor1.spin(forward); wait(1, seconds); Motor1.stop(coast);"
+    ]
+  },
+  {
+    "name": "setPosition",
+    "class": "",
+    "page": "home/cpp/Motors_and_MotorControllers/motor_and_motor_group",
+    "page_title": "Motor and Motor Group",
+    "url": "https://api.vex.com/v5/home/cpp/Motors_and_MotorControllers/motor_and_motor_group.html",
+    "signatures": [
+      "void setPosition(double value, rotationUnits units);"
+    ],
+    "description": "Sets a specific position value to a motor or motor group, which updates the encoder reading.",
+    "parameters": [
+      {
+        "name": "value",
+        "type": "double",
+        "description": "The position value to assign to the motor’s or motor group’s encoder(s)."
+      },
+      {
+        "name": "units",
+        "type": "rotationUnits",
+        "description": "The unit used to represent value : deg / degrees — degrees turns / rev — revolutions"
+      }
+    ],
+    "return_value": "This function does not return a value.",
+    "notes": [
+      "After callingsetPosition, subsequent calls tospinToPositionwill use the updated position as the reference."
+    ],
+    "examples": []
+  },
+  {
+    "name": "setVelocity",
+    "class": "",
+    "page": "home/cpp/Motors_and_MotorControllers/motor_and_motor_group",
+    "page_title": "Motor and Motor Group",
+    "url": "https://api.vex.com/v5/home/cpp/Motors_and_MotorControllers/motor_and_motor_group.html",
+    "signatures": [
+      "void setVelocity(double velocity, velocityUnits units);"
+    ],
+    "description": "Sets the default velocity for a motor or motor group. This velocity setting will be used for subsequent calls to any motor functions if a specific velocity is not provided.",
+    "parameters": [
+      {
+        "name": "velocity",
+        "type": "double",
+        "description": "The velocity value to apply to the motor."
+      },
+      {
+        "name": "units",
+        "type": "velocityUnits",
+        "description": "The unit used to represent velocity : percent / pct — percent rpm — rotations per minute dps — degrees per second"
+      }
+    ],
+    "return_value": "This function does not return a value.",
+    "notes": [
+      "Any subsequent motor movement function (such asspin,spinFor, orspinToPosition) that does not explicitly specify a velocity will use this value."
+    ],
+    "examples": [
+      "// Try default, then slow, then fast Motor1.spinFor(forward, 180, degrees); wait(1, seconds); Motor1.setVelocity(20, percent); Motor1.spinFor(reverse, 180, degrees); wait(1, seconds); Motor1.setVelocity(100, percent); Motor1.spinFor(forward, 180, degrees);"
+    ]
+  },
+  {
+    "name": "setStopping",
+    "class": "",
+    "page": "home/cpp/Motors_and_MotorControllers/motor_and_motor_group",
+    "page_title": "Motor and Motor Group",
+    "url": "https://api.vex.com/v5/home/cpp/Motors_and_MotorControllers/motor_and_motor_group.html",
+    "signatures": [
+      "void setStopping(brakeType mode);"
+    ],
+    "description": "Sets how a motor or motor group behaves when it stops.",
+    "parameters": [
+      {
+        "name": "mode",
+        "type": "brakeType",
+        "description": "The stopping mode applied when stop is called: coast — Motor(s) coasts to a stop brake — Motor(s) stops quickly using braking hold — Motor(s) actively holds its position"
+      }
+    ],
+    "return_value": "This function does not return a value.",
+    "notes": [
+      "Any subsequent call tostopwithout a specified brake mode will use this value."
+    ],
+    "examples": []
+  },
+  {
+    "name": "setMaxTorque",
+    "class": "",
+    "page": "home/cpp/Motors_and_MotorControllers/motor_and_motor_group",
+    "page_title": "Motor and Motor Group",
+    "url": "https://api.vex.com/v5/home/cpp/Motors_and_MotorControllers/motor_and_motor_group.html",
+    "signatures": [
+      "void setMaxTorque(double value, percentUnits units);",
+      "void setMaxTorque(double value, torqueUnits units);",
+      "void setMaxTorque(double value, currentUnits units);"
+    ],
+    "description": "Sets the maximum torque that a motor or motor group can spin at.",
+    "parameters": [
+      {
+        "name": "value",
+        "type": "double",
+        "description": "The maximum torque value to set."
+      },
+      {
+        "name": "units",
+        "type": "percentUnits",
+        "description": "Specifies torque as a percentage: percent / pct — percent"
+      },
+      {
+        "name": "units",
+        "type": "torqueUnits",
+        "description": "Specifies torque in physical units such as: Nm — Newton-meters InLb — inch-pounds"
+      },
+      {
+        "name": "units",
+        "type": "currentUnits",
+        "description": "Specifies torque by limiting motor current: amp"
+      }
+    ],
+    "return_value": "This function does not return a value.",
+    "notes": [
+      "When usingcurrentUnits, torque is limited by restricting the motor’s or motor group’s current draw."
+    ],
+    "examples": []
+  },
+  {
+    "name": "setTimeout",
+    "class": "",
+    "page": "home/cpp/Motors_and_MotorControllers/motor_and_motor_group",
+    "page_title": "Motor and Motor Group",
+    "url": "https://api.vex.com/v5/home/cpp/Motors_and_MotorControllers/motor_and_motor_group.html",
+    "signatures": [
+      "void setTimeout(int32_t time, timeUnits units);"
+    ],
+    "description": "Sets a time limit for how long a motor command will wait to reach its target. If the motor or motor group cannot complete the movement within the set time, it will stop automatically and continue with the next command.",
+    "parameters": [
+      {
+        "name": "time",
+        "type": "int32_t",
+        "description": "The maximum amount of time the motor or motor group is allowed to attempt reaching a target position."
+      },
+      {
+        "name": "units",
+        "type": "timeUnits",
+        "description": "The unit used to represent time : msec — milliseconds seconds / sec — seconds"
+      }
+    ],
+    "return_value": "This function does not return a value.",
+    "notes": [
+      "The motor’s or motor group’s time limit is used to prevent motor commands that do not reach their target position from stopping the execution of other commands in the stack.",
+      "If the motor or motor group does not reach its target position before the timeout expires, it will stop automatically.",
+      "The timeout applies to functions that have a target value such asspinForandspinToPosition."
+    ],
+    "examples": [
+      "// Stop a long move after 1 seconds Motor1.setTimeout(1, seconds); Motor1.spinFor(forward, 2, turns); Motor1.spinToPosition(0, degrees);"
+    ]
+  },
+  {
+    "name": "isDone",
+    "class": "",
+    "page": "home/cpp/Motors_and_MotorControllers/motor_and_motor_group",
+    "page_title": "Motor and Motor Group",
+    "url": "https://api.vex.com/v5/home/cpp/Motors_and_MotorControllers/motor_and_motor_group.html",
+    "signatures": [
+      "bool isDone();"
+    ],
+    "description": "Returns a Boolean indication whether a motor or motor group is currently not spinning.",
+    "parameters": [],
+    "return_value": "Returns a Boolean indicating whether a target-based motor movement has completed:",
+    "notes": [
+      "isDoneonly applies to target-based movement functions such asspinForandspinToPosition.",
+      "It does not apply to continuous movement functions such asspin."
+    ],
+    "examples": [
+      "// Spin forward until the motor is done spinning Motor1.spinFor(forward, 200, degrees, false); while (true) { if (Motor1.isDone()) { Drivetrain.stop(); } else { Drivetrain.drive(forward); } }"
+    ]
+  },
+  {
+    "name": "isSpinning",
+    "class": "",
+    "page": "home/cpp/Motors_and_MotorControllers/motor_and_motor_group",
+    "page_title": "Motor and Motor Group",
+    "url": "https://api.vex.com/v5/home/cpp/Motors_and_MotorControllers/motor_and_motor_group.html",
+    "signatures": [
+      "bool isSpinning();"
+    ],
+    "description": "Returns a Boolean indicating whether a motor or motor group is currently spinning.",
+    "parameters": [],
+    "return_value": "Returns a Boolean indicating whether the motor or motor group is currently spinning:",
+    "notes": [
+      "It works with both continuous movement functions (such asspin) and target-based functions (such asspinForandspinToPosition).",
+      "This function reports motor activity, not whether a target has been reached. To check if a target-based movement has completed, useisDone."
+    ],
+    "examples": [
+      "// Spin forward until the motor is done spinning Motor1.spinFor(forward, 200, degrees, false); while (true) { if (Motor1.isSpinning()) { Drivetrain.drive(forward); } else { Drivetrain.stop(); } }"
+    ]
+  },
+  {
+    "name": "position",
+    "class": "",
+    "page": "home/cpp/Motors_and_MotorControllers/motor_and_motor_group",
+    "page_title": "Motor and Motor Group",
+    "url": "https://api.vex.com/v5/home/cpp/Motors_and_MotorControllers/motor_and_motor_group.html",
+    "signatures": [
+      "double position(rotationUnits units);"
+    ],
+    "description": "Returns the current position of a motor or motor group.",
+    "parameters": [
+      {
+        "name": "units",
+        "type": "rotationUnits",
+        "description": "The unit used to represent the motor or motor group position: deg / degrees — degrees turns / rev — revolutions"
+      }
+    ],
+    "return_value": "Returns adoublerepresenting the current encoder position of the motor or motor group in the specified units.",
+    "notes": [
+      "CallingsetPositionchanges the reference point for this value.",
+      "The returned value reflects the current encoder reading and does not indicate whether the motor or motor group is actively moving.",
+      "When called on amotor_group, this function returns the position of the first motor in the group."
+    ],
+    "examples": [
+      "// Spin, then show the final position Motor1.spin(forward); wait(1, seconds); Motor1.stop(); Brain.Screen.print(\"Pos: %f\", Motor1.position(degrees));"
+    ]
+  },
+  {
+    "name": "velocity",
+    "class": "",
+    "page": "home/cpp/Motors_and_MotorControllers/motor_and_motor_group",
+    "page_title": "Motor and Motor Group",
+    "url": "https://api.vex.com/v5/home/cpp/Motors_and_MotorControllers/motor_and_motor_group.html",
+    "signatures": [
+      "double velocity(velocityUnits units);"
+    ],
+    "description": "Returns the current velocity of a motor or motor group.",
+    "parameters": [
+      {
+        "name": "units",
+        "type": "velocityUnits",
+        "description": "The unit used to represent velocity: percent / pct — percent rpm — rotations per minute dps — degrees per second"
+      }
+    ],
+    "return_value": "Returns adoublerepresenting the motor’s or motor group’s current velocity in the specified units.",
+    "notes": [
+      "When called on amotor_group, this function returns the velocity of the first motor in the group."
+    ],
+    "examples": []
+  },
+  {
+    "name": "current",
+    "class": "",
+    "page": "home/cpp/Motors_and_MotorControllers/motor_and_motor_group",
+    "page_title": "Motor and Motor Group",
+    "url": "https://api.vex.com/v5/home/cpp/Motors_and_MotorControllers/motor_and_motor_group.html",
+    "signatures": [
+      "double current(currentUnits units = amp);",
+      "double current(percentUnits units);"
+    ],
+    "description": "Returns the current of a motor or motor group.",
+    "parameters": [
+      {
+        "name": "units",
+        "type": "currentUnits",
+        "description": "The unit used to represent current: amp (default) — amperes"
+      },
+      {
+        "name": "units",
+        "type": "percentUnits",
+        "description": "Represents the current as percentage of the motor’s maximum rated current: percent / pct — percent"
+      }
+    ],
+    "return_value": "Returns adoublerepresenting the motor’s or motor group’s electrical current in the specified units.",
+    "notes": [
+      "When called on amotor_group, this function returns the sum electrical current for all motors in the group."
+    ],
+    "examples": []
+  },
+  {
+    "name": "power",
+    "class": "",
+    "page": "home/cpp/Motors_and_MotorControllers/motor_and_motor_group",
+    "page_title": "Motor and Motor Group",
+    "url": "https://api.vex.com/v5/home/cpp/Motors_and_MotorControllers/motor_and_motor_group.html",
+    "signatures": [
+      "double power(powerUnits units = watt);"
+    ],
+    "description": "Returns the electrical power supplied to the motor or motor group.",
+    "parameters": [
+      {
+        "name": "units",
+        "type": "powerUnits",
+        "description": "The unit used to represent the motor power: watt (default) — watts"
+      }
+    ],
+    "return_value": "Returns adoublerepresenting the motor’s or motor group’s electrical power in watts.",
+    "notes": [
+      "When called on amotor_group, this function returns the electrical power of the first motor in the group."
+    ],
+    "examples": []
+  },
+  {
+    "name": "torque",
+    "class": "",
+    "page": "home/cpp/Motors_and_MotorControllers/motor_and_motor_group",
+    "page_title": "Motor and Motor Group",
+    "url": "https://api.vex.com/v5/home/cpp/Motors_and_MotorControllers/motor_and_motor_group.html",
+    "signatures": [
+      "double torque(torqueUnits units = Nm);"
+    ],
+    "description": "Returns the mechanical output torque of the motor or motor group.",
+    "parameters": [
+      {
+        "name": "units",
+        "type": "torqueUnits",
+        "description": "The unit used to represent the motor torque: Nm (default) — Newton-meters InLb — inch-pounds"
+      }
+    ],
+    "return_value": "Returns adoublerepresenting the motor’s or motor group’s mechanical output torque in the specified units.",
+    "notes": [
+      "When called on amotor_group, this function returns the mechanical output torque of the first motor in the group."
+    ],
+    "examples": []
+  },
+  {
+    "name": "efficiency",
+    "class": "",
+    "page": "home/cpp/Motors_and_MotorControllers/motor_and_motor_group",
+    "page_title": "Motor and Motor Group",
+    "url": "https://api.vex.com/v5/home/cpp/Motors_and_MotorControllers/motor_and_motor_group.html",
+    "signatures": [
+      "double efficiency(percentUnits units = percent);"
+    ],
+    "description": "Returns the efficiency of the motor or motor group.",
+    "parameters": [
+      {
+        "name": "units",
+        "type": "percentUnits",
+        "description": "The unit used to represent motor efficiency: percent / percentUnits::pct (default) — percent"
+      }
+    ],
+    "return_value": "Returns adoublerepresenting the motor’s or motor group’s efficiency as a percentage.",
+    "notes": [
+      "When called on amotor_group, this function returns the efficiency of the first motor in the group."
+    ],
+    "examples": []
+  },
+  {
+    "name": "temperature",
+    "class": "",
+    "page": "home/cpp/Motors_and_MotorControllers/motor_and_motor_group",
+    "page_title": "Motor and Motor Group",
+    "url": "https://api.vex.com/v5/home/cpp/Motors_and_MotorControllers/motor_and_motor_group.html",
+    "signatures": [
+      "double temperature(percentUnits units = percent);",
+      "double temperature(temperatureUnits units);"
+    ],
+    "description": "Returns the temperature of the motor or motor group.",
+    "parameters": [
+      {
+        "name": "units",
+        "type": "percentUnits",
+        "description": "The unit used to represent motor or motor group temperature as a percentage: percent / percentUnits::pct (default) — percent"
+      },
+      {
+        "name": "units",
+        "type": "temperatureUnits",
+        "description": "The unit used to represent motor or motor group temperature in degrees: celsius — degrees Celsius fahrenheit — degrees Fahrenheit"
+      }
+    ],
+    "return_value": "Returns adoublerepresenting the motor’s or motor group’s temperature in the specified units.",
+    "notes": [
+      "The operating temperature range for the motor is approximately20°C(68°F) to70°C(158°F).",
+      "When called on amotor_group, this function returns the temperature of the first motor in the group."
+    ],
+    "examples": []
+  },
+  {
+    "name": "voltage",
+    "class": "",
+    "page": "home/cpp/Motors_and_MotorControllers/motor_and_motor_group",
+    "page_title": "Motor and Motor Group",
+    "url": "https://api.vex.com/v5/home/cpp/Motors_and_MotorControllers/motor_and_motor_group.html",
+    "signatures": [
+      "double voltage(voltageUnits units = volt);"
+    ],
+    "description": "Returns the electrical voltage supplied to the motor or motor group.",
+    "parameters": [
+      {
+        "name": "units",
+        "type": "voltageUnits",
+        "description": "The unit to represent the voltage: volt (default) voltageUnits::mV — millivolts"
+      }
+    ],
+    "return_value": "Returns adoublerepresenting the motor’s or motor group’s electrical voltage in the specified units.",
+    "notes": [
+      "When called on amotor_group, this function returns the electrical voltage of the first motor in the group."
+    ],
+    "examples": []
+  },
+  {
+    "name": "direction",
+    "class": "",
+    "page": "home/cpp/Motors_and_MotorControllers/motor_and_motor_group",
+    "page_title": "Motor and Motor Group",
+    "url": "https://api.vex.com/v5/home/cpp/Motors_and_MotorControllers/motor_and_motor_group.html",
+    "signatures": [
+      "directionType direction();"
+    ],
+    "description": "Returns the direction that the motor or motor group is currently spinning.",
+    "parameters": [],
+    "return_value": "Returns adirectionTypeindicating the motor’s or motor group’s current direction:",
+    "notes": [],
+    "examples": []
+  },
+  {
+    "name": "installed",
+    "class": "",
+    "page": "home/cpp/Motors_and_MotorControllers/motor_and_motor_group",
+    "page_title": "Motor and Motor Group",
+    "url": "https://api.vex.com/v5/home/cpp/Motors_and_MotorControllers/motor_and_motor_group.html",
+    "signatures": [
+      "bool installed();"
+    ],
+    "description": "Returns whether the motor or motor group is connected to the V5 Brain.",
+    "parameters": [],
+    "return_value": "Returns aboolindicating if the motor or motor group is connected.",
+    "notes": [],
+    "examples": []
+  },
+  {
+    "name": "count",
+    "class": "",
+    "page": "home/cpp/Motors_and_MotorControllers/motor_and_motor_group",
+    "page_title": "Motor and Motor Group",
+    "url": "https://api.vex.com/v5/home/cpp/Motors_and_MotorControllers/motor_and_motor_group.html",
+    "signatures": [
+      "int32_t count();"
+    ],
+    "description": "Returns the number of motors currently included in the motor group.",
+    "parameters": [],
+    "return_value": "Returns anint32_trepresenting the total number of motors in the motor group.",
+    "notes": [],
+    "examples": []
+  }
+]
