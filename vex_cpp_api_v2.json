@@ -89,7 +89,7 @@
     "signatures": [
       "double acceleration();"
     ],
-    "description": "",
+    "description": "Theaccelerometerclass includes the following member functions:",
     "parameters": [],
     "return_value": "double",
     "notes": [],
@@ -145,7 +145,7 @@
     "signatures": [
       "int32_t value(analogUnits units);"
     ],
-    "description": "",
+    "description": "Theanalog_inclass includes the following member functions:",
     "parameters": [
       {
         "name": "units",
@@ -155,7 +155,9 @@
     ],
     "return_value": "int32_t",
     "notes": [],
-    "examples": [],
+    "examples": [
+      "// Get the current value of the Analog Input int32_t value = AnalogInA.value();"
+    ],
     "is_constructor": false,
     "is_destructor": false,
     "is_member_function": true
@@ -207,11 +209,13 @@
     "signatures": [
       "int32_t pressing();"
     ],
-    "description": "",
+    "description": "Thebumperclass includes the following member functions:",
     "parameters": [],
     "return_value": "int32_t",
     "notes": [],
-    "examples": [],
+    "examples": [
+      "void BumperPressed() { Brain.Screen.print(\"Bumper pressed\"); }"
+    ],
     "is_constructor": false,
     "is_destructor": false,
     "is_member_function": true
@@ -263,11 +267,13 @@
     "signatures": [
       "int32_t value();"
     ],
-    "description": "",
+    "description": "Thedigital_inclass includes the following member functions:",
     "parameters": [],
     "return_value": "int32_t",
     "notes": [],
-    "examples": [],
+    "examples": [
+      "// Display that the input is high void inputHigh() { Brain.Screen.print(\"digital input high\"); } // Run inputHigh when the Digital Input is high DigitalInA.high(inputHigh);"
+    ],
     "is_constructor": false,
     "is_destructor": false,
     "is_member_function": true
@@ -319,7 +325,7 @@
     "signatures": [
       "void set(bool value);"
     ],
-    "description": "",
+    "description": "Thedigital_outclass includes the following member functions:",
     "parameters": [
       {
         "name": "value",
@@ -329,7 +335,9 @@
     ],
     "return_value": "void",
     "notes": [],
-    "examples": [],
+    "examples": [
+      "// Set the Digital Output to true DigitalOutA.set(true); // Set the Digital Output to false DigitalOutA.set(false);"
+    ],
     "is_constructor": false,
     "is_destructor": false,
     "is_member_function": true
@@ -381,7 +389,7 @@
     "signatures": [
       "void setPosition(double value, rotationUnits units);"
     ],
-    "description": "",
+    "description": "Theencoderclass includes the following member functions:",
     "parameters": [
       {
         "name": "value",
@@ -448,13 +456,15 @@
     "signatures": [
       "void calibrate();"
     ],
-    "description": "",
+    "description": "Thegyroclass includes the following member functions:",
     "parameters": [],
     "return_value": "void",
     "notes": [
       "calibrateshould only be called when the sensor is not moving."
     ],
-    "examples": [],
+    "examples": [
+      "// Start calibration with the calibration time set to 3 seconds. GyroA.calibrate(3);"
+    ],
     "is_constructor": false,
     "is_destructor": false,
     "is_member_function": true
@@ -506,11 +516,13 @@
     "signatures": [
       "void on();"
     ],
-    "description": "",
+    "description": "Theledclass includes the following member functions:",
     "parameters": [],
     "return_value": "void",
     "notes": [],
-    "examples": [],
+    "examples": [
+      "// Turn on the LED LEDA.on(); // Wait 2 seconds wait(2, seconds); // Turn off LED LEDA.off();"
+    ],
     "is_constructor": false,
     "is_destructor": false,
     "is_member_function": true
@@ -562,17 +574,19 @@
     "signatures": [
       "int32_t brightness(percentUnits units = percentUnits::pct);"
     ],
-    "description": "",
+    "description": "Thelightclass includes the following member functions:",
     "parameters": [
       {
-        "name": "percentUnits::pct",
-        "type": "percentUnits units =",
+        "name": "units",
+        "type": "percentUnits",
         "description": ""
       }
     ],
     "return_value": "int32_t",
     "notes": [],
-    "examples": [],
+    "examples": [
+      "// Get Light Sensor brightness in range of 0% - 100%. int32_t value = LightA.brightness(); // Print the brightness of the Light Sensor to the // Brain's screen. Brain.Screen.print(value);"
+    ],
     "is_constructor": false,
     "is_destructor": false,
     "is_member_function": true
@@ -624,11 +638,13 @@
     "signatures": [
       "int32_t pressing();"
     ],
-    "description": "",
+    "description": "Thelimitclass includes the following member functions:",
     "parameters": [],
     "return_value": "int32_t",
     "notes": [],
-    "examples": [],
+    "examples": [
+      "void switchPressed() { // The Brain will print that the Limit Switch was pressed // on the Brain's screen. Brain.Screen.print(\"switch pressed\"); } // Run switchPressed when the Limit Switch is pressed. LimitSwitchA.pressed(switchPressed);"
+    ],
     "is_constructor": false,
     "is_destructor": false,
     "is_member_function": true
@@ -680,17 +696,19 @@
     "signatures": [
       "int32_t reflectivity(percentUnits units = percentUnits::pct);"
     ],
-    "description": "",
+    "description": "Thelineclass includes the following member functions:",
     "parameters": [
       {
-        "name": "percentUnits::pct",
-        "type": "percentUnits units =",
+        "name": "units",
+        "type": "percentUnits",
         "description": ""
       }
     ],
     "return_value": "int32_t",
     "notes": [],
-    "examples": [],
+    "examples": [
+      "// Display the detected reflectivity int32_t value = LineTrackerA.reflectivity(); Brain.Screen.print(value);"
+    ],
     "is_constructor": false,
     "is_destructor": false,
     "is_member_function": true
@@ -742,7 +760,7 @@
     "signatures": [
       "void state(int32_t value, percentUnits units);"
     ],
-    "description": "",
+    "description": "Thepwm_outclass includes the following member functions:",
     "parameters": [
       {
         "name": "value",
@@ -760,7 +778,9 @@
       "The PWM output value ranges from -100 to +100 percent.",
       "The only valid unit for PWM output ispercent."
     ],
-    "examples": [],
+    "examples": [
+      "// Set the PWM Output to 50% pwm.state(50, percent); // Set the PWM Output to -75% pwm.state(-75, percent);"
+    ],
     "is_constructor": false,
     "is_destructor": false,
     "is_member_function": true
@@ -772,14 +792,15 @@
     "page_title": "Pneumatics",
     "url": "https://api.vex.com/v5/home/cpp/3-Wire_Devices/Pneumatics.html",
     "signatures": [
-      "pneumatics(triport::port&port);"
+      "pneumatics(triport::port&port);",
+      "pneumatic(int32_t index);"
     ],
     "description": "",
     "parameters": [
       {
-        "name": "&port",
-        "type": "triport::port",
-        "description": "The 3-Wire Port the Pneumatic Solenoid is connected to, written as Brain.ThreeWirePort.X or ExpanderName.X , where X is the port letter (for example, Brain.ThreeWirePort.A or Expander1.A )."
+        "name": "index",
+        "type": "int32_t",
+        "description": "The Smart Port that the CTE Pneumatic Solenoid is connected to (e.g., PORT1)."
       }
     ],
     "return_value": "",
@@ -794,7 +815,8 @@
     "page_title": "Pneumatics",
     "url": "https://api.vex.com/v5/home/cpp/3-Wire_Devices/Pneumatics.html",
     "signatures": [
-      "~pneumatics();"
+      "~pneumatics();",
+      "~pneumatic();"
     ],
     "description": "Destroys thepneumaticsobject and releases associated resources.",
     "parameters": [],
@@ -812,11 +834,13 @@
     "signatures": [
       "void open();"
     ],
-    "description": "",
+    "description": "Thepneumaticsclass includes the following member functions:",
     "parameters": [],
     "return_value": "void",
     "notes": [],
-    "examples": [],
+    "examples": [
+      "// Open the solenoid to extend the cylinder PneumaticsA.open();"
+    ],
     "is_constructor": false,
     "is_destructor": false,
     "is_member_function": true
@@ -850,43 +874,22 @@
     "page_title": "Potentiometer",
     "url": "https://api.vex.com/v5/home/cpp/3-Wire_Devices/Potentiometer.html",
     "signatures": [
-      "int32_t angle(percentUnits units = percentUnits::pct);"
+      "int32_t angle(percentUnits units = percentUnits::pct);",
+      "double angle(rotationUnits units);"
     ],
-    "description": "",
+    "description": "ThepotandpotV2classes include the following member functions:",
     "parameters": [
       {
-        "name": "percentUnits::pct",
-        "type": "percentUnits units =",
+        "name": "units",
+        "type": "percentUnits",
         "description": ""
       }
     ],
     "return_value": "int32_t",
     "notes": [],
-    "examples": [],
-    "is_constructor": false,
-    "is_destructor": false,
-    "is_member_function": true
-  },
-  {
-    "name": "angle",
-    "class": "Potentiometer",
-    "page": "home/cpp/3-Wire_Devices/Potentiometer",
-    "page_title": "Potentiometer",
-    "url": "https://api.vex.com/v5/home/cpp/3-Wire_Devices/Potentiometer.html",
-    "signatures": [
-      "double angle(rotationUnits units);"
+    "examples": [
+      "// Get the current angle of the Potentiometer in the // range 0 - 250 degrees. double angle = PotentiometerV2A.angle(degrees); // Print the current angle of the Potentiometer to the // brain screen. Brain.Screen.print(angle);"
     ],
-    "description": "",
-    "parameters": [
-      {
-        "name": "units",
-        "type": "rotationUnits",
-        "description": ""
-      }
-    ],
-    "return_value": "double",
-    "notes": [],
-    "examples": [],
     "is_constructor": false,
     "is_destructor": false,
     "is_member_function": true
@@ -938,11 +941,13 @@
     "signatures": [
       "bool foundObject();"
     ],
-    "description": "",
+    "description": "Thesonarclass includes the following member functions:",
     "parameters": [],
     "return_value": "bool",
     "notes": [],
-    "examples": [],
+    "examples": [
+      "// Check if an object is detected. if (RangeFinderA.foundObject()){ // Print to screen on the brain that an object was found. Brain.Screen.print(\"object found\"); }"
+    ],
     "is_constructor": false,
     "is_destructor": false,
     "is_member_function": true
@@ -971,11 +976,11 @@
     "signatures": [
       "double voltage(voltageUnits units = voltageUnits::volt);"
     ],
-    "description": "",
+    "description": "Thebatteryclass includes the following member functions:",
     "parameters": [
       {
-        "name": "voltageUnits::volt",
-        "type": "voltageUnits units =",
+        "name": "units",
+        "type": "voltageUnits",
         "description": ""
       }
     ],
@@ -997,7 +1002,7 @@
     "signatures": [
       "int32_t loadfile(const char* name, uint8_t* buffer, int32_t len);"
     ],
-    "description": "",
+    "description": "Thesdcardclass includes the following member functions:",
     "parameters": [
       {
         "name": "name",
@@ -1021,7 +1026,9 @@
       "The buffer must be large enough to hold the requested data.",
       "This function reads raw bytes and does not append a null terminator."
     ],
-    "examples": [],
+    "examples": [
+      "// Check for SD card and show a file's text if (Brain.SDcard.isInserted()) { // Create a message to save to the SD card uint8_t message[] = \"Hello from VEX!\"; // Save the message into \"Text.txt\" Brain.SDcard.savefile(\"Text.txt\", message, sizeof(message)); // Get the size of the file int fileSize = Brain.SDcard.size(\"Text.txt\"); // Make a buffer to hold the file data uint8_t buffer[fileSize]; // Load the file from the SD card into the buffer Brain.SDcard.loadfile(\"Text.txt\", buffer, sizeof(buffer)); // Display the file contents on the screen Brain.Screen.print(\"%s\", buffer); } else { Brain.Screen.print(\"Insert SD card\"); }"
+    ],
     "is_constructor": false,
     "is_destructor": false,
     "is_member_function": true
@@ -1033,7 +1040,8 @@
     "page_title": "Screen",
     "url": "https://api.vex.com/v5/home/cpp/Brain/Screen.html",
     "signatures": [
-      "Brain.Screen"
+      "Brain.Screen",
+      "Controller.Screen"
     ],
     "description": "Thescreenclass can be accessed by:",
     "parameters": [],
@@ -1048,7 +1056,8 @@
     "page_title": "Screen",
     "url": "https://api.vex.com/v5/home/cpp/Brain/Screen.html",
     "signatures": [
-      "/* This constructor is required when using VS Code. A Brain is generated automatically at the start of VEXcode projects.*/ // Create the V5 Brain brain Brain = brain(); // Print text to the Brain screen Brain.Screen.print(\"Hello!\");"
+      "/* This constructor is required when using VS Code. A Brain is generated automatically at the start of VEXcode projects.*/ // Create the V5 Brain brain Brain = brain(); // Print text to the Brain screen Brain.Screen.print(\"Hello!\");",
+      "/* This constructor is required when using VS Code. A controller is generated automatically at the start of VEXcode projects.*/ // Create the V5 Controller controller Controller1 = controller(primary); // Print text to the Controller screen Controller.Screen.print(\"Hello!\");"
     ],
     "description": "",
     "parameters": [],
@@ -1057,63 +1066,34 @@
     "examples": []
   },
   {
-    "name": "print",
+    "name": "Member Functions",
     "class": "Screen",
     "page": "home/cpp/Brain/Screen",
     "page_title": "Screen",
     "url": "https://api.vex.com/v5/home/cpp/Brain/Screen.html",
     "signatures": [
-      "void print(const char* format, ...);"
+      "void print(const char* format, ...);",
+      "void print(char* format, ...);"
     ],
-    "description": "",
+    "description": "Thescreenclass includes the following member functions:",
     "parameters": [
       {
         "name": "format",
         "type": "const char*",
-        "description": ""
+        "description": "A format string provided as a string literal or read-only C-style string (for example, “Score: %d” )."
       },
-      {
-        "name": "",
-        "type": "...",
-        "description": ""
-      }
-    ],
-    "return_value": "void",
-    "notes": [
-      "Output begins at thecurrent cursor positionon the screen.",
-      "Printed text uses thecurrent screen font.",
-      "Printed text uses thecurrent pen color.",
-      "Text printed withprintis always printed with a background, and the background color is determined by thecurrent fill color.",
-      "When using a format string, the number and types of values passed must match theformat specifiersin the string."
-    ],
-    "examples": [],
-    "is_constructor": false,
-    "is_destructor": false,
-    "is_member_function": true
-  },
-  {
-    "name": "print",
-    "class": "Screen",
-    "page": "home/cpp/Brain/Screen",
-    "page_title": "Screen",
-    "url": "https://api.vex.com/v5/home/cpp/Brain/Screen.html",
-    "signatures": [
-      "void print(char* format, ...);"
-    ],
-    "description": "",
-    "parameters": [
       {
         "name": "format",
         "type": "char*",
-        "description": ""
+        "description": "A format string provided as a modifiable character array."
       },
       {
-        "name": "",
-        "type": "...",
-        "description": ""
+        "name": "…",
+        "type": "",
+        "description": "One or more additional values that are inserted into the format string, separated by commas."
       }
     ],
-    "return_value": "void",
+    "return_value": "This function does not return a value.",
     "notes": [
       "Output begins at thecurrent cursor positionon the screen.",
       "Printed text uses thecurrent screen font.",
@@ -1121,10 +1101,10 @@
       "Text printed withprintis always printed with a background, and the background color is determined by thecurrent fill color.",
       "When using a format string, the number and types of values passed must match theformat specifiersin the string."
     ],
-    "examples": [],
-    "is_constructor": false,
-    "is_destructor": false,
-    "is_member_function": true
+    "examples": [
+      "// Display a message at the starting cursor Brain.Screen.print(\"Hello, Robot!\");",
+      "// Display a message at the starting cursor Controller.Screen.print(\"Hello, Robot!\");"
+    ]
   },
   {
     "name": "Brain",
@@ -1151,14 +1131,16 @@
     "signatures": [
       "void programStop();"
     ],
-    "description": "",
+    "description": "Thebrainclass includes the following member functions:",
     "parameters": [],
     "return_value": "void",
     "notes": [
       "The timer begins counting again immediately after it is reset.",
       "CallingresetTimeraffects the value returned by subsequent calls totimer."
     ],
-    "examples": [],
+    "examples": [
+      "// Stop the project when the Brain screen is pressed while (true) { if (Brain.Screen.pressing()) { Brain.programStop(); } wait(20, msec); }"
+    ],
     "is_constructor": false,
     "is_destructor": false,
     "is_member_function": true
@@ -1202,14 +1184,16 @@
     "signatures": [
       "void clear();"
     ],
-    "description": "",
+    "description": "Thetimerclass includes the following member functions:",
     "parameters": [],
     "return_value": "void",
     "notes": [
       "The timer begins counting when the project starts.",
       "Callingclearresets the timer value to zero."
     ],
-    "examples": [],
+    "examples": [
+      "while (true) { // Reset the timer every time the screen is pressed if (Brain.Screen.pressing()) { Brain.Timer.clear(); } Brain.Screen.clearScreen(); Brain.Screen.setCursor(1, 1); Brain.Screen.print(\"Time: %.2f\", Brain.Timer.value()); wait(50, msec); }"
+    ],
     "is_constructor": false,
     "is_destructor": false,
     "is_member_function": true
@@ -1261,7 +1245,7 @@
     "signatures": [
       "bool moveTo(double x, double y, double z, bool waitForCompletion = true);"
     ],
-    "description": "",
+    "description": "Thearmclasses includes the following member functions:",
     "parameters": [
       {
         "name": "x",
@@ -1279,14 +1263,16 @@
         "description": ""
       },
       {
-        "name": "true",
-        "type": "bool waitForCompletion =",
+        "name": "waitForCompletion",
+        "type": "bool",
         "description": ""
       }
     ],
     "return_value": "bool",
     "notes": [],
-    "examples": [],
+    "examples": [
+      "// Move the arm to the (200, 0, 100) Arm.moveTo(200, 0, 100);"
+    ],
     "is_constructor": false,
     "is_destructor": false,
     "is_member_function": true
@@ -1343,58 +1329,22 @@
     "signatures": [
       "int32_t reflectivity(percentUnits units = percentUnits::pct);"
     ],
-    "description": "",
+    "description": "Theobjectdetectorclass includes the following member functions:",
     "parameters": [
       {
-        "name": "percentUnits::pct",
-        "type": "percentUnits units =",
+        "name": "units",
+        "type": "percentUnits",
         "description": ""
       }
     ],
     "return_value": "int32_t",
     "notes": [],
-    "examples": [],
+    "examples": [
+      "// Display the detected reflectivity on the Brain's screen int32_t value = ObjectSensorA.reflectivity(); Brain.Screen.print(value);"
+    ],
     "is_constructor": false,
     "is_destructor": false,
     "is_member_function": true
-  },
-  {
-    "name": "Pneumatics",
-    "class": "Pneumatics",
-    "page": "home/cpp/CTE_Workcell/Pneumatics",
-    "page_title": "Pneumatics",
-    "url": "https://api.vex.com/v5/home/cpp/CTE_Workcell/Pneumatics.html",
-    "signatures": [
-      "pneumatic(int32_t index);"
-    ],
-    "description": "",
-    "parameters": [
-      {
-        "name": "index",
-        "type": "int32_t",
-        "description": "The Smart Port that the CTE Pneumatic Solenoid is connected to (e.g., PORT1)."
-      }
-    ],
-    "return_value": "",
-    "notes": [],
-    "examples": [],
-    "is_constructor": true
-  },
-  {
-    "name": "~Pneumatics",
-    "class": "Pneumatics",
-    "page": "home/cpp/CTE_Workcell/Pneumatics",
-    "page_title": "Pneumatics",
-    "url": "https://api.vex.com/v5/home/cpp/CTE_Workcell/Pneumatics.html",
-    "signatures": [
-      "~pneumatic();"
-    ],
-    "description": "Destroys thepneumaticobject and releases associated resources.",
-    "parameters": [],
-    "return_value": "",
-    "notes": [],
-    "examples": [],
-    "is_destructor": true
   },
   {
     "name": "Example",
@@ -1430,7 +1380,9 @@
     ],
     "return_value": "void",
     "notes": [],
-    "examples": [],
+    "examples": [
+      "// Extend cylinder 1 ctePneumatic1.extend(cylinder1); // Extend all cylinders ctePneumatic1.extend(cylinderAll);"
+    ],
     "is_constructor": false,
     "is_destructor": false,
     "is_member_function": true
@@ -1480,9 +1432,12 @@
     "page_title": "Signal Tower",
     "url": "https://api.vex.com/v5/home/cpp/CTE_Workcell/SignalTower.html",
     "signatures": [
-      "void setColor(vex::color color, signaltower::state state = signaltower::state::on);"
+      "void setColor(vex::color color, signaltower::state state = signaltower::state::on);",
+      "void setColor(uint32_t rgb, uint32_t yw);",
+      "void setColor(ledId id, uint32_t value);",
+      "void setColor(uint8_t r, uint8_t y, uint8_t g, uint8_t b, uint8_t w);"
     ],
-    "description": "",
+    "description": "Thesignaltowerclass provides the following member functions:",
     "parameters": [
       {
         "name": "color",
@@ -1490,116 +1445,16 @@
         "description": ""
       },
       {
-        "name": "signaltower::state::on",
-        "type": "signaltower::state state =",
+        "name": "state",
+        "type": "signaltower::state",
         "description": ""
       }
     ],
     "return_value": "void",
     "notes": [],
-    "examples": [],
-    "is_constructor": false,
-    "is_destructor": false,
-    "is_member_function": true
-  },
-  {
-    "name": "setColor",
-    "class": "Signal Tower",
-    "page": "home/cpp/CTE_Workcell/SignalTower",
-    "page_title": "Signal Tower",
-    "url": "https://api.vex.com/v5/home/cpp/CTE_Workcell/SignalTower.html",
-    "signatures": [
-      "void setColor(uint32_t rgb, uint32_t yw);"
+    "examples": [
+      "// Set the Signal Tower to start blinking blue SignalTower.setColor(vex::color::blue, signaltower::blink); // Set the red, blue and white LEDs using hex values SignalTower.setColor(0xFF00FF, 0x00FF); // Set the green LED to full brightness by ID SignalTower.setColor(1, 255); // Set all LEDs to full brightness SignalTower.setColor(255, 255, 255, 255, 255);"
     ],
-    "description": "",
-    "parameters": [
-      {
-        "name": "rgb",
-        "type": "uint32_t",
-        "description": ""
-      },
-      {
-        "name": "yw",
-        "type": "uint32_t",
-        "description": ""
-      }
-    ],
-    "return_value": "void",
-    "notes": [],
-    "examples": [],
-    "is_constructor": false,
-    "is_destructor": false,
-    "is_member_function": true
-  },
-  {
-    "name": "setColor",
-    "class": "Signal Tower",
-    "page": "home/cpp/CTE_Workcell/SignalTower",
-    "page_title": "Signal Tower",
-    "url": "https://api.vex.com/v5/home/cpp/CTE_Workcell/SignalTower.html",
-    "signatures": [
-      "void setColor(ledId id, uint32_t value);"
-    ],
-    "description": "",
-    "parameters": [
-      {
-        "name": "id",
-        "type": "ledId",
-        "description": ""
-      },
-      {
-        "name": "value",
-        "type": "uint32_t",
-        "description": ""
-      }
-    ],
-    "return_value": "void",
-    "notes": [],
-    "examples": [],
-    "is_constructor": false,
-    "is_destructor": false,
-    "is_member_function": true
-  },
-  {
-    "name": "setColor",
-    "class": "Signal Tower",
-    "page": "home/cpp/CTE_Workcell/SignalTower",
-    "page_title": "Signal Tower",
-    "url": "https://api.vex.com/v5/home/cpp/CTE_Workcell/SignalTower.html",
-    "signatures": [
-      "void setColor(uint8_t r, uint8_t y, uint8_t g, uint8_t b, uint8_t w);"
-    ],
-    "description": "",
-    "parameters": [
-      {
-        "name": "r",
-        "type": "uint8_t",
-        "description": ""
-      },
-      {
-        "name": "y",
-        "type": "uint8_t",
-        "description": ""
-      },
-      {
-        "name": "g",
-        "type": "uint8_t",
-        "description": ""
-      },
-      {
-        "name": "b",
-        "type": "uint8_t",
-        "description": ""
-      },
-      {
-        "name": "w",
-        "type": "uint8_t",
-        "description": ""
-      }
-    ],
-    "return_value": "void",
-    "notes": [],
-    "examples": [],
     "is_constructor": false,
     "is_destructor": false,
     "is_member_function": true
@@ -1637,7 +1492,7 @@
     "is_destructor": true
   },
   {
-    "name": "Member Functions",
+    "name": "autonomous",
     "class": "Competition",
     "page": "home/cpp/Competition",
     "page_title": "Competition",
@@ -1648,18 +1503,21 @@
     "description": "Thecompetitionclass includes the following member functions:",
     "parameters": [
       {
-        "name": "callback",
-        "type": "void (*)(void)",
-        "description": "A pointer to a function that takes no parameters and returns no value. This function will run when the Autonomous period starts."
+        "name": "callback)(void)",
+        "type": "void (*",
+        "description": ""
       }
     ],
-    "return_value": "This function does not return a value.",
+    "return_value": "void",
     "notes": [
       "This function checks whether the Competition Control Switch is connected. The Competition Control Switch is used before the V5 Field Control System is in place."
     ],
     "examples": [
       "void autonomousControl(void) { // Place automonous code here. Brain.Screen.clearScreen(); Brain.Screen.print(\"autonomous\"); } int main(){ // Create competition instance. competition Competition; // Set up callback for the autonomous control period. Competition.autonomous(autonomousControl); // Prevent main from exiting with an infinite loop. while (true) { wait(100, msec); } }"
-    ]
+    ],
+    "is_constructor": false,
+    "is_destructor": false,
+    "is_member_function": true
   },
   {
     "name": "Functions",
@@ -1685,25 +1543,24 @@
     "examples": []
   },
   {
-    "name": "const",
+    "name": "Member Functions",
     "class": "Axis",
     "page": "home/cpp/Controller/Axis",
     "page_title": "Axis",
     "url": "https://api.vex.com/v5/home/cpp/Controller/Axis.html",
     "signatures": [
-      "int32_t position(percentUnits units = percentUnits::pct) const;"
+      "int32_t position(percentUnits units = percentUnits::pct) const"
     ],
-    "description": "",
+    "description": "TheAxisclass includes the following member functions:",
     "parameters": [],
-    "return_value": "int32_t position(percentUnits units = percentUnits::pct)",
+    "return_value": "This function returns anint32_tas a percent from -100 to 100.",
     "notes": [],
-    "examples": [],
-    "is_constructor": false,
-    "is_destructor": false,
-    "is_member_function": true
+    "examples": [
+      "while (true) { if (Controller.Axis4.position() > 10) { Drivetrain.turn(right); } else if (Controller.Axis4.position() < -10) { Drivetrain.turn(left); } else { Drivetrain.stop(); } wait(20, msec); }"
+    ]
   },
   {
-    "name": "const",
+    "name": "Member Functions",
     "class": "Button",
     "page": "home/cpp/Controller/Button",
     "page_title": "Button",
@@ -1711,108 +1568,19 @@
     "signatures": [
       "bool pressing() const;"
     ],
-    "description": "",
-    "parameters": [],
-    "return_value": "bool pressing()",
-    "notes": [],
-    "examples": [],
-    "is_constructor": false,
-    "is_destructor": false,
-    "is_member_function": true
-  },
-  {
-    "name": "Access",
-    "class": "Screen",
-    "page": "home/cpp/Controller/Screen",
-    "page_title": "Screen",
-    "url": "https://api.vex.com/v5/home/cpp/Controller/Screen.html",
-    "signatures": [
-      "Controller.Screen"
-    ],
-    "description": "Thescreenclass can be accessed by:",
-    "parameters": [],
-    "return_value": "",
-    "notes": [],
-    "examples": []
-  },
-  {
-    "name": "Example",
-    "class": "Screen",
-    "page": "home/cpp/Controller/Screen",
-    "page_title": "Screen",
-    "url": "https://api.vex.com/v5/home/cpp/Controller/Screen.html",
-    "signatures": [
-      "/* This constructor is required when using VS Code. A controller is generated automatically at the start of VEXcode projects.*/ // Create the V5 Controller controller Controller1 = controller(primary); // Print text to the Controller screen Controller.Screen.print(\"Hello!\");"
-    ],
-    "description": "",
-    "parameters": [],
-    "return_value": "",
-    "notes": [],
-    "examples": []
-  },
-  {
-    "name": "print",
-    "class": "Screen",
-    "page": "home/cpp/Controller/Screen",
-    "page_title": "Screen",
-    "url": "https://api.vex.com/v5/home/cpp/Controller/Screen.html",
-    "signatures": [
-      "void print(const char* format, ...);"
-    ],
-    "description": "",
+    "description": "TheButtonclass includes the following member functions:",
     "parameters": [
       {
-        "name": "format",
-        "type": "const char*",
-        "description": ""
-      },
-      {
-        "name": "",
-        "type": "...",
-        "description": ""
+        "name": "callback",
+        "type": "void (*)(void)",
+        "description": "A function that is called when the specified button is pressed."
       }
     ],
-    "return_value": "void",
-    "notes": [
-      "Output begins at thecurrent cursor positionon the screen.",
-      "When using a format string, the number and types of values passed must match theformat specifiersin the string."
-    ],
-    "examples": [],
-    "is_constructor": false,
-    "is_destructor": false,
-    "is_member_function": true
-  },
-  {
-    "name": "print",
-    "class": "Screen",
-    "page": "home/cpp/Controller/Screen",
-    "page_title": "Screen",
-    "url": "https://api.vex.com/v5/home/cpp/Controller/Screen.html",
-    "signatures": [
-      "void print(char* format, ...);"
-    ],
-    "description": "",
-    "parameters": [
-      {
-        "name": "format",
-        "type": "char*",
-        "description": ""
-      },
-      {
-        "name": "",
-        "type": "...",
-        "description": ""
-      }
-    ],
-    "return_value": "void",
-    "notes": [
-      "Output begins at thecurrent cursor positionon the screen.",
-      "When using a format string, the number and types of values passed must match theformat specifiersin the string."
-    ],
-    "examples": [],
-    "is_constructor": false,
-    "is_destructor": false,
-    "is_member_function": true
+    "return_value": "Returns an integer indicating whether the specified button is being pressed:",
+    "notes": [],
+    "examples": [
+      "// Turn right while L1 is pressed while (true) { if (Controller.ButtonL1.pressing()) { Drivetrain.turn(right); } else { Drivetrain.stop(); } wait(5, msec); }"
+    ]
   },
   {
     "name": "Controller",
@@ -1862,7 +1630,7 @@
     "signatures": [
       "void rumble(const char*str);"
     ],
-    "description": "",
+    "description": "Thecontrollerclass includes the following member functions:",
     "parameters": [
       {
         "name": "char*str",
@@ -1872,13 +1640,15 @@
     ],
     "return_value": "void",
     "notes": [],
-    "examples": [],
+    "examples": [
+      "// Short-short-long pattern Controller1.rumble(\"..-\");"
+    ],
     "is_constructor": false,
     "is_destructor": false,
     "is_member_function": true
   },
   {
-    "name": "false",
+    "name": "Global Variables",
     "class": "Controller",
     "page": "home/cpp/Controller/index",
     "page_title": "Controller",
@@ -1886,16 +1656,15 @@
     "signatures": [
       "RemoteControlCodeEnabled = false;"
     ],
-    "description": "",
+    "description": "When one or more controllers are configured in the Devices window, VEXcode V5 provides a global variable that controls the execution of controller-configured actions.",
     "parameters": [],
-    "return_value": "RemoteControlCodeEnabled =",
+    "return_value": "",
     "notes": [
       "Controller-configured actions are enabled by default."
     ],
-    "examples": [],
-    "is_constructor": false,
-    "is_destructor": false,
-    "is_member_function": true
+    "examples": [
+      "// Drive forward or backward using the left joystick RemoteControlCodeEnabled = false; while (true) { if (Controller1.Axis3.position() > 0) { Drivetrain.drive(forward); } else if (Controller1.Axis3.position() < 0) { Drivetrain.drive(reverse); // Press A to use the controller configured actions } else if (Controller1.ButtonA.pressing()) { break; } else { Drivetrain.stop(); } wait(20, msec); } RemoteControlCodeEnabled = true;"
+    ]
   },
   {
     "name": "Drivetrain",
@@ -1968,51 +1737,14 @@
     "page_title": "Drivetrain",
     "url": "https://api.vex.com/v5/home/cpp/Drivetrain/index.html",
     "signatures": [
-      "void drive(directionType dir);"
-    ],
-    "description": "",
-    "parameters": [
-      {
-        "name": "dir",
-        "type": "directionType",
-        "description": ""
-      }
-    ],
-    "return_value": "void",
-    "notes": [
-      "driveis non-waiting; the project will continue executing the next line of code immediately after the call.",
-      "The drivetrain will continue moving untilstopis called or another drivetrain movement function (such asdriveFororturn) is executed.",
-      "Functions such asisDoneandisMovingare not applicable todrive, since it does not use target-based movement (doesn’t have adistanceparameter)."
-    ],
-    "examples": [],
-    "is_constructor": false,
-    "is_destructor": false,
-    "is_member_function": true
-  },
-  {
-    "name": "drive",
-    "class": "Drivetrain",
-    "page": "home/cpp/Drivetrain/index",
-    "page_title": "Drivetrain",
-    "url": "https://api.vex.com/v5/home/cpp/Drivetrain/index.html",
-    "signatures": [
+      "void drive(directionType dir);",
       "void drive(directionType dir, double velocity, velocityUnits units);"
     ],
-    "description": "",
+    "description": "Thedrivetrainclass includes the following member functions:",
     "parameters": [
       {
         "name": "dir",
         "type": "directionType",
-        "description": ""
-      },
-      {
-        "name": "velocity",
-        "type": "double",
-        "description": ""
-      },
-      {
-        "name": "units",
-        "type": "velocityUnits",
         "description": ""
       }
     ],
@@ -2022,7 +1754,9 @@
       "The drivetrain will continue moving untilstopis called or another drivetrain movement function (such asdriveFororturn) is executed.",
       "Functions such asisDoneandisMovingare not applicable todrive, since it does not use target-based movement (doesn’t have adistanceparameter)."
     ],
-    "examples": [],
+    "examples": [
+      "// Drive forward and back myDrivetrain.drive(forward); wait(2, seconds); myDrivetrain.drive(reverse, 25, rpm); wait(2, seconds); myDrivetrain.stop();"
+    ],
     "is_constructor": false,
     "is_destructor": false,
     "is_member_function": true
@@ -2118,46 +1852,10 @@
     "page_title": "smartdrive",
     "url": "https://api.vex.com/v5/home/cpp/Drivetrain/smartdrive.html",
     "signatures": [
-      "bool turnToHeading(double angle, rotationUnits units, bool waitForCompletion = true);"
-    ],
-    "description": "",
-    "parameters": [
-      {
-        "name": "angle",
-        "type": "double",
-        "description": ""
-      },
-      {
-        "name": "units",
-        "type": "rotationUnits",
-        "description": ""
-      },
-      {
-        "name": "true",
-        "type": "bool waitForCompletion =",
-        "description": ""
-      }
-    ],
-    "return_value": "bool",
-    "notes": [
-      "Executing another drivetrain movement function (such asturnordrive) whileturnToHeadingis in progress will interrupt the current movement.",
-      "BecauseturnToHeadingis target-based (uses anangleparameter), functions such asisDoneandisMovingwork withturnToHeading."
-    ],
-    "examples": [],
-    "is_constructor": false,
-    "is_destructor": false,
-    "is_member_function": true
-  },
-  {
-    "name": "turnToHeading",
-    "class": "smartdrive",
-    "page": "home/cpp/Drivetrain/smartdrive",
-    "page_title": "smartdrive",
-    "url": "https://api.vex.com/v5/home/cpp/Drivetrain/smartdrive.html",
-    "signatures": [
+      "bool turnToHeading(double angle, rotationUnits units, bool waitForCompletion = true);",
       "bool turnToHeading(double angle, rotationUnits units, double velocity, velocityUnits units_v, bool waitForCompletion = true);"
     ],
-    "description": "",
+    "description": "Thesmartdriveclass includes the following member functions:",
     "parameters": [
       {
         "name": "angle",
@@ -2170,18 +1868,8 @@
         "description": ""
       },
       {
-        "name": "velocity",
-        "type": "double",
-        "description": ""
-      },
-      {
-        "name": "units_v",
-        "type": "velocityUnits",
-        "description": ""
-      },
-      {
-        "name": "true",
-        "type": "bool waitForCompletion =",
+        "name": "waitForCompletion",
+        "type": "bool",
         "description": ""
       }
     ],
@@ -2190,7 +1878,9 @@
       "Executing another drivetrain movement function (such asturnordrive) whileturnToHeadingis in progress will interrupt the current movement.",
       "BecauseturnToHeadingis target-based (uses anangleparameter), functions such asisDoneandisMovingwork withturnToHeading."
     ],
-    "examples": [],
+    "examples": [
+      "// Face the new 0 degrees myDrivetrain.setHeading(90, degrees); myDrivetrain.turnToHeading(0, degrees);"
+    ],
     "is_constructor": false,
     "is_destructor": false,
     "is_member_function": true
@@ -2289,9 +1979,10 @@
     "page_title": "Custom Colors",
     "url": "https://api.vex.com/v5/home/cpp/Logic/Custom_color.html",
     "signatures": [
-      "uint32_t rgb(uint32_t value);"
+      "uint32_t rgb(uint32_t value);",
+      "uint32_t rgb(uint8_t r, uint8_t g, uint8_t b);"
     ],
-    "description": "",
+    "description": "Thecolorclass includes the following member functions:",
     "parameters": [
       {
         "name": "value",
@@ -2301,41 +1992,9 @@
     ],
     "return_value": "uint32_t",
     "notes": [],
-    "examples": [],
-    "is_constructor": false,
-    "is_destructor": false,
-    "is_member_function": true
-  },
-  {
-    "name": "rgb",
-    "class": "Custom Colors",
-    "page": "home/cpp/Logic/Custom_color",
-    "page_title": "Custom Colors",
-    "url": "https://api.vex.com/v5/home/cpp/Logic/Custom_color.html",
-    "signatures": [
-      "uint32_t rgb(uint8_t r, uint8_t g, uint8_t b);"
+    "examples": [
+      "// Draw a rectangle with a custom teal color color brainColor = color(50, 200, 180); Brain.Screen.setFillColor(brainColor); Brain.Screen.drawRectangle(0, 0, 480, 120); // Change the color to magenta for a second rectangle brainColor.rgb(170, 40, 150); Brain.Screen.setFillColor(brainColor); Brain.Screen.drawRectangle(0, 120, 480, 120);"
     ],
-    "description": "",
-    "parameters": [
-      {
-        "name": "r",
-        "type": "uint8_t",
-        "description": ""
-      },
-      {
-        "name": "g",
-        "type": "uint8_t",
-        "description": ""
-      },
-      {
-        "name": "b",
-        "type": "uint8_t",
-        "description": ""
-      }
-    ],
-    "return_value": "uint32_t",
-    "notes": [],
-    "examples": [],
     "is_constructor": false,
     "is_destructor": false,
     "is_member_function": true
@@ -2481,14 +2140,16 @@
     "signatures": [
       "void clear();"
     ],
-    "description": "",
+    "description": "Thetimerclass includes the following member functions:",
     "parameters": [],
     "return_value": "void",
     "notes": [
       "The timer begins counting when the custom timer is constructed.",
       "Callingclearresets the timer value to zero."
     ],
-    "examples": [],
+    "examples": [
+      "while (true) { // Clear the timer every time the screen is pressed if (Brain.Screen.pressing()) { myTimer.clear(); } Brain.Screen.clearScreen(); Brain.Screen.setCursor(1, 1); Brain.Screen.print(\"Time: %.2f\", myTimer.time(msec)); wait(50, msec); }"
+    ],
     "is_constructor": false,
     "is_destructor": false,
     "is_member_function": true
@@ -2829,14 +2490,16 @@
     "signatures": [
       "void interrupt();"
     ],
-    "description": "",
+    "description": "The thread class includes the following member functions:",
     "parameters": [],
     "return_value": "void",
     "notes": [
       "Once a thread is stopped, it cannot be restarted. To run it again, you must create a new thread usingthread.",
       "This is useful when a task is no longer needed or when a program needs to reset or reassign threads."
     ],
-    "examples": [],
+    "examples": [
+      "// Loop through red and green void colorLoop() { while (true) { Brain.Screen.drawRectangle(0, 120, 480, 120, red); wait(0.5, seconds); Brain.Screen.drawRectangle(0, 120, 480, 120, green); wait(0.5, seconds); } } // Display the current heading void displayHeading() { Brain.Screen.setFont(prop60); while (true) { Brain.Screen.clearLine(1); Brain.Screen.setCursor(1, 1); Brain.Screen.print(\"Heading: %.1f\", DrivetrainInertial.heading(degrees)); wait(50, msec); } } // Turn right, change screen color, and display heading at once thread colorThread = thread(colorLoop); thread displayHeadingThread = thread(displayHeading); Drivetrain.turn(right); wait(2, seconds); // Stop the flashing colors colorThread.interrupt();"
+    ],
     "is_constructor": false,
     "is_destructor": false,
     "is_member_function": true
@@ -2938,50 +2601,14 @@
     "page_title": "Motor Controller 55",
     "url": "https://api.vex.com/v5/home/cpp/Motors_and_MotorControllers/mc55.html",
     "signatures": [
-      "void spin(directionType dir);"
-    ],
-    "description": "",
-    "parameters": [
-      {
-        "name": "dir",
-        "type": "directionType",
-        "description": ""
-      }
-    ],
-    "return_value": "void",
-    "notes": [
-      "This function is non-waiting and the program continues immediately after the call.",
-      "The motor will continue spinning untilstopis called or anotherspinis used."
-    ],
-    "examples": [],
-    "is_constructor": false,
-    "is_destructor": false,
-    "is_member_function": true
-  },
-  {
-    "name": "spin",
-    "class": "Motor Controller 55",
-    "page": "home/cpp/Motors_and_MotorControllers/mc55",
-    "page_title": "Motor Controller 55",
-    "url": "https://api.vex.com/v5/home/cpp/Motors_and_MotorControllers/mc55.html",
-    "signatures": [
+      "void spin(directionType dir);",
       "void spin(directionType dir, double voltage, voltageUnits units);"
     ],
-    "description": "",
+    "description": "Themotor55class includes the following member functions:",
     "parameters": [
       {
         "name": "dir",
         "type": "directionType",
-        "description": ""
-      },
-      {
-        "name": "voltage",
-        "type": "double",
-        "description": ""
-      },
-      {
-        "name": "units",
-        "type": "voltageUnits",
         "description": ""
       }
     ],
@@ -3046,9 +2673,10 @@
     "page_title": "Motor 393 (Motor Controller 29)",
     "url": "https://api.vex.com/v5/home/cpp/Motors_and_MotorControllers/motor_393.html",
     "signatures": [
-      "void spin(directionType dir);"
+      "void spin(directionType dir);",
+      "void spin(directionType dir, double velocity, velocityUnits units);"
     ],
-    "description": "",
+    "description": "Themotor29class includes the following member functions:",
     "parameters": [
       {
         "name": "dir",
@@ -3060,208 +2688,6 @@
     "notes": [
       "This function is non-waiting and the project will continue executing immediately after the call.",
       "The Motor 393 will continue spinning untilstopis called or anotherspinis used."
-    ],
-    "examples": [],
-    "is_constructor": false,
-    "is_destructor": false,
-    "is_member_function": true
-  },
-  {
-    "name": "spin",
-    "class": "Motor 393 (Motor Controller 29)",
-    "page": "home/cpp/Motors_and_MotorControllers/motor_393",
-    "page_title": "Motor 393 (Motor Controller 29)",
-    "url": "https://api.vex.com/v5/home/cpp/Motors_and_MotorControllers/motor_393.html",
-    "signatures": [
-      "void spin(directionType dir, double velocity, velocityUnits units);"
-    ],
-    "description": "",
-    "parameters": [
-      {
-        "name": "dir",
-        "type": "directionType",
-        "description": ""
-      },
-      {
-        "name": "velocity",
-        "type": "double",
-        "description": ""
-      },
-      {
-        "name": "units",
-        "type": "velocityUnits",
-        "description": ""
-      }
-    ],
-    "return_value": "void",
-    "notes": [
-      "This function is non-waiting and the project will continue executing immediately after the call.",
-      "The Motor 393 will continue spinning untilstopis called or anotherspinis used."
-    ],
-    "examples": [],
-    "is_constructor": false,
-    "is_destructor": false,
-    "is_member_function": true
-  },
-  {
-    "name": "Motor",
-    "class": "Motor and Motor Group",
-    "page": "home/cpp/Motors_and_MotorControllers/motor_and_motor_group",
-    "page_title": "Motor and Motor Group",
-    "url": "https://api.vex.com/v5/home/cpp/Motors_and_MotorControllers/motor_and_motor_group.html",
-    "signatures": [
-      "motor(int32_t index);",
-      "motor(int32_t index, bool reverse);",
-      "motor(int32_t index, gearSetting gears);",
-      "motor(int32_t index, gearSetting gears, bool reverse);"
-    ],
-    "description": "",
-    "parameters": [
-      {
-        "name": "index",
-        "type": "int32_t",
-        "description": "The Smart Port that the motor is connected to, written as PORTx , where x is the port number (for example, PORT1 )."
-      },
-      {
-        "name": "reverse",
-        "type": "bool",
-        "description": "Sets the positive direction of motor rotation: false (default) — Clockwise rotation is treated as forward (positive direction). true — Counterclockwise rotation is treated as forward (positive direction)."
-      },
-      {
-        "name": "gears",
-        "type": "gearSetting",
-        "description": "Specifies the internal gear cartridge ratio. ratio36_1 — The red 36:1 gear cartridge ratio18_1 — The green 18:1 gear cartridge ratio6_1 — The blue 6:1 gear cartridge"
-      }
-    ],
-    "return_value": "",
-    "notes": [],
-    "examples": []
-  },
-  {
-    "name": "Motor Group",
-    "class": "Motor and Motor Group",
-    "page": "home/cpp/Motors_and_MotorControllers/motor_and_motor_group",
-    "page_title": "Motor and Motor Group",
-    "url": "https://api.vex.com/v5/home/cpp/Motors_and_MotorControllers/motor_and_motor_group.html",
-    "signatures": [
-      "motor_group(motor&m1, Args&... m2);",
-      "~motor_group();"
-    ],
-    "description": "",
-    "parameters": [
-      {
-        "name": "m1",
-        "type": "motor &",
-        "description": "The first motor added to the group."
-      },
-      {
-        "name": "m2",
-        "type": "motor &",
-        "description": "Additional motors added to the group. The maximum is four motors to one motor group."
-      }
-    ],
-    "return_value": "",
-    "notes": [],
-    "examples": []
-  },
-  {
-    "name": "spin",
-    "class": "Motor and Motor Group",
-    "page": "home/cpp/Motors_and_MotorControllers/motor_and_motor_group",
-    "page_title": "Motor and Motor Group",
-    "url": "https://api.vex.com/v5/home/cpp/Motors_and_MotorControllers/motor_and_motor_group.html",
-    "signatures": [
-      "void spin(directionType dir);"
-    ],
-    "description": "",
-    "parameters": [
-      {
-        "name": "dir",
-        "type": "directionType",
-        "description": ""
-      }
-    ],
-    "return_value": "void",
-    "notes": [
-      "This function is non-waiting and the project will continue executing immediately after the call.",
-      "The motor or motor group will continue spinning untilstopis called or another movement function is executed.",
-      "Functions such asisDoneandisSpinningare not applicable tospin, since it does not use target-based movement (doesn’t have arotationortimeparameter)."
-    ],
-    "examples": [],
-    "is_constructor": false,
-    "is_destructor": false,
-    "is_member_function": true
-  },
-  {
-    "name": "spin",
-    "class": "Motor and Motor Group",
-    "page": "home/cpp/Motors_and_MotorControllers/motor_and_motor_group",
-    "page_title": "Motor and Motor Group",
-    "url": "https://api.vex.com/v5/home/cpp/Motors_and_MotorControllers/motor_and_motor_group.html",
-    "signatures": [
-      "void spin(directionType dir, double velocity, velocityUnits units);"
-    ],
-    "description": "",
-    "parameters": [
-      {
-        "name": "dir",
-        "type": "directionType",
-        "description": ""
-      },
-      {
-        "name": "velocity",
-        "type": "double",
-        "description": ""
-      },
-      {
-        "name": "units",
-        "type": "velocityUnits",
-        "description": ""
-      }
-    ],
-    "return_value": "void",
-    "notes": [
-      "This function is non-waiting and the project will continue executing immediately after the call.",
-      "The motor or motor group will continue spinning untilstopis called or another movement function is executed.",
-      "Functions such asisDoneandisSpinningare not applicable tospin, since it does not use target-based movement (doesn’t have arotationortimeparameter)."
-    ],
-    "examples": [],
-    "is_constructor": false,
-    "is_destructor": false,
-    "is_member_function": true
-  },
-  {
-    "name": "spin",
-    "class": "Motor and Motor Group",
-    "page": "home/cpp/Motors_and_MotorControllers/motor_and_motor_group",
-    "page_title": "Motor and Motor Group",
-    "url": "https://api.vex.com/v5/home/cpp/Motors_and_MotorControllers/motor_and_motor_group.html",
-    "signatures": [
-      "void spin(directionType dir, double voltage, voltageUnits units);"
-    ],
-    "description": "",
-    "parameters": [
-      {
-        "name": "dir",
-        "type": "directionType",
-        "description": ""
-      },
-      {
-        "name": "voltage",
-        "type": "double",
-        "description": ""
-      },
-      {
-        "name": "units",
-        "type": "voltageUnits",
-        "description": ""
-      }
-    ],
-    "return_value": "void",
-    "notes": [
-      "This function is non-waiting and the project will continue executing immediately after the call.",
-      "The motor or motor group will continue spinning untilstopis called or another movement function is executed.",
-      "Functions such asisDoneandisSpinningare not applicable tospin, since it does not use target-based movement (doesn’t have arotationortimeparameter)."
     ],
     "examples": [],
     "is_constructor": false,
@@ -3313,9 +2739,10 @@
     "page_title": "Servo Motor",
     "url": "https://api.vex.com/v5/home/cpp/Motors_and_MotorControllers/servo_motor.html",
     "signatures": [
-      "void setPosition(int32_t value, percentUnits units);"
+      "void setPosition(int32_t value, percentUnits units);",
+      "void setPosition(double value, rotationUnits units);"
     ],
-    "description": "",
+    "description": "Theservoclass includes the following member functions:",
     "parameters": [
       {
         "name": "value",
@@ -3333,39 +2760,9 @@
       "When using percentage units, the valid range is 0 – 100%.",
       "When using rotation units, the servo will move to the absolute position specified."
     ],
-    "examples": [],
-    "is_constructor": false,
-    "is_destructor": false,
-    "is_member_function": true
-  },
-  {
-    "name": "setPosition",
-    "class": "Servo Motor",
-    "page": "home/cpp/Motors_and_MotorControllers/servo_motor",
-    "page_title": "Servo Motor",
-    "url": "https://api.vex.com/v5/home/cpp/Motors_and_MotorControllers/servo_motor.html",
-    "signatures": [
-      "void setPosition(double value, rotationUnits units);"
+    "examples": [
+      "// Set the servo position to 10 percent myServo.setPosition(10, percent); // Set the servo position to 45.5 degrees myServo.setPosition(45.5, degrees); // Set the servo position to 90 degrees myServo.setPosition(90, degrees);"
     ],
-    "description": "",
-    "parameters": [
-      {
-        "name": "value",
-        "type": "double",
-        "description": ""
-      },
-      {
-        "name": "units",
-        "type": "rotationUnits",
-        "description": ""
-      }
-    ],
-    "return_value": "void",
-    "notes": [
-      "When using percentage units, the valid range is 0 – 100%.",
-      "When using rotation units, the servo will move to the absolute position specified."
-    ],
-    "examples": [],
     "is_constructor": false,
     "is_destructor": false,
     "is_member_function": true
@@ -3421,49 +2818,14 @@
     "page_title": "Victor 883 Motor",
     "url": "https://api.vex.com/v5/home/cpp/Motors_and_MotorControllers/victor_motor.html",
     "signatures": [
-      "void spin(directionType dir);"
-    ],
-    "description": "",
-    "parameters": [
-      {
-        "name": "dir",
-        "type": "directionType",
-        "description": ""
-      }
-    ],
-    "return_value": "void",
-    "notes": [
-      "The motor will continue spinning untilstopis called or another movement function is executed."
-    ],
-    "examples": [],
-    "is_constructor": false,
-    "is_destructor": false,
-    "is_member_function": true
-  },
-  {
-    "name": "spin",
-    "class": "Victor 883 Motor",
-    "page": "home/cpp/Motors_and_MotorControllers/victor_motor",
-    "page_title": "Victor 883 Motor",
-    "url": "https://api.vex.com/v5/home/cpp/Motors_and_MotorControllers/victor_motor.html",
-    "signatures": [
+      "void spin(directionType dir);",
       "void spin(directionType dir, double velocity, velocityUnits units);"
     ],
-    "description": "",
+    "description": "Themotor_victorclass includes the following member functions:",
     "parameters": [
       {
         "name": "dir",
         "type": "directionType",
-        "description": ""
-      },
-      {
-        "name": "velocity",
-        "type": "double",
-        "description": ""
-      },
-      {
-        "name": "units",
-        "type": "velocityUnits",
         "description": ""
       }
     ],
@@ -3471,7 +2833,9 @@
     "notes": [
       "The motor will continue spinning untilstopis called or another movement function is executed."
     ],
-    "examples": [],
+    "examples": [
+      "// Spin forward, then stop victor.spin(forward); wait(1, seconds); victor.stop();"
+    ],
     "is_constructor": false,
     "is_destructor": false,
     "is_member_function": true
@@ -3559,9 +2923,14 @@
     "page_title": "AI Vision Sensor",
     "url": "https://api.vex.com/v5/home/cpp/Smart_Port_Devices/AI_Vision_Sensor.html",
     "signatures": [
-      "int32_t takeSnapshot(uint32_t id, objectType type, uint32_t count);"
+      "int32_t takeSnapshot(uint32_t id, objectType type, uint32_t count);",
+      "int32_t takeSnapshot(const colordesc&desc, int32_t count = 8);",
+      "int32_t takeSnapshot(const codedesc&desc, int32_t count = 8);",
+      "int32_t takeSnapshot(const tagdesc&desc, int32_t count = 8);",
+      "int32_t takeSnapshot(const aiobjdesc&desc, int32_t count = 8);",
+      "int32_t takeSnapshot(const objdesc&desc, int32_t count = 8);"
     ],
-    "description": "",
+    "description": "Theaivisionclass includes the following member functions:",
     "parameters": [
       {
         "name": "id",
@@ -3585,172 +2954,9 @@
       "Theobjectsarray is refreshed on every call.",
       "Whencountis specified, only the largest detected objects (up to the specified amount) are stored."
     ],
-    "examples": [],
-    "is_constructor": false,
-    "is_destructor": false,
-    "is_member_function": true
-  },
-  {
-    "name": "takeSnapshot",
-    "class": "AI Vision Sensor",
-    "page": "home/cpp/Smart_Port_Devices/AI_Vision_Sensor",
-    "page_title": "AI Vision Sensor",
-    "url": "https://api.vex.com/v5/home/cpp/Smart_Port_Devices/AI_Vision_Sensor.html",
-    "signatures": [
-      "int32_t takeSnapshot(const colordesc&desc, int32_t count = 8);"
+    "examples": [
+      "// Move forward if an object is detected while (true) { AIVision1.takeSnapshot(aivision::ALL_AIOBJS); if (AIVision1.objects[0].exists) { Drivetrain.driveFor(forward, 50, mm); } wait(50, msec); }"
     ],
-    "description": "",
-    "parameters": [
-      {
-        "name": "colordesc&desc",
-        "type": "const",
-        "description": ""
-      },
-      {
-        "name": "8",
-        "type": "int32_t count =",
-        "description": ""
-      }
-    ],
-    "return_value": "int32_t",
-    "notes": [
-      "The AI Vision Sensor must take a snapshot before object data can be accessed.",
-      "Theobjectsarray is refreshed on every call.",
-      "Whencountis specified, only the largest detected objects (up to the specified amount) are stored."
-    ],
-    "examples": [],
-    "is_constructor": false,
-    "is_destructor": false,
-    "is_member_function": true
-  },
-  {
-    "name": "takeSnapshot",
-    "class": "AI Vision Sensor",
-    "page": "home/cpp/Smart_Port_Devices/AI_Vision_Sensor",
-    "page_title": "AI Vision Sensor",
-    "url": "https://api.vex.com/v5/home/cpp/Smart_Port_Devices/AI_Vision_Sensor.html",
-    "signatures": [
-      "int32_t takeSnapshot(const codedesc&desc, int32_t count = 8);"
-    ],
-    "description": "",
-    "parameters": [
-      {
-        "name": "codedesc&desc",
-        "type": "const",
-        "description": ""
-      },
-      {
-        "name": "8",
-        "type": "int32_t count =",
-        "description": ""
-      }
-    ],
-    "return_value": "int32_t",
-    "notes": [
-      "The AI Vision Sensor must take a snapshot before object data can be accessed.",
-      "Theobjectsarray is refreshed on every call.",
-      "Whencountis specified, only the largest detected objects (up to the specified amount) are stored."
-    ],
-    "examples": [],
-    "is_constructor": false,
-    "is_destructor": false,
-    "is_member_function": true
-  },
-  {
-    "name": "takeSnapshot",
-    "class": "AI Vision Sensor",
-    "page": "home/cpp/Smart_Port_Devices/AI_Vision_Sensor",
-    "page_title": "AI Vision Sensor",
-    "url": "https://api.vex.com/v5/home/cpp/Smart_Port_Devices/AI_Vision_Sensor.html",
-    "signatures": [
-      "int32_t takeSnapshot(const tagdesc&desc, int32_t count = 8);"
-    ],
-    "description": "",
-    "parameters": [
-      {
-        "name": "tagdesc&desc",
-        "type": "const",
-        "description": ""
-      },
-      {
-        "name": "8",
-        "type": "int32_t count =",
-        "description": ""
-      }
-    ],
-    "return_value": "int32_t",
-    "notes": [
-      "The AI Vision Sensor must take a snapshot before object data can be accessed.",
-      "Theobjectsarray is refreshed on every call.",
-      "Whencountis specified, only the largest detected objects (up to the specified amount) are stored."
-    ],
-    "examples": [],
-    "is_constructor": false,
-    "is_destructor": false,
-    "is_member_function": true
-  },
-  {
-    "name": "takeSnapshot",
-    "class": "AI Vision Sensor",
-    "page": "home/cpp/Smart_Port_Devices/AI_Vision_Sensor",
-    "page_title": "AI Vision Sensor",
-    "url": "https://api.vex.com/v5/home/cpp/Smart_Port_Devices/AI_Vision_Sensor.html",
-    "signatures": [
-      "int32_t takeSnapshot(const aiobjdesc&desc, int32_t count = 8);"
-    ],
-    "description": "",
-    "parameters": [
-      {
-        "name": "aiobjdesc&desc",
-        "type": "const",
-        "description": ""
-      },
-      {
-        "name": "8",
-        "type": "int32_t count =",
-        "description": ""
-      }
-    ],
-    "return_value": "int32_t",
-    "notes": [
-      "The AI Vision Sensor must take a snapshot before object data can be accessed.",
-      "Theobjectsarray is refreshed on every call.",
-      "Whencountis specified, only the largest detected objects (up to the specified amount) are stored."
-    ],
-    "examples": [],
-    "is_constructor": false,
-    "is_destructor": false,
-    "is_member_function": true
-  },
-  {
-    "name": "takeSnapshot",
-    "class": "AI Vision Sensor",
-    "page": "home/cpp/Smart_Port_Devices/AI_Vision_Sensor",
-    "page_title": "AI Vision Sensor",
-    "url": "https://api.vex.com/v5/home/cpp/Smart_Port_Devices/AI_Vision_Sensor.html",
-    "signatures": [
-      "int32_t takeSnapshot(const objdesc&desc, int32_t count = 8);"
-    ],
-    "description": "",
-    "parameters": [
-      {
-        "name": "objdesc&desc",
-        "type": "const",
-        "description": ""
-      },
-      {
-        "name": "8",
-        "type": "int32_t count =",
-        "description": ""
-      }
-    ],
-    "return_value": "int32_t",
-    "notes": [
-      "The AI Vision Sensor must take a snapshot before object data can be accessed.",
-      "Theobjectsarray is refreshed on every call.",
-      "Whencountis specified, only the largest detected objects (up to the specified amount) are stored."
-    ],
-    "examples": [],
     "is_constructor": false,
     "is_destructor": false,
     "is_member_function": true
@@ -3819,7 +3025,7 @@
     "signatures": [
       "double objectDistance(distanceUnits units);"
     ],
-    "description": "",
+    "description": "Thedistanceclass includes the following member functions:",
     "parameters": [
       {
         "name": "units",
@@ -4000,11 +3206,11 @@
     "signatures": [
       "double heading(rotationUnits units = degrees);"
     ],
-    "description": "",
+    "description": "Theinertialclass includes the following member functions:",
     "parameters": [
       {
-        "name": "degrees",
-        "type": "rotationUnits units =",
+        "name": "units",
+        "type": "rotationUnits",
         "description": ""
       }
     ],
@@ -4012,7 +3218,9 @@
     "notes": [
       "The heading value is wrapped between 0 and 360 degrees. Userotationto access the continuous (unbounded) rotation value."
     ],
-    "examples": [],
+    "examples": [
+      "// Turn, then show the current heading Drivetrain.turnFor(right, 450, degrees); Brain.Screen.print(\"%f\", myInertial.heading(degrees));"
+    ],
     "is_constructor": false,
     "is_destructor": false,
     "is_member_function": true
@@ -4064,7 +3272,7 @@
     "signatures": [
       "void setLight(ledState state);"
     ],
-    "description": "",
+    "description": "Theopticalclass includes the following member functions:",
     "parameters": [
       {
         "name": "state",
@@ -4074,7 +3282,9 @@
     ],
     "return_value": "void",
     "notes": [],
-    "examples": [],
+    "examples": [
+      "// Turn on LED with previous intensity. Optical.setLight(ledState::on);"
+    ],
     "is_constructor": false,
     "is_destructor": false,
     "is_member_function": true
@@ -4131,7 +3341,7 @@
     "signatures": [
       "void setPosition(double value, rotationUnits units);"
     ],
-    "description": "",
+    "description": "Therotationclass includes the following member functions:",
     "parameters": [
       {
         "name": "value",
@@ -4146,7 +3356,9 @@
     ],
     "return_value": "void",
     "notes": [],
-    "examples": [],
+    "examples": [
+      "// Get the current angle of the Rotation Sensor double angle = Rotation1.angle(degrees); // Print the current angle of the Rotation Sensor to the // Brain's screen. Brain.Screen.print(angle);"
+    ],
     "is_constructor": false,
     "is_destructor": false,
     "is_member_function": true
@@ -4270,162 +3482,17 @@
     "page_title": "Vision Sensor",
     "url": "https://api.vex.com/v5/home/cpp/Smart_Port_Devices/Vision_Sensor.html",
     "signatures": [
-      "int32_t takeSnapshot(uint32_t id);"
-    ],
-    "description": "",
-    "parameters": [
-      {
-        "name": "id",
-        "type": "uint32_t",
-        "description": ""
-      }
-    ],
-    "return_value": "int32_t",
-    "notes": [
-      "The Vision Sensor must take a snapshot before object data can be accessed.",
-      "Whencountis specified, only the largest detected objects (up to the specified amount) are stored."
-    ],
-    "examples": [],
-    "is_constructor": false,
-    "is_destructor": false,
-    "is_member_function": true
-  },
-  {
-    "name": "takeSnapshot",
-    "class": "Vision Sensor",
-    "page": "home/cpp/Smart_Port_Devices/Vision_Sensor",
-    "page_title": "Vision Sensor",
-    "url": "https://api.vex.com/v5/home/cpp/Smart_Port_Devices/Vision_Sensor.html",
-    "signatures": [
-      "int32_t takeSnapshot(code&cc);"
-    ],
-    "description": "",
-    "parameters": [
-      {
-        "name": "",
-        "type": "code&cc",
-        "description": ""
-      }
-    ],
-    "return_value": "int32_t",
-    "notes": [
-      "The Vision Sensor must take a snapshot before object data can be accessed.",
-      "Whencountis specified, only the largest detected objects (up to the specified amount) are stored."
-    ],
-    "examples": [],
-    "is_constructor": false,
-    "is_destructor": false,
-    "is_member_function": true
-  },
-  {
-    "name": "takeSnapshot",
-    "class": "Vision Sensor",
-    "page": "home/cpp/Smart_Port_Devices/Vision_Sensor",
-    "page_title": "Vision Sensor",
-    "url": "https://api.vex.com/v5/home/cpp/Smart_Port_Devices/Vision_Sensor.html",
-    "signatures": [
-      "int32_t takeSnapshot(signature&sig);"
-    ],
-    "description": "",
-    "parameters": [
-      {
-        "name": "",
-        "type": "signature&sig",
-        "description": ""
-      }
-    ],
-    "return_value": "int32_t",
-    "notes": [
-      "The Vision Sensor must take a snapshot before object data can be accessed.",
-      "Whencountis specified, only the largest detected objects (up to the specified amount) are stored."
-    ],
-    "examples": [],
-    "is_constructor": false,
-    "is_destructor": false,
-    "is_member_function": true
-  },
-  {
-    "name": "takeSnapshot",
-    "class": "Vision Sensor",
-    "page": "home/cpp/Smart_Port_Devices/Vision_Sensor",
-    "page_title": "Vision Sensor",
-    "url": "https://api.vex.com/v5/home/cpp/Smart_Port_Devices/Vision_Sensor.html",
-    "signatures": [
-      "int32_t takeSnapshot(uint32_t id, uint32_t count);"
-    ],
-    "description": "",
-    "parameters": [
-      {
-        "name": "id",
-        "type": "uint32_t",
-        "description": ""
-      },
-      {
-        "name": "count",
-        "type": "uint32_t",
-        "description": ""
-      }
-    ],
-    "return_value": "int32_t",
-    "notes": [
-      "The Vision Sensor must take a snapshot before object data can be accessed.",
-      "Whencountis specified, only the largest detected objects (up to the specified amount) are stored."
-    ],
-    "examples": [],
-    "is_constructor": false,
-    "is_destructor": false,
-    "is_member_function": true
-  },
-  {
-    "name": "takeSnapshot",
-    "class": "Vision Sensor",
-    "page": "home/cpp/Smart_Port_Devices/Vision_Sensor",
-    "page_title": "Vision Sensor",
-    "url": "https://api.vex.com/v5/home/cpp/Smart_Port_Devices/Vision_Sensor.html",
-    "signatures": [
-      "int32_t takeSnapshot(code&cc, uint32_t count);"
-    ],
-    "description": "",
-    "parameters": [
-      {
-        "name": "",
-        "type": "code&cc",
-        "description": ""
-      },
-      {
-        "name": "count",
-        "type": "uint32_t",
-        "description": ""
-      }
-    ],
-    "return_value": "int32_t",
-    "notes": [
-      "The Vision Sensor must take a snapshot before object data can be accessed.",
-      "Whencountis specified, only the largest detected objects (up to the specified amount) are stored."
-    ],
-    "examples": [],
-    "is_constructor": false,
-    "is_destructor": false,
-    "is_member_function": true
-  },
-  {
-    "name": "takeSnapshot",
-    "class": "Vision Sensor",
-    "page": "home/cpp/Smart_Port_Devices/Vision_Sensor",
-    "page_title": "Vision Sensor",
-    "url": "https://api.vex.com/v5/home/cpp/Smart_Port_Devices/Vision_Sensor.html",
-    "signatures": [
+      "int32_t takeSnapshot(uint32_t id);",
+      "int32_t takeSnapshot(code&cc);",
+      "int32_t takeSnapshot(signature&sig);",
+      "int32_t takeSnapshot(uint32_t id, uint32_t count);",
+      "int32_t takeSnapshot(code&cc, uint32_t count);",
       "int32_t takeSnapshot(signature&sig, uint32_t count);"
     ],
-    "description": "",
+    "description": "Thevisionclass includes the following member functions:",
     "parameters": [
       {
-        "name": "",
-        "type": "signature&sig",
-        "description": ""
-      },
-      {
-        "name": "count",
+        "name": "id",
         "type": "uint32_t",
         "description": ""
       }
@@ -4435,7 +3502,9 @@
       "The Vision Sensor must take a snapshot before object data can be accessed.",
       "Whencountis specified, only the largest detected objects (up to the specified amount) are stored."
     ],
-    "examples": [],
+    "examples": [
+      "while (true) { // Display if a blue object is detected Vision1.takeSnapshot(Vision1__BLUEBOX); Brain.Screen.clearScreen(); Brain.Screen.setCursor(1, 1); if (Vision1.objects[0].exists) { Brain.Screen.print(\"Blue detected\"); } else { Brain.Screen.print(\"No blue\"); } wait(0.5, seconds); }"
+    ],
     "is_constructor": false,
     "is_destructor": false,
     "is_member_function": true
@@ -4519,7 +3588,7 @@
     "signatures": [
       "bool isLinked();"
     ],
-    "description": "",
+    "description": "Themessage_linkclass includes the following member functions:",
     "parameters": [],
     "return_value": "bool",
     "notes": [
@@ -4529,7 +3598,9 @@
       "For example, if the other linked V5 Brain useslink.send(“string”, 1, 2.55), then usinglink.receive()returns an encoded string such as.string_1_2.5500. You can split this encoded string (see the examples below) to extract the message name, integer, and float values.",
       "If you’d rather avoid manual splitting/parsing, usereceivedto register a handler for a specific message name; the handler receives the sent values as arguments."
     ],
-    "examples": [],
+    "examples": [
+      "// Tell the other robot when the screen is being pressed // Create the link message_link link = message_link(PORT1, \"VEXRoboticsLink123456789\", linkType::manager, true); // Do not run code UNTIL the Brains are linked while (!link.isLinked()){ wait(0.1, seconds); } Brain.Screen.print(\"Robot 1 - Manager\"); // Continuously send if the screen is being pressed while (true){ if (Brain.Screen.pressing()){ link.send(\"pressed\"); } else { link.send(\"released\"); } wait(0.05, seconds); }"
+    ],
     "is_constructor": false,
     "is_destructor": false,
     "is_member_function": true
@@ -4596,13 +3667,15 @@
     "signatures": [
       "bool isLinked();"
     ],
-    "description": "",
+    "description": "Theserial_linkclass includes the following member functions:",
     "parameters": [],
     "return_value": "bool",
     "notes": [
       "It is good practice to always check to ensure the V5 Brains are linked at the start of a project before running any further code."
     ],
-    "examples": [],
+    "examples": [
+      "// Create the link serial_link link(PORT1, \"VEXRoboticsLink123456789\", linkType::manager, true); // Do not run code UNTIL the Brains are linked while (!link.isLinked()) { wait(0.1, seconds); } Brain.Screen.print(\"Robot 1 - Manager\"); Brain.Screen.newLine(); Brain.Screen.print(\"Sending message...\"); // Message to send const char* message = \"Hello Robot 2\"; // Send the message link.send((uint8_t*)message, strlen(message));"
+    ],
     "is_constructor": false,
     "is_destructor": false,
     "is_member_function": true
@@ -4630,5 +3703,974 @@
     "examples": [
       "// Drive forward, then coast to a stop myDrivetrain.setDriveVelocity(100, percent); myDrivetrain.drive(forward); wait(2, seconds); myDrivetrain.stop(coast);"
     ]
+  },
+  {
+    "name": "~Motor",
+    "class": "Motor",
+    "page": "home/cpp/Motors_and_MotorControllers/motor_and_motor_group",
+    "page_title": "Motor and Motor Group",
+    "url": "https://api.vex.com/v5/home/cpp/Motors_and_MotorControllers/motor_and_motor_group.html",
+    "signatures": [
+      "~motor();"
+    ],
+    "description": "Destroys themotorobject and releases associated resources.",
+    "parameters": [],
+    "return_value": "",
+    "notes": [],
+    "examples": [],
+    "is_constructor": false,
+    "is_destructor": true,
+    "is_member_function": false
+  },
+  {
+    "name": "~Motor Group",
+    "class": "Motor Group",
+    "page": "home/cpp/Motors_and_MotorControllers/motor_and_motor_group",
+    "page_title": "Motor and Motor Group",
+    "url": "https://api.vex.com/v5/home/cpp/Motors_and_MotorControllers/motor_and_motor_group.html",
+    "signatures": [
+      "~motor_group();"
+    ],
+    "description": "Destroys themotor_groupobject and releases associated resources.",
+    "parameters": [],
+    "return_value": "",
+    "notes": [],
+    "examples": [],
+    "is_constructor": false,
+    "is_destructor": true,
+    "is_member_function": false
+  },
+  {
+    "name": "Motor",
+    "class": "Motor and Motor Group",
+    "page": "home/cpp/Motors_and_MotorControllers/motor_and_motor_group",
+    "page_title": "Motor and Motor Group",
+    "url": "https://api.vex.com/v5/home/cpp/Motors_and_MotorControllers/motor_and_motor_group.html",
+    "signatures": [
+      "motor(int32_tindex);",
+      "motor(int32_tindex,boolreverse);",
+      "motor(int32_tindex,gearSetting gears);",
+      "motor(int32_tindex,gearSetting gears,boolreverse);"
+    ],
+    "description": "",
+    "parameters": [],
+    "return_value": "",
+    "notes": [],
+    "examples": [],
+    "is_constructor": true,
+    "is_destructor": false,
+    "is_member_function": false
+  },
+  {
+    "name": "~Motor",
+    "class": "Motor",
+    "page": "home/cpp/Motors_and_MotorControllers/motor_and_motor_group",
+    "page_title": "Motor and Motor Group",
+    "url": "https://api.vex.com/v5/home/cpp/Motors_and_MotorControllers/motor_and_motor_group.html",
+    "signatures": [
+      "~motor();"
+    ],
+    "description": "Destroys themotorobject and releases associated resources.",
+    "parameters": [],
+    "return_value": "",
+    "notes": [],
+    "examples": [],
+    "is_constructor": false,
+    "is_destructor": true,
+    "is_member_function": false
+  },
+  {
+    "name": "~Motor Group",
+    "class": "Motor Group",
+    "page": "home/cpp/Motors_and_MotorControllers/motor_and_motor_group",
+    "page_title": "Motor and Motor Group",
+    "url": "https://api.vex.com/v5/home/cpp/Motors_and_MotorControllers/motor_and_motor_group.html",
+    "signatures": [
+      "~motor_group();"
+    ],
+    "description": "Destroys themotor_groupobject and releases associated resources.",
+    "parameters": [],
+    "return_value": "",
+    "notes": [],
+    "examples": [],
+    "is_constructor": false,
+    "is_destructor": true,
+    "is_member_function": false
+  },
+  {
+    "name": "spin",
+    "class": "Motor and Motor Group",
+    "page": "home/cpp/Motors_and_MotorControllers/motor_and_motor_group",
+    "page_title": "Motor and Motor Group",
+    "url": "https://api.vex.com/v5/home/cpp/Motors_and_MotorControllers/motor_and_motor_group.html",
+    "signatures": [
+      "voidspin(directionType dir);",
+      "voidspin(directionType dir,doublevelocity,velocityUnits units);",
+      "voidspin(directionType dir,doublevoltage,voltageUnits  units);"
+    ],
+    "description": "Spins the motor or motor group in the specified direction indefinitely.",
+    "parameters": [
+      {
+        "name": "Parameter",
+        "type": "Type",
+        "description": "Description"
+      },
+      {
+        "name": "dir",
+        "type": "directionType",
+        "description": "The direction in which the motor or motor group spins:forwardreverse"
+      },
+      {
+        "name": "velocity",
+        "type": "double",
+        "description": "The velocity value applied to the motor or motor group."
+      },
+      {
+        "name": "units",
+        "type": "velocityUnits",
+        "description": "The unit used to represent velocity:percent/pct— percentrpm— rotations per minutedps— degrees per second"
+      },
+      {
+        "name": "voltage",
+        "type": "double",
+        "description": "The voltage value applied to the motor or motor group."
+      },
+      {
+        "name": "units",
+        "type": "voltageUnits",
+        "description": "The unit used to represent voltage:volt— voltsvoltageUnits::mV— millivolts"
+      }
+    ],
+    "return_value": "voidspin(directionType",
+    "notes": [
+      "Spins the motor or motor group in the specified direction indefinitely.",
+      "1—Spins the motor or motor group using the currently configured motor velocity.",
+      "2—Spins the motor or motor group at the specified velocity.",
+      "3—Spins the motor or motor group using the specified voltage.",
+      "The direction in which the motor or motor group spins:",
+      "The velocity value applied to the motor or motor group.",
+      "The unit used to represent velocity:",
+      "The voltage value applied to the motor or motor group.",
+      "The unit used to represent voltage:",
+      "This function does not return a value.",
+      "This function is non-waiting and the project will continue executing immediately after the call.",
+      "The motor or motor group will continue spinning untilstopis called or another movement function is executed.",
+      "Functions such asisDoneandisSpinningare not applicable tospin, since it does not use target-based movement (doesn’t have arotationortimeparameter)."
+    ],
+    "examples": [],
+    "is_constructor": false,
+    "is_destructor": false,
+    "is_member_function": true
+  },
+  {
+    "name": "spinFor",
+    "class": "Motor and Motor Group",
+    "page": "home/cpp/Motors_and_MotorControllers/motor_and_motor_group",
+    "page_title": "Motor and Motor Group",
+    "url": "https://api.vex.com/v5/home/cpp/Motors_and_MotorControllers/motor_and_motor_group.html",
+    "signatures": [
+      "boolspinFor(doublerotation,rotationUnits units,doublevelocity,velocityUnits units_v,boolwaitForCompletion=true);",
+      "boolspinFor(directionType dir,doublerotation,rotationUnits units,doublevelocity,velocityUnits units_v,boolwaitForCompletion=true);",
+      "boolspinFor(doublerotation,rotationUnits units,boolwaitForCompletion=true);",
+      "boolspinFor(directionType dir,doublerotation,rotationUnits units,boolwaitForCompletion=true);",
+      "boolspinFor(doubletime,timeUnits     units,doublevelocity,velocityUnits units_v);",
+      "boolspinFor(directionType dir,doubletime,timeUnits     units,doublevelocity,velocityUnits units_v);",
+      "boolspinFor(doubletime,timeUnits units);",
+      "boolspinFor(directionType dir,doubletime,timeUnits     units);"
+    ],
+    "description": "Spins a motor or motor group for a set amount in a specified direction.",
+    "parameters": [
+      {
+        "name": "Parameter",
+        "type": "Type",
+        "description": "Description"
+      },
+      {
+        "name": "dir",
+        "type": "directionType",
+        "description": "The direction in which the motor or motor group spins:forwardreverse"
+      },
+      {
+        "name": "rotation",
+        "type": "double",
+        "description": "The target rotation amount."
+      },
+      {
+        "name": "units",
+        "type": "rotationUnits",
+        "description": "The unit used to representrotation:deg/degrees— degreesturns/rev— revolutions"
+      },
+      {
+        "name": "time",
+        "type": "double",
+        "description": "The amount of time that the motor or motor group will spin for."
+      },
+      {
+        "name": "units",
+        "type": "timeUnits",
+        "description": "The unit used to representtime:seconds/sec— secondsmsec— milliseconds"
+      },
+      {
+        "name": "velocity",
+        "type": "double",
+        "description": "The velocity value applied to the motor or motor group."
+      },
+      {
+        "name": "units_v",
+        "type": "velocityUnits",
+        "description": "The unit used to representvelocity:percent/pct— percentrpm— rotations per minutedps— degrees per second"
+      },
+      {
+        "name": "waitForCompletion",
+        "type": "bool",
+        "description": "true(default) — The project waits until the movement completes before executing the next line of code.false— The movement starts and the project continues immediately."
+      }
+    ],
+    "return_value": "boolspinFor(doublerotation,rotationUnits",
+    "notes": [
+      "Spins a motor or motor group for a set amount in a specified direction.",
+      "1—Spins for a target rotation at the velocity provided in the function call.",
+      "2—Accepts a direction parameter and spins for a target rotation at the velocity provided in the function call.",
+      "3—Spins for a target rotation using thecurrently configured motor velocity.",
+      "4—Accepts a direction parameter and spins for a target rotation using thecurrently configured motor velocity.",
+      "5—Spins for a target time at the velocity provided in the function call.",
+      "6—Accepts a direction parameter and spins for a target time at the velocity provided in the function call.",
+      "7—Spins for a target time using thecurrently configured motor velocity.",
+      "8—Accepts a direction parameter and spins for a target time using thecurrently configured motor velocity.",
+      "The direction in which the motor or motor group spins:",
+      "The target rotation amount.",
+      "The unit used to representrotation:",
+      "The amount of time that the motor or motor group will spin for.",
+      "The unit used to representtime:",
+      "The velocity value applied to the motor or motor group.",
+      "The unit used to representvelocity:",
+      "Returns a Boolean indicating whether the motor or motor group was able to reach the target value.",
+      "Executing another motor movement function (such asspinorstop) whilespinForis in progress will interrupt the current movement.",
+      "BecausespinForis target-based (uses arotationortimeparameter), functions such asisDoneandisSpinningwork withspinFor."
+    ],
+    "examples": [],
+    "is_constructor": false,
+    "is_destructor": false,
+    "is_member_function": true
+  },
+  {
+    "name": "spinToPosition",
+    "class": "Motor and Motor Group",
+    "page": "home/cpp/Motors_and_MotorControllers/motor_and_motor_group",
+    "page_title": "Motor and Motor Group",
+    "url": "https://api.vex.com/v5/home/cpp/Motors_and_MotorControllers/motor_and_motor_group.html",
+    "signatures": [
+      "boolspinToPosition(doublerotation,rotationUnits units,doublevelocity,velocityUnits units_v,boolwaitForCompletion=true);",
+      "boolspinToPosition(doublerotation,rotationUnits units,boolwaitForCompletion=true);"
+    ],
+    "description": "Spins the motor or motor group to a specified position.",
+    "parameters": [
+      {
+        "name": "Parameter",
+        "type": "Type",
+        "description": "Description"
+      },
+      {
+        "name": "rotation",
+        "type": "double",
+        "description": "The absolute target rotation value."
+      },
+      {
+        "name": "units",
+        "type": "rotationUnits",
+        "description": "The unit used to representrotation:deg/degrees— degreesturns/rev— revolutions"
+      },
+      {
+        "name": "velocity",
+        "type": "double",
+        "description": "The velocity value applied to the motor or motor group."
+      },
+      {
+        "name": "units_v",
+        "type": "velocityUnits",
+        "description": "The unit used to representvelocity:pct— percentrpm— rotations per minutedps— degrees per second"
+      },
+      {
+        "name": "waitForCompletion",
+        "type": "bool",
+        "description": "true(default) — The project waits until the motor or motor group reaches the target position.false— The movement starts and the project continues immediately."
+      }
+    ],
+    "return_value": "boolspinToPosition(doublerotation,rotationUnits",
+    "notes": [
+      "Spins the motor or motor group to a specified position.",
+      "1—Spins to an absolute target rotation at the velocity provided in the function call.",
+      "2—Spins to an absolute target rotation using thecurrently configured motor velocity.",
+      "The absolute target rotation value.",
+      "The unit used to representrotation:",
+      "The velocity value applied to the motor or motor group.",
+      "The unit used to representvelocity:",
+      "Returns a Boolean indicating whether the call was successful.",
+      "Executing another motor movement function (such asspinorspinFor) whilespinToPositionis in progress will interrupt the current movement.",
+      "BecausespinToPositionis target-based (uses arotationparameter), functions such asisDoneandisSpinningwork withspinToPosition."
+    ],
+    "examples": [],
+    "is_constructor": false,
+    "is_destructor": false,
+    "is_member_function": true
+  },
+  {
+    "name": "stop",
+    "class": "Motor and Motor Group",
+    "page": "home/cpp/Motors_and_MotorControllers/motor_and_motor_group",
+    "page_title": "Motor and Motor Group",
+    "url": "https://api.vex.com/v5/home/cpp/Motors_and_MotorControllers/motor_and_motor_group.html",
+    "signatures": [
+      "voidstop();",
+      "voidstop(brakeType mode);"
+    ],
+    "description": "Stops the motor or motor group from spinning.",
+    "parameters": [
+      {
+        "name": "Parameter",
+        "type": "Type",
+        "description": "Description"
+      },
+      {
+        "name": "mode",
+        "type": "brakeType",
+        "description": "The brake mode used when stopping the motor or motor group:coast— Motor or motor group coasts to a stopbrake— Motor or motor group stops quickly using brakinghold— Motor or motor group actively holds its position"
+      }
+    ],
+    "return_value": "voidstop();",
+    "notes": [
+      "Stops the motor or motor group from spinning.",
+      "1—Stops the motor or motor group using thecurrently configured brake mode.",
+      "2—Stops the motor or motor group using the brake mode provided in the function call.",
+      "The brake mode used when stopping the motor or motor group:",
+      "This function does not return a value.",
+      "Callingstopimmediately stops any current motor movement.",
+      "If no brake mode is specified, the motor or motor group uses thecurrently configured brake mode.",
+      "stopinterrupts any active target-based movement (such asspinFororspinToPosition)."
+    ],
+    "examples": [],
+    "is_constructor": false,
+    "is_destructor": false,
+    "is_member_function": true
+  },
+  {
+    "name": "setPosition",
+    "class": "Motor and Motor Group",
+    "page": "home/cpp/Motors_and_MotorControllers/motor_and_motor_group",
+    "page_title": "Motor and Motor Group",
+    "url": "https://api.vex.com/v5/home/cpp/Motors_and_MotorControllers/motor_and_motor_group.html",
+    "signatures": [
+      "voidsetPosition(doublevalue,rotationUnits units);"
+    ],
+    "description": "Sets a specific position value to a motor or motor group, which updates the encoder reading.",
+    "parameters": [
+      {
+        "name": "Parameter",
+        "type": "Type",
+        "description": "Description"
+      },
+      {
+        "name": "value",
+        "type": "double",
+        "description": "The position value to assign to the motor’s or motor group’s encoder(s)."
+      },
+      {
+        "name": "units",
+        "type": "rotationUnits",
+        "description": "The unit used to representvalue:deg/degrees— degreesturns/rev— revolutions"
+      }
+    ],
+    "return_value": "voidsetPosition(doublevalue,rotationUnits",
+    "notes": [
+      "Sets a specific position value to a motor or motor group, which updates the encoder reading.",
+      "The position value to assign to the motor’s or motor group’s encoder(s).",
+      "The unit used to representvalue:",
+      "This function does not return a value.",
+      "After callingsetPosition, subsequent calls tospinToPositionwill use the updated position as the reference."
+    ],
+    "examples": [],
+    "is_constructor": false,
+    "is_destructor": false,
+    "is_member_function": true
+  },
+  {
+    "name": "setVelocity",
+    "class": "Motor and Motor Group",
+    "page": "home/cpp/Motors_and_MotorControllers/motor_and_motor_group",
+    "page_title": "Motor and Motor Group",
+    "url": "https://api.vex.com/v5/home/cpp/Motors_and_MotorControllers/motor_and_motor_group.html",
+    "signatures": [
+      "voidsetVelocity(doublevelocity,velocityUnits units);"
+    ],
+    "description": "Sets the default velocity for a motor or motor group. This velocity setting will be used for subsequent calls to any motor functions if a specific velocity is not provided.",
+    "parameters": [
+      {
+        "name": "Parameter",
+        "type": "Type",
+        "description": "Description"
+      },
+      {
+        "name": "velocity",
+        "type": "double",
+        "description": "The velocity value to apply to the motor."
+      },
+      {
+        "name": "units",
+        "type": "velocityUnits",
+        "description": "The unit used to representvelocity:percent/pct— percentrpm— rotations per minutedps— degrees per second"
+      }
+    ],
+    "return_value": "voidsetVelocity(doublevelocity,velocityUnits",
+    "notes": [
+      "Sets the default velocity for a motor or motor group. This velocity setting will be used for subsequent calls to any motor functions if a specific velocity is not provided.",
+      "The velocity value to apply to the motor.",
+      "The unit used to representvelocity:",
+      "This function does not return a value.",
+      "Any subsequent motor movement function (such asspin,spinFor, orspinToPosition) that does not explicitly specify a velocity will use this value."
+    ],
+    "examples": [],
+    "is_constructor": false,
+    "is_destructor": false,
+    "is_member_function": true
+  },
+  {
+    "name": "setStopping",
+    "class": "Motor and Motor Group",
+    "page": "home/cpp/Motors_and_MotorControllers/motor_and_motor_group",
+    "page_title": "Motor and Motor Group",
+    "url": "https://api.vex.com/v5/home/cpp/Motors_and_MotorControllers/motor_and_motor_group.html",
+    "signatures": [
+      "voidsetStopping(brakeType mode);"
+    ],
+    "description": "Sets how a motor or motor group behaves when it stops.",
+    "parameters": [
+      {
+        "name": "Parameter",
+        "type": "Type",
+        "description": "Description"
+      },
+      {
+        "name": "mode",
+        "type": "brakeType",
+        "description": "The stopping mode applied whenstopis called:coast— Motor(s) coasts to a stopbrake— Motor(s) stops quickly using brakinghold— Motor(s) actively holds its position"
+      }
+    ],
+    "return_value": "voidsetStopping(brakeType",
+    "notes": [
+      "Sets how a motor or motor group behaves when it stops.",
+      "The stopping mode applied whenstopis called:",
+      "This function does not return a value.",
+      "Any subsequent call tostopwithout a specified brake mode will use this value."
+    ],
+    "examples": [],
+    "is_constructor": false,
+    "is_destructor": false,
+    "is_member_function": true
+  },
+  {
+    "name": "setMaxTorque",
+    "class": "Motor and Motor Group",
+    "page": "home/cpp/Motors_and_MotorControllers/motor_and_motor_group",
+    "page_title": "Motor and Motor Group",
+    "url": "https://api.vex.com/v5/home/cpp/Motors_and_MotorControllers/motor_and_motor_group.html",
+    "signatures": [
+      "voidsetMaxTorque(doublevalue,percentUnits units);",
+      "voidsetMaxTorque(doublevalue,torqueUnits units);",
+      "voidsetMaxTorque(doublevalue,currentUnits units);"
+    ],
+    "description": "Sets the maximum torque that a motor or motor group can spin at.",
+    "parameters": [
+      {
+        "name": "Parameter",
+        "type": "Type",
+        "description": "Description"
+      },
+      {
+        "name": "value",
+        "type": "double",
+        "description": "The maximum torque value to set."
+      },
+      {
+        "name": "units",
+        "type": "percentUnits",
+        "description": "Specifies torque as a percentage:percent/pct— percent"
+      },
+      {
+        "name": "units",
+        "type": "torqueUnits",
+        "description": "Specifies torque in physical units such as:Nm— Newton-metersInLb— inch-pounds"
+      },
+      {
+        "name": "units",
+        "type": "currentUnits",
+        "description": "Specifies torque by limiting motor current:amp"
+      }
+    ],
+    "return_value": "voidsetMaxTorque(doublevalue,percentUnits",
+    "notes": [
+      "Sets the maximum torque that a motor or motor group can spin at.",
+      "1—Sets the maximum torque as a percentage of the motor’s or motor group’s rated torque.",
+      "2—Sets the maximum torque using physical torque units.",
+      "3—Sets the maximum torque by limiting motor current.",
+      "The maximum torque value to set.",
+      "Specifies torque as a percentage:",
+      "Specifies torque in physical units such as:",
+      "Specifies torque by limiting motor current:",
+      "This function does not return a value.",
+      "When usingcurrentUnits, torque is limited by restricting the motor’s or motor group’s current draw."
+    ],
+    "examples": [],
+    "is_constructor": false,
+    "is_destructor": false,
+    "is_member_function": true
+  },
+  {
+    "name": "setTimeout",
+    "class": "Motor and Motor Group",
+    "page": "home/cpp/Motors_and_MotorControllers/motor_and_motor_group",
+    "page_title": "Motor and Motor Group",
+    "url": "https://api.vex.com/v5/home/cpp/Motors_and_MotorControllers/motor_and_motor_group.html",
+    "signatures": [
+      "voidsetTimeout(int32_ttime,timeUnits units);"
+    ],
+    "description": "Sets a time limit for how long a motor command will wait to reach its target. If the motor or motor group cannot complete the movement within the set time, it will stop automatically and continue with the next command.",
+    "parameters": [
+      {
+        "name": "Parameter",
+        "type": "Type",
+        "description": "Description"
+      },
+      {
+        "name": "time",
+        "type": "int32_t",
+        "description": "The maximum amount of time the motor or motor group is allowed to attempt reaching a target position."
+      },
+      {
+        "name": "units",
+        "type": "timeUnits",
+        "description": "The unit used to representtime:msec— millisecondsseconds/sec— seconds"
+      }
+    ],
+    "return_value": "voidsetTimeout(int32_ttime,timeUnits",
+    "notes": [
+      "Sets a time limit for how long a motor command will wait to reach its target. If the motor or motor group cannot complete the movement within the set time, it will stop automatically and continue with the next command.",
+      "The maximum amount of time the motor or motor group is allowed to attempt reaching a target position.",
+      "The unit used to representtime:",
+      "This function does not return a value.",
+      "The motor’s or motor group’s time limit is used to prevent motor commands that do not reach their target position from stopping the execution of other commands in the stack.",
+      "If the motor or motor group does not reach its target position before the timeout expires, it will stop automatically.",
+      "The timeout applies to functions that have a target value such asspinForandspinToPosition."
+    ],
+    "examples": [],
+    "is_constructor": false,
+    "is_destructor": false,
+    "is_member_function": true
+  },
+  {
+    "name": "isDone",
+    "class": "Motor and Motor Group",
+    "page": "home/cpp/Motors_and_MotorControllers/motor_and_motor_group",
+    "page_title": "Motor and Motor Group",
+    "url": "https://api.vex.com/v5/home/cpp/Motors_and_MotorControllers/motor_and_motor_group.html",
+    "signatures": [
+      "boolisDone();"
+    ],
+    "description": "Returns a Boolean indication whether a motor or motor group is currently not spinning.",
+    "parameters": [],
+    "return_value": "boolisDone();",
+    "notes": [
+      "Returns a Boolean indication whether a motor or motor group is currently not spinning.",
+      "This function does not accept any parameters.",
+      "Returns a Boolean indicating whether a target-based motor movement has completed:",
+      "isDoneonly applies to target-based movement functions such asspinForandspinToPosition.",
+      "It does not apply to continuous movement functions such asspin."
+    ],
+    "examples": [],
+    "is_constructor": false,
+    "is_destructor": false,
+    "is_member_function": true
+  },
+  {
+    "name": "isSpinning",
+    "class": "Motor and Motor Group",
+    "page": "home/cpp/Motors_and_MotorControllers/motor_and_motor_group",
+    "page_title": "Motor and Motor Group",
+    "url": "https://api.vex.com/v5/home/cpp/Motors_and_MotorControllers/motor_and_motor_group.html",
+    "signatures": [
+      "boolisSpinning();"
+    ],
+    "description": "Returns a Boolean indicating whether a motor or motor group is currently spinning.",
+    "parameters": [],
+    "return_value": "boolisSpinning();",
+    "notes": [
+      "Returns a Boolean indicating whether a motor or motor group is currently spinning.",
+      "This function does not accept any parameters.",
+      "Returns a Boolean indicating whether the motor or motor group is currently spinning:",
+      "It works with both continuous movement functions (such asspin) and target-based functions (such asspinForandspinToPosition).",
+      "This function reports motor activity, not whether a target has been reached. To check if a target-based movement has completed, useisDone."
+    ],
+    "examples": [],
+    "is_constructor": false,
+    "is_destructor": false,
+    "is_member_function": true
+  },
+  {
+    "name": "position",
+    "class": "Motor and Motor Group",
+    "page": "home/cpp/Motors_and_MotorControllers/motor_and_motor_group",
+    "page_title": "Motor and Motor Group",
+    "url": "https://api.vex.com/v5/home/cpp/Motors_and_MotorControllers/motor_and_motor_group.html",
+    "signatures": [
+      "doubleposition(rotationUnits units);"
+    ],
+    "description": "Returns the current position of a motor or motor group.",
+    "parameters": [
+      {
+        "name": "Parameter",
+        "type": "Type",
+        "description": "Description"
+      },
+      {
+        "name": "units",
+        "type": "rotationUnits",
+        "description": "The unit used to represent the motor or motor group position:deg/degrees— degreesturns/rev— revolutions"
+      }
+    ],
+    "return_value": "doubleposition(rotationUnits",
+    "notes": [
+      "Returns the current position of a motor or motor group.",
+      "The unit used to represent the motor or motor group position:",
+      "Returns adoublerepresenting the current encoder position of the motor or motor group in the specified units.",
+      "CallingsetPositionchanges the reference point for this value.",
+      "The returned value reflects the current encoder reading and does not indicate whether the motor or motor group is actively moving.",
+      "When called on amotor_group, this function returns the position of the first motor in the group."
+    ],
+    "examples": [],
+    "is_constructor": false,
+    "is_destructor": false,
+    "is_member_function": true
+  },
+  {
+    "name": "velocity",
+    "class": "Motor and Motor Group",
+    "page": "home/cpp/Motors_and_MotorControllers/motor_and_motor_group",
+    "page_title": "Motor and Motor Group",
+    "url": "https://api.vex.com/v5/home/cpp/Motors_and_MotorControllers/motor_and_motor_group.html",
+    "signatures": [
+      "doublevelocity(velocityUnits units);"
+    ],
+    "description": "Returns the current velocity of a motor or motor group.",
+    "parameters": [
+      {
+        "name": "Parameter",
+        "type": "Type",
+        "description": "Description"
+      },
+      {
+        "name": "units",
+        "type": "velocityUnits",
+        "description": "The unit used to represent velocity:percent/pct— percentrpm— rotations per minutedps— degrees per second"
+      }
+    ],
+    "return_value": "doublevelocity(velocityUnits",
+    "notes": [
+      "Returns the current velocity of a motor or motor group.",
+      "The unit used to represent velocity:",
+      "Returns adoublerepresenting the motor’s or motor group’s current velocity in the specified units.",
+      "When called on amotor_group, this function returns the velocity of the first motor in the group."
+    ],
+    "examples": [],
+    "is_constructor": false,
+    "is_destructor": false,
+    "is_member_function": true
+  },
+  {
+    "name": "current",
+    "class": "Motor and Motor Group",
+    "page": "home/cpp/Motors_and_MotorControllers/motor_and_motor_group",
+    "page_title": "Motor and Motor Group",
+    "url": "https://api.vex.com/v5/home/cpp/Motors_and_MotorControllers/motor_and_motor_group.html",
+    "signatures": [
+      "doublecurrent(currentUnits units=amp);",
+      "doublecurrent(percentUnits units);"
+    ],
+    "description": "Returns the current of a motor or motor group.",
+    "parameters": [
+      {
+        "name": "Parameter",
+        "type": "Type",
+        "description": "Description"
+      },
+      {
+        "name": "units",
+        "type": "currentUnits",
+        "description": "The unit used to represent current:amp(default) — amperes"
+      },
+      {
+        "name": "units",
+        "type": "percentUnits",
+        "description": "Represents the current as percentage of the motor’s maximum rated current:percent/pct— percent"
+      }
+    ],
+    "return_value": "doublecurrent(currentUnits",
+    "notes": [
+      "Returns the current of a motor or motor group.",
+      "1—Returns the motor’s or motor group’s electrical current in amps.",
+      "2—Returns the motor’s or motor group’s electrical current as a percentage of maximum rated current.",
+      "The unit used to represent current:",
+      "Represents the current as percentage of the motor’s maximum rated current:",
+      "Returns adoublerepresenting the motor’s or motor group’s electrical current in the specified units.",
+      "When called on amotor_group, this function returns the sum electrical current for all motors in the group."
+    ],
+    "examples": [],
+    "is_constructor": false,
+    "is_destructor": false,
+    "is_member_function": true
+  },
+  {
+    "name": "power",
+    "class": "Motor and Motor Group",
+    "page": "home/cpp/Motors_and_MotorControllers/motor_and_motor_group",
+    "page_title": "Motor and Motor Group",
+    "url": "https://api.vex.com/v5/home/cpp/Motors_and_MotorControllers/motor_and_motor_group.html",
+    "signatures": [
+      "doublepower(powerUnits units=watt);"
+    ],
+    "description": "Returns the electrical power supplied to the motor or motor group.",
+    "parameters": [
+      {
+        "name": "Parameter",
+        "type": "Type",
+        "description": "Description"
+      },
+      {
+        "name": "units",
+        "type": "powerUnits",
+        "description": "The unit used to represent the motor power:watt(default) — watts"
+      }
+    ],
+    "return_value": "doublepower(powerUnits",
+    "notes": [
+      "Returns the electrical power supplied to the motor or motor group.",
+      "The unit used to represent the motor power:",
+      "Returns adoublerepresenting the motor’s or motor group’s electrical power in watts.",
+      "When called on amotor_group, this function returns the electrical power of the first motor in the group."
+    ],
+    "examples": [],
+    "is_constructor": false,
+    "is_destructor": false,
+    "is_member_function": true
+  },
+  {
+    "name": "torque",
+    "class": "Motor and Motor Group",
+    "page": "home/cpp/Motors_and_MotorControllers/motor_and_motor_group",
+    "page_title": "Motor and Motor Group",
+    "url": "https://api.vex.com/v5/home/cpp/Motors_and_MotorControllers/motor_and_motor_group.html",
+    "signatures": [
+      "doubletorque(torqueUnits units=Nm);"
+    ],
+    "description": "Returns the mechanical output torque of the motor or motor group.",
+    "parameters": [
+      {
+        "name": "Parameter",
+        "type": "Type",
+        "description": "Description"
+      },
+      {
+        "name": "units",
+        "type": "torqueUnits",
+        "description": "The unit used to represent the motor torque:Nm(default) — Newton-metersInLb— inch-pounds"
+      }
+    ],
+    "return_value": "doubletorque(torqueUnits",
+    "notes": [
+      "Returns the mechanical output torque of the motor or motor group.",
+      "The unit used to represent the motor torque:",
+      "Returns adoublerepresenting the motor’s or motor group’s mechanical output torque in the specified units.",
+      "When called on amotor_group, this function returns the mechanical output torque of the first motor in the group."
+    ],
+    "examples": [],
+    "is_constructor": false,
+    "is_destructor": false,
+    "is_member_function": true
+  },
+  {
+    "name": "efficiency",
+    "class": "Motor and Motor Group",
+    "page": "home/cpp/Motors_and_MotorControllers/motor_and_motor_group",
+    "page_title": "Motor and Motor Group",
+    "url": "https://api.vex.com/v5/home/cpp/Motors_and_MotorControllers/motor_and_motor_group.html",
+    "signatures": [
+      "doubleefficiency(percentUnits units=percent);"
+    ],
+    "description": "Returns the efficiency of the motor or motor group.",
+    "parameters": [
+      {
+        "name": "Parameter",
+        "type": "Type",
+        "description": "Description"
+      },
+      {
+        "name": "units",
+        "type": "percentUnits",
+        "description": "The unit used to represent motor efficiency:percent/percentUnits::pct(default) — percent"
+      }
+    ],
+    "return_value": "doubleefficiency(percentUnits",
+    "notes": [
+      "Returns the efficiency of the motor or motor group.",
+      "The unit used to represent motor efficiency:",
+      "Returns adoublerepresenting the motor’s or motor group’s efficiency as a percentage.",
+      "When called on amotor_group, this function returns the efficiency of the first motor in the group."
+    ],
+    "examples": [],
+    "is_constructor": false,
+    "is_destructor": false,
+    "is_member_function": true
+  },
+  {
+    "name": "temperature",
+    "class": "Motor and Motor Group",
+    "page": "home/cpp/Motors_and_MotorControllers/motor_and_motor_group",
+    "page_title": "Motor and Motor Group",
+    "url": "https://api.vex.com/v5/home/cpp/Motors_and_MotorControllers/motor_and_motor_group.html",
+    "signatures": [
+      "doubletemperature(percentUnits units=percent);",
+      "doubletemperature(temperatureUnits units);"
+    ],
+    "description": "Returns the temperature of the motor or motor group.",
+    "parameters": [
+      {
+        "name": "Parameter",
+        "type": "Type",
+        "description": "Description"
+      },
+      {
+        "name": "units",
+        "type": "percentUnits",
+        "description": "The unit used to represent motor or motor group temperature as a percentage:percent/percentUnits::pct(default) — percent"
+      },
+      {
+        "name": "units",
+        "type": "temperatureUnits",
+        "description": "The unit used to represent motor or motor group temperature in degrees:celsius— degrees Celsiusfahrenheit— degrees Fahrenheit"
+      }
+    ],
+    "return_value": "doubletemperature(percentUnits",
+    "notes": [
+      "Returns the temperature of the motor or motor group.",
+      "1—Returns motor or motor group temperature as a percentage of maximum operating temperature.",
+      "2—Returns motor or motor group temperature in physical temperature units.",
+      "The unit used to represent motor or motor group temperature as a percentage:",
+      "The unit used to represent motor or motor group temperature in degrees:",
+      "Returns adoublerepresenting the motor’s or motor group’s temperature in the specified units.",
+      "The operating temperature range for the motor is approximately20°C(68°F) to70°C(158°F).",
+      "When called on amotor_group, this function returns the temperature of the first motor in the group."
+    ],
+    "examples": [],
+    "is_constructor": false,
+    "is_destructor": false,
+    "is_member_function": true
+  },
+  {
+    "name": "voltage",
+    "class": "Motor and Motor Group",
+    "page": "home/cpp/Motors_and_MotorControllers/motor_and_motor_group",
+    "page_title": "Motor and Motor Group",
+    "url": "https://api.vex.com/v5/home/cpp/Motors_and_MotorControllers/motor_and_motor_group.html",
+    "signatures": [
+      "doublevoltage(voltageUnits units=volt);"
+    ],
+    "description": "Returns the electrical voltage supplied to the motor or motor group.",
+    "parameters": [
+      {
+        "name": "Parameter",
+        "type": "Type",
+        "description": "Description"
+      },
+      {
+        "name": "units",
+        "type": "voltageUnits",
+        "description": "The unit to represent the voltage:volt(default)voltageUnits::mV— millivolts"
+      }
+    ],
+    "return_value": "doublevoltage(voltageUnits",
+    "notes": [
+      "Returns the electrical voltage supplied to the motor or motor group.",
+      "The unit to represent the voltage:",
+      "Returns adoublerepresenting the motor’s or motor group’s electrical voltage in the specified units.",
+      "When called on amotor_group, this function returns the electrical voltage of the first motor in the group."
+    ],
+    "examples": [],
+    "is_constructor": false,
+    "is_destructor": false,
+    "is_member_function": true
+  },
+  {
+    "name": "direction",
+    "class": "Motor and Motor Group",
+    "page": "home/cpp/Motors_and_MotorControllers/motor_and_motor_group",
+    "page_title": "Motor and Motor Group",
+    "url": "https://api.vex.com/v5/home/cpp/Motors_and_MotorControllers/motor_and_motor_group.html",
+    "signatures": [
+      "directionTypedirection();"
+    ],
+    "description": "Returns the direction that the motor or motor group is currently spinning.",
+    "parameters": [],
+    "return_value": "directionTypedirection();",
+    "notes": [
+      "Returns the direction that the motor or motor group is currently spinning.",
+      "This function does not take any parameters.",
+      "Returns adirectionTypeindicating the motor’s or motor group’s current direction:"
+    ],
+    "examples": [],
+    "is_constructor": false,
+    "is_destructor": false,
+    "is_member_function": true
+  },
+  {
+    "name": "installed",
+    "class": "Motor and Motor Group",
+    "page": "home/cpp/Motors_and_MotorControllers/motor_and_motor_group",
+    "page_title": "Motor and Motor Group",
+    "url": "https://api.vex.com/v5/home/cpp/Motors_and_MotorControllers/motor_and_motor_group.html",
+    "signatures": [
+      "boolinstalled();"
+    ],
+    "description": "Returns whether the motor or motor group is connected to the V5 Brain.",
+    "parameters": [],
+    "return_value": "boolinstalled();",
+    "notes": [
+      "Returns whether the motor or motor group is connected to the V5 Brain.",
+      "This function does not take any parameters.",
+      "Returns aboolindicating if the motor or motor group is connected."
+    ],
+    "examples": [],
+    "is_constructor": false,
+    "is_destructor": false,
+    "is_member_function": true
+  },
+  {
+    "name": "count",
+    "class": "Motor and Motor Group",
+    "page": "home/cpp/Motors_and_MotorControllers/motor_and_motor_group",
+    "page_title": "Motor and Motor Group",
+    "url": "https://api.vex.com/v5/home/cpp/Motors_and_MotorControllers/motor_and_motor_group.html",
+    "signatures": [
+      "int32_tcount();"
+    ],
+    "description": "Returns the number of motors currently included in the motor group.",
+    "parameters": [],
+    "return_value": "int32_tcount();",
+    "notes": [
+      "Returns the number of motors currently included in the motor group.",
+      "This function does not take any parameters.",
+      "Returns anint32_trepresenting the total number of motors in the motor group."
+    ],
+    "examples": [],
+    "is_constructor": false,
+    "is_destructor": false,
+    "is_member_function": true
   }
 ]

@@ -4,11 +4,15 @@
 # 忽略那个巨大的文档文件夹（精准匹配）
 Motor and Motor Group _ VEX V5 - C++ API — VEXcode Documentation_files/
 
-# 忽略工程笔记参考文件夹（防止里面的 PDF 和 MD 被传上去）
-工程笔记参考/
-
 # 忽略 vscode 配置
 .vscode/
 
 # 忽略 pycache
 __pycache__/
+
+# 忽略 Claude Code 本地配置
+.claude/
+
+# 忽略临时输出文件
+输出.txt
+cleanup.py

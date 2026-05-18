@@ -12,7 +12,7 @@ from fastmcp import FastMCP
 mcp = FastMCP("VEX API Reference")
 
 # ── Load API data ────────────────────────────────────────────────────────────
-DATA_FILE = os.path.join(os.path.dirname(__file__), "vex_cpp_api.json")
+DATA_FILE = os.path.join(os.path.dirname(__file__), "vex_cpp_api_v2.json")
 with open(DATA_FILE, "r", encoding="utf-8") as f:
     API_DATA: list[dict] = json.load(f)
 
@@ -36,11 +36,16 @@ _SEARCH_ALIASES: dict[str, list[str]] = {
     # Motors
     "电机": ["motor", "motor_group"],
     "马达": ["motor", "motor_group"],
-    "spin": ["spin", "spinTo", "spinToPosition", "spinFor", "setVelocity"],
-    "转动": ["spin", "spinTo", "spinFor", "rotateTo", "rotateFor"],
-    "转速": ["setVelocity", "setVelocityCustom"],
-    "停止": ["stop", "setStopping", "stopHold", "stopCoast", "stopBrake"],
-    "制动": ["setStopping", "stopHold", "stopBrake"],
+    "spin": ["spin", "spinFor", "spinToPosition", "setVelocity", "isSpinning"],
+    "转动": ["spin", "spinFor", "rotateTo", "rotateFor"],
+    "转速": ["setVelocity", "velocity"],
+    "停止": ["stop", "setStopping"],
+    "制动": ["setStopping"],
+    "完成": ["isDone"],
+    "超时": ["setTimeout"],
+    "转向": ["turnToHeading", "turnToRotation", "direction"],
+    "位置": ["position", "setPosition"],
+    "复位": ["resetPosition", "resetRotation"],
     # Controller
     "手柄": ["controller"],
     "遥控器": ["controller"],
@@ -114,16 +119,16 @@ def _rank_api(api: dict, q: str) -> int:
 
 @mcp.tool
 def search_vex_api(query: str) -> list[dict]:
-    """搜索 VEX V5 C++ API。输入关键词、API名称、类名或中文术语（如"电机""手柄""传感器""转速"），返回匹配的API列表。每个结果包含名称(name)、类名(class)、签名(signatures)、描述(description)、是否为构造函数/析构函数等简要信息。"""
+    """【编写VEX代码时调用】搜索 VEX V5 C++ API。当用户需要控制电机、读取传感器、使用遥控器、操作气动装置、屏幕显示等任何VEX硬件编程相关场景时，调用此工具查找对应的API函数。支持中英文关键词，如"motor""电机""controller""手柄""sensor""传感器""spin""转速"等。返回匹配的API列表，包含名称(name)、类名(class)、签名(signatures)、描述(description)等。"""
     q = query.lower().strip()
     scored: dict[int, dict] = {}  # id(api) -> (score, api)
 
     def add(api, base_score=0):
         key = id(api)
         if key in scored:
-            scored[key] = (max(scored[key][0], base_score), api)
+            scored[key] = (max(scored[key][0], base_score), api) # type: ignore
         else:
-            scored[key] = (base_score, api)
+            scored[key] = (base_score, api) # type: ignore
 
     # 1. Expand aliases: check if query maps to known terms
     search_terms = [q]
@@ -163,14 +168,20 @@ def search_vex_api(query: str) -> list[dict]:
                     add(api, 5)
                     break
 
-    # Sort by score descending, then name
-    results = sorted(scored.values(), key=lambda x: (-x[0], x[1]["name"].lower()))
+    # Sort by score descending, then prefer original query match, then name
+    def sort_key(item):
+        score, api = item
+        name_l = api["name"].lower()
+        # Bonus: name starts with original query
+        orig_match = 1 if name_l.startswith(q) else 0
+        return (-score, -orig_match, name_l)
+    results = sorted(scored.values(), key=sort_key)
     return [_format_api_brief(api) for _, api in results[:20]]
 
 
 @mcp.tool
 def get_vex_api_detail(name: str) -> dict | str:
-    """获取指定 VEX API 的完整详细信息。包含所有签名、参数列表（含类型和说明）、返回值、示例代码、备注等。传入 API 名称（大小写不敏感），如 'motor'、'spin'、'pressing'。"""
+    """【编写VEX代码时调用】获取指定VEX API的完整详细信息。当需要确认函数的确切参数类型、参数顺序、返回值类型，或查看官方示例代码时调用。传入API名称（大小写不敏感），如'spin'、'setVelocity'、'motor'、'pressing'等。返回完整签名、参数列表（含类型和说明）、返回值、示例代码、注意事项。"""
     q = name.lower().strip()
 
     if q in _name_lower_map:
@@ -189,27 +200,67 @@ def get_vex_api_detail(name: str) -> dict | str:
         return msg
 
     if len(apis) > 1:
-        return [_format_api_full(api) for api in apis]
+        return [_format_api_full(api) for api in apis] # type: ignore
 
     return _format_api_full(apis[0])
 
 
 @mcp.tool
 def list_vex_classes() -> list[dict]:
-    """列出所有可用的 VEX V5 C++ API 类。返回类名及每个类的 API 数量。用于了解有哪些类可用。"""
+    """【编写VEX代码前调用】列出所有可用的 VEX V5 C++ API 类（共58个）。当不确定某个功能是否有对应API类，或想了解VEX支持哪些硬件/功能时调用。返回类名及每个类的方法数量。常用类：motor, controller, brain, drivetrain, vision, gps, pneumatics 等。"""
     return sorted(
         [{"class": cls, "api_count": len(apis)} for cls, apis in _by_class.items()],
         key=lambda x: x["class"].lower()
     )
 
 
+# ── Class name aliases: map short/common names to full class names ─────────────
+_CLASS_ALIASES = {
+    "motor": "Motor and Motor Group",
+    "motor_group": "Motor and Motor Group",
+    "controller": "Controller",
+    "brain": "Brain",
+    "competition": "Competition",
+    "drivetrain": "Drivetrain",
+    "smartdrive": "smartdrive",
+    "vision": "Vision Sensor",
+    "gps": "GPS Sensor",
+    "distance": "Distance Sensor",
+    "accelerometer": "Accelerometer",
+    "gyro": "Gyro Sensor",
+    "inertial": "Inertial Sensor",
+    "rotation": "Rotation Sensor",
+    "optical": "Optical Sensor",
+    "pneumatics": "Pneumatics",
+    "bumper": "Bumper Switch",
+    "limit": "Limit Switch",
+    "encoder": "Encoder",
+    "timer": "Timer",
+    "screen": "Screen",
+    "sd": "SDcard",
+}
+
+
 @mcp.tool
 def list_vex_class_methods(class_name: str) -> list[dict] | str:
-    """列出指定 VEX 类的所有方法（构造函数、成员函数、析构函数）。传入类名（大小写不敏感），如 'motor'、'controller'。返回该方法列表的简要信息。"""
+    """【编写VEX代码时调用】列出指定VEX类的所有方法（构造函数、成员函数、析构函数）。当需要了解某个类的完整API功能列表时调用。传入类名简写或全名（如'motor'→'Motor and Motor Group'），可用别名：motor, controller, brain, drivetrain, vision, gps, pneumatics, distance, inertial, rotation, optical, gyro, accelerometer, bumper, limit, encoder, timer, screen 等。"""
     q = class_name.lower().strip()
 
+    # Resolve aliases first
+    lookup = _CLASS_ALIASES.get(q, q).lower()
+
+    # Prefer exact case-insensitive match
     for cls, apis in _by_class.items():
-        if q in cls.lower():
+        if cls.lower() == lookup:
+            sorted_apis = sorted(apis, key=lambda a: (
+                0 if a.get("is_constructor") else (2 if a.get("is_destructor") else 1),
+                a["name"].lower()
+            ))
+            return [_format_api_brief(api) for api in sorted_apis]
+
+    # Fall back to substring match
+    for cls, apis in _by_class.items():
+        if lookup in cls.lower():
             sorted_apis = sorted(apis, key=lambda a: (
                 0 if a.get("is_constructor") else (2 if a.get("is_destructor") else 1),
                 a["name"].lower()
@@ -250,6 +301,68 @@ def _format_api_full(api: dict) -> dict:
         "is_destructor": api.get("is_destructor", False),
         "url": api["url"],
     }
+
+
+# ── Game Rules ─────────────────────────────────────────────────────────────────
+_RULES_DIR = os.path.join(os.path.dirname(__file__), "赛季规则")
+_RULES_FILE_CN = os.path.join(_RULES_DIR, "V5RC 26-27 OVERRIDE-0.1 CN.md")
+_RULES_FILE_EN = os.path.join(_RULES_DIR, "override-0.1-game-manual.md")
+
+_rules_text: str = ""
+_rules_loaded: bool = False
+
+
+def _load_rules() -> str:
+    global _rules_text, _rules_loaded
+    if not _rules_loaded:
+        # Load both CN and EN for bilingual search
+        texts = []
+        for path in (_RULES_FILE_CN, _RULES_FILE_EN):
+            if os.path.exists(path):
+                with open(path, "r", encoding="utf-8") as f:
+                    texts.append(f.read())
+        _rules_text = '\n'.join(texts)
+        _rules_loaded = True
+    return _rules_text
+
+
+@mcp.tool
+def search_vex_rules(query: str) -> str:
+    """【编写VEX竞赛代码前必须调用】搜索 2026-2027赛季 OVERRIDE 竞赛规则手册。涉及以下任何编程场景都应主动调用此工具检查规则限制：
+
+必查场景：
+- 电机编程：数量限制(R10)、子系统1特殊限制(R11)、电机型号(11W)
+- 竞赛程序结构：必须用Competition Template(R9)、固件≥1.1.5(R8)
+- 自动时段代码：15秒自动时段、自动分界线禁止越过(SG7)、AWP获取条件(SC8)
+- 机器人构造编程约束：尺寸18"×18"×18"(R3)、气动系统限制(R25-R26)、V5主控器只能用1个(R6)、遥控器≤2个(R15)、仅VEX电池(R12)
+- 赛局策略相关：最多持有1 Pin + 1 Cup(SG6)、水平/垂直展开限制(SG2-SG3)
+- 传感器与硬件：传感器使用限制、电子/气动件不得修改(R28)
+- 计分逻辑：placed pin标准(SC2)、toggle判定(SC4)、联队占有(SC5)、停泊条件
+
+支持中英文关键词，如"R10""motor limit""autonomous""AWP条件""expansion""pneumatic限制"等。返回规则原文段落。"""
+    text = _load_rules()
+    if not text:
+        return "未找到竞赛规则文件。"
+
+    q = query.lower()
+    lines = text.split('\n')
+    results = []
+    context = 4  # lines of context before/after
+
+    for i, line in enumerate(lines):
+        if q in line.lower():
+            start = max(0, i - context)
+            end = min(len(lines), i + context + 1)
+            snippet = '\n'.join(lines[start:end])
+            # Trim snippet if too long
+            if len(snippet) > 500:
+                snippet = snippet[:500] + "..."
+            results.append(snippet)
+
+    if not results:
+        return f"未找到与 '{query}' 相关的规则内容。试试中文关键词？"
+
+    return '\n\n---\n\n'.join(results[:5])
 
 
 if __name__ == "__main__":

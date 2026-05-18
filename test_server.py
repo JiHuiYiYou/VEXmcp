@@ -1,20 +1,16 @@
 """
-Test script for VEX MCP server.
+Test VEX MCP server with v2 data.
 Run: python test_server.py
-This tests all tools without starting the MCP server.
 """
-import json
 import sys
 
-# Check dependencies
 try:
     import fastmcp
-    print(f"[OK] FastMCP {fastmcp.__version__} installed")
+    print(f"[OK] FastMCP {fastmcp.__version__}")
 except ImportError:
-    print("[MISSING] FastMCP not installed. Run: pip install fastmcp")
+    print("[FAIL] FastMCP not installed. Run: pip install fastmcp")
     sys.exit(1)
 
-# Import server module (this loads vex_cpp_api.json and builds indexes)
 import server
 
 print(f"\n[OK] Server loaded: {len(server.API_DATA)} APIs, {len(server.ALL_CLASSES)} classes")
@@ -24,66 +20,62 @@ print("\n" + "="*60)
 print("TEST 1: search_vex_api")
 print("="*60)
 
-for query in ["motor", "spin", "controller", "电机", "手柄", "distance", "pressing"]:
+tests = [
+    ("motor", "should find Motor class"),
+    ("spin", "should find spin function"),
+    ("setVelocity", "should find setVelocity (was missing before)"),
+    ("pressing", "should find controller button"),
+    ("电机", "Chinese alias"),
+    ("stop", "should find stop function"),
+    ("isDone", "should find isDone"),
+]
+
+for query, desc in tests:
     results = server.search_vex_api(query)
-    print(f"\n  search('{query}') -> {len(results)} results")
-    for r in results[:3]:
-        ctor = " [C]" if r["is_constructor"] else ""
-        dtor = " [D]" if r["is_destructor"] else ""
-        print(f"    {r['name']}{ctor}{dtor} ({r['class']}): {r['signatures']}")
+    top = results[0]["name"] if results else "NOT FOUND"
+    print(f"  '{query}' → {len(results)} results, top: {top} ({desc})")
 
 # Test 2: get_vex_api_detail
 print("\n" + "="*60)
 print("TEST 2: get_vex_api_detail")
 print("="*60)
 
-for name in ["motor", "spin", "pressing", "setVelocity"]:
+for name in ["spin", "setVelocity", "motor", "pressing"]:
     detail = server.get_vex_api_detail(name)
     if isinstance(detail, list):
-        print(f"\n  detail('{name}') -> {len(detail)} overloads")
         d = detail[0]
+        print(f"  '{name}' → {len(detail)} overloads: {d['signatures'][:2]}") # type: ignore
     elif isinstance(detail, dict):
-        print(f"\n  detail('{name}') -> {detail['name']}")
-        d = detail
+        print(f"  '{name}' → {detail['name']}: {detail['signatures'][:2]}")
     else:
-        print(f"\n  detail('{name}') -> {detail[:80]}...")
-        continue
-    print(f"    Class: {d['class']}")
-    print(f"    Signatures: {d['signatures']}")
-    print(f"    Params: {len(d.get('parameters', []))}")
-    print(f"    Examples: {len(d.get('examples', []))}")
+        print(f"  '{name}' → {detail}")
 
-# Test 3: list_vex_classes
+# Test 3: list_vex_class_methods
 print("\n" + "="*60)
-print("TEST 3: list_vex_classes")
-print("="*60)
-classes = server.list_vex_classes()
-print(f"  Total: {len(classes)} classes")
-for c in classes[:5]:
-    print(f"    {c['class']}: {c['api_count']} APIs")
-
-# Test 4: list_vex_class_methods
-print("\n" + "="*60)
-print("TEST 4: list_vex_class_methods")
+print("TEST 3: list_vex_class_methods (exact match fix)")
 print("="*60)
 
-for cls in ["motor", "controller", "brain"]:
+for cls in ["Motor and Motor Group", "motor", "controller"]:
     methods = server.list_vex_class_methods(cls)
     if isinstance(methods, list):
-        print(f"\n  class '{cls}': {len(methods)} methods")
-        for m in methods[:5]:
-            ctor = " [C]" if m["is_constructor"] else ""
-            dtor = " [D]" if m["is_destructor"] else ""
-            print(f"    {m['name']}{ctor}{dtor}: {m['signatures']}")
+        names = [m["name"] for m in methods]
+        print(f"  '{cls}' → {len(methods)} methods: {names[:8]}...")
     else:
-        print(f"\n  class '{cls}': {methods}")
+        print(f"  '{cls}' → {methods}")
 
-# Test 5: alias search
+# Test 4: Search rules
 print("\n" + "="*60)
-print("TEST 5: Alias searches (Chinese terms)")
+print("TEST 4: search_vex_rules")
 print("="*60)
-for query in ["电机", "手柄", "气动", "转速", "传感器"]:
-    results = server.search_vex_api(query)
-    print(f"  search('{query}') -> {len(results)} results: {[r['name'] for r in results[:5]]}")
 
-print("\n[DONE] All tests passed!")
+for query in ["自动阶段", "AWP", "计分", "autonomous"]:
+    result = server.search_vex_rules(query)
+    lines = result.split('\n')
+    print(f"  '{query}' → {len(lines)} lines ({len(result)} chars)")
+    # Show first meaningful line
+    for line in lines:
+        if line.strip() and not line.startswith('---'):
+            print(f"    first: {line.strip()[:100]}")
+            break
+
+print("\n[DONE]")
