@@ -50,7 +50,6 @@ python test_server.py
 
 ```
 vex-api: python server.py - ✓ Connected
-
 ```
 只要你当前所在的工程项目根目录下存在 .mcp.json文件，它就会在**启动时自动读取**这个文件，并在后台静默拉起并连接里面配置好的 MCP 服务器。
 
