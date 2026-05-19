@@ -16,6 +16,20 @@ DATA_FILE = os.path.join(os.path.dirname(__file__), "vex_cpp_api_v2.json")
 with open(DATA_FILE, "r", encoding="utf-8") as f:
     API_DATA: list[dict] = json.load(f)
 
+# ── Load code templates ──────────────────────────────────────────────────────
+_TEMPLATES_FILE = os.path.join(os.path.dirname(__file__), "templates", "override_cpp.json")
+_TEMPLATES: dict[str, str] = {}
+if os.path.exists(_TEMPLATES_FILE):
+    with open(_TEMPLATES_FILE, "r", encoding="utf-8") as f:
+        _TEMPLATES = json.load(f)
+
+# ── Load game context ────────────────────────────────────────────────────────
+_GAME_CONTEXT_FILE = os.path.join(os.path.dirname(__file__), "config", "game_rules.json")
+_GAME_CONTEXT: dict = {}
+if os.path.exists(_GAME_CONTEXT_FILE):
+    with open(_GAME_CONTEXT_FILE, "r", encoding="utf-8") as f:
+        _GAME_CONTEXT = json.load(f)
+
 # ── Build indexes ────────────────────────────────────────────────────────────
 _by_class: dict[str, list[dict]] = {}
 _name_lower_map: dict[str, list[dict]] = {}
@@ -119,7 +133,25 @@ def _rank_api(api: dict, q: str) -> int:
 
 @mcp.tool
 def search_vex_api(query: str) -> list[dict]:
-    """【编写VEX代码时调用】搜索 VEX V5 C++ API。当用户需要控制电机、读取传感器、使用遥控器、操作气动装置、屏幕显示等任何VEX硬件编程相关场景时，调用此工具查找对应的API函数。支持中英文关键词，如"motor""电机""controller""手柄""sensor""传感器""spin""转速"等。返回匹配的API列表，包含名称(name)、类名(class)、签名(signatures)、描述(description)等。"""
+    """MUST USE before writing any VEX V5 C++ code that controls hardware.
+
+【Role】VEX API 搜索入口 — 根据中英文关键词查找对应的 API 函数和类。
+
+【Triggers — 以下场景必须调用此工具，禁止猜测函数名】
+场景1: 用户需要"控制电机转动/停止/调速" → 搜索 "spin" "stop" "motor"
+场景2: 用户需要"读取传感器（陀螺仪/距离/视觉/GPS/编码器）" → 搜索对应传感器名
+场景3: 用户需要"遥控器按键/摇杆映射" → 搜索 "controller" "pressing" "Axis"
+场景4: 用户需要"编写PID控制/闭环算法" → 搜索 "position" "velocity" "heading"
+场景5: 用户需要"气动/气缸控制" → 搜索 "pneumatic" "digital_out"
+场景6: 用户需要"屏幕显示/LCD输出" → 搜索 "screen" "lcd"
+
+【Input】query: 中英文关键词，如 "motor" "电机" "spin" "转速" "pressing" "按键"
+
+【Output】匹配的 API 列表（含 name, class, signatures, description），按相关性排序
+
+【Chain — 获取结果后必须立即执行】
+1. 调用 get_vex_api_detail(name) 确认精确的函数签名、参数类型和顺序
+2. 如果代码涉及竞赛规则限制（电机数量/自动时段/气动/尺寸），调用 search_vex_rules 检查合规性"""
     q = query.lower().strip()
     scored: dict[int, dict] = {}  # id(api) -> (score, api)
 
@@ -181,7 +213,22 @@ def search_vex_api(query: str) -> list[dict]:
 
 @mcp.tool
 def get_vex_api_detail(name: str) -> dict | str:
-    """【编写VEX代码时调用】获取指定VEX API的完整详细信息。当需要确认函数的确切参数类型、参数顺序、返回值类型，或查看官方示例代码时调用。传入API名称（大小写不敏感），如'spin'、'setVelocity'、'motor'、'pressing'等。返回完整签名、参数列表（含类型和说明）、返回值、示例代码、注意事项。"""
+    """CRITICAL STEP — 确认 VEX API 的精确签名后再写入代码。禁止凭记忆推测参数顺序。
+
+【Role】API 详情查询器 — 返回指定函数的完整签名、参数类型、返回值、示例代码。
+
+【Triggers — 以下场景必须调用】
+场景1: search_vex_api 返回了候选 API，需要确认精确参数 → 传入 API 名称
+场景2: 不确定 spinFor 的参数是 (dir, degrees) 还是 (degrees, dir) → 必须查
+场景3: 需要看官方示例代码才能正确使用某个函数 → 传入函数名
+场景4: 想知道某个函数的返回值类型和单位 → 传入函数名
+场景5: 需要确认构造函数参数（如 motor 的 gearSetting 可选值）→ 传入类名
+
+【Input】name: API 名称（大小写不敏感），如 "spin" "setVelocity" "motor" "pressing" "inertial"
+
+【Output】完整签名(signatures)、参数列表(parameters)[含类型]、返回值(return_value)、示例(examples)、注意事项(notes)
+
+【Constraint】禁止传入 search_vex_api 结果中不存在的函数名。如果 name 未找到，返回建议列表。"""
     q = name.lower().strip()
 
     if q in _name_lower_map:
@@ -207,7 +254,20 @@ def get_vex_api_detail(name: str) -> dict | str:
 
 @mcp.tool
 def list_vex_classes() -> list[dict]:
-    """【编写VEX代码前调用】列出所有可用的 VEX V5 C++ API 类（共58个）。当不确定某个功能是否有对应API类，或想了解VEX支持哪些硬件/功能时调用。返回类名及每个类的方法数量。常用类：motor, controller, brain, drivetrain, vision, gps, pneumatics 等。"""
+    """MUST USE when starting a new VEX project or unsure which hardware classes exist.
+
+【Role】硬件清单浏览器 — 列出所有 58 个 VEX V5 C++ API 类及每个类的方法数量。
+
+【Triggers — 以下场景必须调用】
+场景1: 用户问"VEX 支持哪些传感器/硬件？" → 列出全部类
+场景2: 开始新项目，需要了解可用的 API 范围 → 先调用此工具
+场景3: 不确定某个硬件（如 GPS/Optical/Pneumatics）是否有 API 支持 → 查列表
+场景4: 选型评估 — "用 Vision 还是 Optical 做颜色检测？" → 查两个类的方法数
+场景5: 用户说"给我看看所有可用的 VEX 类" → 直接调用
+
+【Output】{class: 类名, api_count: 方法数} 的排序列表
+
+【Chain】找到目标类后 → 调用 list_vex_class_methods(class_name) 查看该类的完整方法列表"""
     return sorted(
         [{"class": cls, "api_count": len(apis)} for cls, apis in _by_class.items()],
         key=lambda x: x["class"].lower()
@@ -243,7 +303,22 @@ _CLASS_ALIASES = {
 
 @mcp.tool
 def list_vex_class_methods(class_name: str) -> list[dict] | str:
-    """【编写VEX代码时调用】列出指定VEX类的所有方法（构造函数、成员函数、析构函数）。当需要了解某个类的完整API功能列表时调用。传入类名简写或全名（如'motor'→'Motor and Motor Group'），可用别名：motor, controller, brain, drivetrain, vision, gps, pneumatics, distance, inertial, rotation, optical, gyro, accelerometer, bumper, limit, encoder, timer, screen 等。"""
+    """MUST USE after selecting a hardware class — check ALL methods available before writing code.
+
+【Role】类方法浏览器 — 列出指定 VEX 类的构造函数、成员函数、析构函数。
+
+【Triggers — 以下场景必须调用】
+场景1: 已确定用 motor 类但不知道有哪些控制方法 → list_vex_class_methods("motor")
+场景2: 想知道 inertial 传感器类的全部读取方法 → list_vex_class_methods("inertial")
+场景3: 不确定 controller 类除了 Axis/Button 还有什么功能 → 查完整列表
+场景4: 比较两个类的方法数量决定用哪个 → 分别传入
+场景5: list_vex_classes 返回后，选中某个类深入研究 → 调用此工具
+
+【Input】class_name: 类名简写或全名，如 "motor"→Motor and Motor Group, "controller", "brain", "drivetrain", "vision", "gps", "pneumatics", "inertial", "rotation", "optical", "distance", "bumper", "limit", "encoder", "timer", "screen"
+
+【Output】该类的完整方法列表（构造→成员→析构排序），每个方法含 name, signatures, description
+
+【Chain】找到目标方法后 → 调用 get_vex_api_detail(name) 确认精确签名和参数"""
     q = class_name.lower().strip()
 
     # Resolve aliases first
@@ -567,18 +642,27 @@ def _score_paragraph(
 
 @mcp.tool
 def search_vex_rules(query: str) -> str:
-    """【编写VEX竞赛代码前必须调用】搜索 2026-2027赛季 OVERRIDE 竞赛规则手册。涉及以下任何编程场景都应主动调用此工具检查规则限制：
+    """ALWAYS CALL before writing VEX competition code — any code that goes on a competition robot MUST comply with these rules.
 
-必查场景：
-- 电机编程：数量限制(R10)、子系统1特殊限制(R11)、电机型号(11W)
-- 竞赛程序结构：必须用Competition Template(R9)、固件≥1.1.5(R8)
-- 自动时段代码：15秒自动时段、自动分界线禁止越过(SG7)、AWP获取条件(SC8)
-- 机器人构造编程约束：尺寸18"×18"×18"(R3)、气动系统限制(R25-R26)、V5主控器只能用1个(R6)、遥控器≤2个(R15)、仅VEX电池(R12)
-- 赛局策略相关：最多持有1 Pin + 1 Cup(SG6)、水平/垂直展开限制(SG2-SG3)
-- 传感器与硬件：传感器使用限制、电子/气动件不得修改(R28)
-- 计分逻辑：placed pin标准(SC2)、toggle判定(SC4)、联队占有(SC5)、停泊条件
+【Role】2026-2027 OVERRIDE 赛季规则搜索引擎 — 返回规则原文，确保代码合规。
 
-支持中英文关键词，如"R10""motor limit""autonomous""AWP条件""expansion""pneumatic限制"等。返回规则原文段落。"""
+【Triggers — 以下任何场景都必须调用，违规将导致取消资格】
+场景1: 声明电机/配置电机数量/设置功率 → 必须查 <R10> <R11>（电机功率/子系统限制 88W/55W）
+场景2: 写 Competition Template / main() / pre_auton → 必须查 <R8> <R9>（固件/模板要求）
+场景3: 写 autonomous() 自动时段代码 → 必须查 <SG7> <SC7> <SC8> <GG12>（15秒/AWP条件/自动线）
+场景4: 使用气动装置 (pneumatics/digital_out) → 必须查 <R25> <R26>（气动限制/压力表要求）
+场景5: 配置传感器/电子件 → 必须查 <R28>（禁止修改电子/气动组件）
+场景6: 机器人尺寸/展开机构设计 → 必须查 <R3> <SG2> <SG3>（18"³ 起始/24"² 水平/50" 垂直）
+场景7: 计分逻辑/得分策略 → 必须查 <SC2> <SC3> <SC4> <SC5>（Pin/Cup/Toggle 得分规则）
+场景8: 持有得分物/操控限制 → 必须查 <SG6>（最多 1 Pin + 1 Cup）
+场景9: 使用多个控制器/VEXnet → 必须查 <R15> <R13> <R14>（1-2 遥控器/radio）
+场景10: 写 skills 赛代码 → 必须查 <RSC1>-<RSC5>（技能赛规则差异）
+
+【Input】query: 规则编号 (R8/R10/SG7) 或中英文关键词 (电机/autonomous/expansion/计分)
+
+【Output】最多 10 段规则原文，按相关性排序，标注来源和规则编号
+
+【Chain】获取规则后，对照你的代码逐条自查。如果规则有冲突，以 VEX U 章节或官方 Q&A 为准。"""
     paragraphs = _load_and_index_rules()
     if not paragraphs:
         return "未找到竞赛规则文件。"
@@ -619,7 +703,7 @@ def search_vex_rules(query: str) -> str:
         id_key = tuple(para["rule_ids"]) if para["rule_ids"] else hash(para["text"][:80])
         if id_key in seen_ids:
             continue
-        seen_ids.add(id_key)
+        seen_ids.add(id_key) # type: ignore
 
         text = para["text"]
         if len(text) > 800:
@@ -642,6 +726,86 @@ def search_vex_rules(query: str) -> str:
         )
 
     return "\n\n---\n\n".join(results[:10])
+
+
+# ── Code Templates & Game Context ────────────────────────────────────────────
+
+@mcp.tool
+def get_vex_code_template(template_name: str) -> str:
+    """CRITICAL STEP — fetch a VEXcode Pro V5 C++ template BEFORE writing competition code.
+
+【Role】提供 6 个经过 VEX API 验证的标准 C++ 代码模板，作为编写竞赛代码的起点。
+
+【Triggers — 以下场景必须调用】
+场景1: 用户要求"写一段自动代码"或"写比赛程序" → 先取 competition 或 autonomous_basic 模板
+场景2: 用户要求"写手动控制/遥控器代码" → 取 driver_basic 模板
+场景3: 用户要求"配置电机/设置制动模式/初始化硬件" → 取 motor_setup 模板
+场景4: 用户要求"初始化传感器（陀螺仪/视觉/编码器）" → 取 sensor_setup 模板
+场景5: 用户要求"写技能赛程序" → 取 autonomous_skills 模板
+场景6: 不确定 Competition Template 的结构（pre_auton/autonomous/usercontrol 回调顺序）→ 取 competition 模板
+
+【Input】template_name: 以下 6 个值之一（大小写敏感）:
+  - "competition"      → 完整 Competition Template (pre_auton / autonomous / usercontrol / main)
+  - "autonomous_basic" → 基础自动时段框架，含 gyro-assisted 直走 + 转向 helper
+  - "autonomous_skills"→ 技能赛自动框架 (60秒，单人满分策略)
+  - "driver_basic"     → Arcade Drive 手动控制 + 按钮映射 + 机械臂控制
+  - "motor_setup"      → 电机声明模式 + 齿轮比选择 + 制动模式最佳实践
+  - "sensor_setup"     → 6种传感器声明 + 初始化 + 示例读取代码
+
+【Output】完整的 C++ 代码字符串，含 #include "vex.h"、using namespace vex、规则引用注释。
+
+【Constraints】
+- 模板严格使用 VEX V5 C++ API，无虚构函数
+- spinFor 只接受 degrees 参数，不使用 inches
+- vexcodeInit() 已在 pre_auton() 中调用
+- 传感器校准在 autonomous() 首行，非 pre_auton()
+- 制动模式显式设置（brake / hold / coast）"""
+    if not _TEMPLATES:
+        return (
+            "错误：模板文件未找到。请确保 templates/override_cpp.json 存在。\n"
+            f"可用模板: competition, autonomous_basic, autonomous_skills, "
+            f"driver_basic, motor_setup, sensor_setup"
+        )
+    tmpl = _TEMPLATES.get(template_name)
+    if tmpl is None:
+        available = ", ".join(_TEMPLATES.keys())
+        return f"错误：模板 '{template_name}' 不存在。可用模板: {available}"
+    return tmpl
+
+
+@mcp.tool
+def get_vex_game_context() -> dict:
+    """ALWAYS CALL when writing code that interacts with the VEX Override game — provides critical field/rules data so the code matches the real game.
+
+【Role】返回 2026-2027 OVERRIDE 赛季的结构化赛局数据：场地元素、计分系统、机器人限制、时间规则。
+
+【Triggers — 以下场景必须调用】
+场景1: 写自动时段代码，需要知道自动时长和得分区位置 → 查 match_timing + field_elements
+场景2: 计算前进距离/转向角度 → 查 field_elements（场地尺寸 12'x12'）
+场景3: 设计得分策略 → 查 scoring_system（AWP条件/自动奖励分12分/Pin Cup 分值）
+场景4: 配置电机数量和功率 → 查 robot_constraints（88W总功率/55W子系统1）
+场景5: 检查机器人设计是否合规 → 查 robot_constraints（18"³ 起始尺寸/气动/传感器限制）
+场景6: 配置遥控器/VEXnet/电池 → 查 robot_constraints（1-2遥控器/1 Brain/VEX电池）
+场景7: 处理展开机构（PTO/连杆/伸缩）→ 查 special_mechanics（SG2 24"²水平/SG3 50"垂直/PTO限制）
+场景8: 了解 Endgame（终局之战）规则 → 查 match_timing + special_mechanics.expansion_limits
+
+【Input】无参数
+
+【Output】结构化 JSON:
+  - season: "2026-2027 Override"
+  - robot_constraints: {starting_size, motor_limit, controller_limit, brain_limit, battery_limit, inspection_rules}
+  - match_timing: {autonomous_duration: 15s, driver_duration: 1:45, endgame_activation: last 20s}
+  - field_elements: {pins, cups, toggles, goals} — 数量、位置、得分规则
+  - scoring_system: {autonomous_bonus: 12pts, autonomous_win_point, driver_period, parking_rules}
+  - special_mechanics: {pto_rules, expansion_limits}
+  - possession_limits: {max_held: 1 Pin + 1 Cup}
+  - autonomous_line: {restriction: 不可越过}"""
+    if not _GAME_CONTEXT:
+        return {
+            "error": "Game context data not loaded.",
+            "hint": "Please ensure config/game_rules.json exists in the project.",
+        }
+    return _GAME_CONTEXT
 
 
 if __name__ == "__main__":

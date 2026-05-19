@@ -33,7 +33,15 @@
       "Bash(/c/msys64/ucrt64/bin/python.exe:*)",
       "Bash(tee C:/Users/liuzhen/Desktop/coding/projects/VEXmcp/test_output.txt)",
       "Bash(tee \"C:\\\\Users\\\\liuzhen\\\\Desktop\\\\coding\\\\projects\\\\VEXmcp\\\\test_output.txt\")",
-      "Skill(update-config)"
+      "Skill(update-config)",
+      "Bash(pip show:*)",
+      "Bash(pip3 show:*)",
+      "Bash(ls /c/msys64/ucrt64/bin/python*)",
+      "mcp__vex-api__get_vex_game_context",
+      "mcp__vex-api__get_vex_code_template",
+      "mcp__vex-api__list_vex_class_methods",
+      "Bash(C:\\\\Users\\\\liuzhen\\\\miniconda3\\\\python.exe clean_project.py)",
+      "Bash(C:/Users/liuzhen/miniconda3/python.exe:*)"
     ]
   },
   "enableAllProjectMcpServers": true

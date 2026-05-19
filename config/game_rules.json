@@ -1,0 +1,170 @@
+{
+  "season": "2026-2027 Override",
+  "version": "0.1",
+  "robot_constraints": {
+    "starting_size": {
+      "value": "18\" x 18\" x 18\" (457.2mm x 457.2mm x 457.2mm)",
+      "rule": "<R3>",
+      "note": "At start of Match, Robot must fit within an 18\" cube. After the Match begins, expansion is allowed per <SG2> and <SG3>."
+    },
+    "weight_limit": null,
+    "motor_limit": {
+      "total_power": "88W combined, all motors",
+      "subsystem1_power": "55W max for Subsystem 1 motors",
+      "motor_types": [
+        "V5 Smart Motor 11W (276-4840)",
+        "V5 Smart Motor 5.5W (276-4842)"
+      ],
+      "no_other_motors": "Only 11W and 5.5W V5 Smart Motors permitted. No 2-Wire motors, servos, or other actuators.",
+      "rules": ["<R10>", "<R11>"]
+    },
+    "controller_limit": {
+      "value": "最多 2 个 V5 Controller",
+      "rule": "<R15>"
+    },
+    "brain_limit": {
+      "value": "Exactly 1 V5 Robot Brain",
+      "rule": "<R6>"
+    },
+    "battery_limit": {
+      "value": "1 V5 Robot Battery (lithium)",
+      "rule": "<R12>"
+    },
+    "inspection_rules": [
+      "<R1> One Robot per Team",
+      "<R2> Robots must pass inspection",
+      "<R3> Starting size 18\" x 18\" x 18\"",
+      "<R4> Team numbers must be displayed on License Plates",
+      "<R5> Release Scoring Objects after Match",
+      "<R6> One Brain",
+      "<R7> Power button / battery connection accessible",
+      "<R8> Firmware ≥ 1.1.5, no custom firmware",
+      "<R9> Must use Competition Template",
+      "<R10> Motor limits (88W total)",
+      "<R11> Subsystem 1 motor limits (55W)",
+      "<R12> VEX batteries only",
+      "<R13> VEXnet radio, with clearance",
+      "<R14> V5 Robot Radio required",
+      "<R15> 1-2 Controllers per Robot",
+      "<R16> Built from VEX V5 system parts",
+      "<R17> New VEX parts are legal",
+      "<R18> Prohibited items",
+      "<R19> Certain non-VEX components allowed",
+      "<R20> Custom V5 Smart Cables allowed",
+      "<R21> Limited tape allowed",
+      "<R22> Certain non-VEX fasteners allowed",
+      "<R23> Visual decorations allowed",
+      "<R24> Limited custom plastic allowed (3D printing)",
+      "<R25> Pneumatics limited",
+      "<R26> VEX Pressure Gauge required with pneumatics",
+      "<R27> Modifications to non-electrical components allowed",
+      "<R28> No modifications to electronic/pneumatic components"
+    ]
+  },
+  "match_timing": {
+    "autonomous_duration": {
+      "value": "15 seconds",
+      "rule": "<SC7>, <GG12>"
+    },
+    "driver_duration": {
+      "value": "1 minute 45 seconds (1:45)",
+      "rule": "General Game Rules"
+    },
+    "endgame_activation": {
+      "value": "Last 20 seconds of Driver Controlled Period",
+      "rule": "<SG3>",
+      "note": "English glossary says 'last 10 seconds' but Game Design Philosophy and Chinese <SG3> both confirm 20 seconds as the authoritative value."
+    }
+  },
+  "field_elements": {
+    "pins": {
+      "count": 63,
+      "breakdown": {
+        "red_blue": 4,
+        "red_yellow": 20,
+        "blue_yellow": 20,
+        "yellow_yellow": 19
+      },
+      "preloads": 4,
+      "match_loads": 22,
+      "scoring_rules": "Each Placed Pin can have 1 or 2 Scored halves. Alliance-colored half → 5 pts for that Alliance. Yellow half → 10 pts (can be Owned by either Alliance via Toggle). See <SC2>, <SC3>, <SC4>.",
+      "rule": "<SC2>, <SC3>, <SC5>"
+    },
+    "cups": {
+      "count": 56,
+      "breakdown": {
+        "match_loads": 20,
+        "gray_side_up_starting": 24,
+        "clear_side_up_starting": 12
+      },
+      "scoring_rules": "Cups cover Pin halves. A transparent half of a Cup reveals the Pin color for scoring. An opaque (gray) half blocks scoring of that Pin half.",
+      "rule": "<SC2>"
+    },
+    "toggles": {
+      "count": 4,
+      "locations": ["One in each field quadrant"],
+      "scoring_rules": "A Toggle is set to a color (red/blue) when its toggle mechanism is flipped to that Alliance's color. All yellow Pins on the same side as this Alliance become Owned by that Alliance. See <SC4>, <SC5>.",
+      "rule": "<SC4>, <SC5>"
+    },
+    "goals": {
+      "count": 9,
+      "breakdown": {
+        "alliance_colored": 4,
+        "neutral_short": 4,
+        "neutral_tall": 1
+      },
+      "rule": "<SG10>"
+    }
+  },
+  "scoring_system": {
+    "autonomous_bonus": {
+      "value": "12 points",
+      "tie": "6 points each if tied",
+      "rule": "<SC7>"
+    },
+    "autonomous_win_point": {
+      "criteria": [
+        "Scored 7+ Pins for your Alliance (only Alliance-colored + Owned yellow halves count)",
+        "3+ Goals with 2+ scored Pins each (Goals are Alliance Goals + Neutral Goals)",
+        "No Robot touching the Field Perimeter (walls, but NOT the floor)",
+        "No violations committed during Autonomous Period"
+      ],
+      "rule": "<SC8>"
+    },
+    "driver_period": {
+      "alliance_pin_scored": "5 points per Placed Alliance-colored Pin half",
+      "owned_yellow_pin": "10 points per Placed Owned yellow Pin half",
+      "midfield_presence": "8 points per Robot in Midfield at end of Match",
+      "rule": "<SC2>, <SC3>, <SC5>, <SC6>"
+    },
+    "parking_rules": {
+      "midfield_criteria": "Robot must be contacting the Midfield (a defined raised area) to count toward Midfield points. See <SC6>.",
+      "rule": "<SC6>"
+    }
+  },
+  "special_mechanics": {
+    "pto_rules": {
+      "restriction": "Subsystem 1 motors cannot power non-Subsystem 1 mechanisms via PTO, differential, gearing, or any power-transfer method.",
+      "rule": "<R11>"
+    },
+    "expansion_limits": {
+      "horizontal": {
+        "limit": "24\" x 24\" maximum at any point",
+        "rule": "<SG2>"
+      },
+      "vertical": {
+        "limit": "50\" maximum height before Endgame",
+        "endgame_exception": "No vertical limit during Endgame, except for robots in Midfield (18\" limit)",
+        "rule": "<SG3>, <SG12>"
+      }
+    }
+  },
+  "possession_limits": {
+    "max_held": "1 Pin + 1 Cup",
+    "rule": "<SG6>"
+  },
+  "autonomous_line": {
+    "restriction": "Robots must not cross the Autonomous Line during the Autonomous Period. Crossing = violation (<SG7>). Interaction with Midfield or Autonomous Line during Autonomous Period is at the Team's own risk.",
+    "rule": "<SG7>"
+  }
+}

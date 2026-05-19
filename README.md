@@ -2,17 +2,18 @@
 
 VEX V5 C++ API 与竞赛规则 MCP 服务器，专为 Claude Code 设计。
 
-让 Claude Code 在帮你写 VEX 机器人代码时，能够**自动查询准确的 API 文档**和**2026-27 赛季 OVERRIDE 竞赛规则**，写出正确、合规的代码。
+让 Claude Code 在帮你写 VEX 机器人代码时，能够**自动查询准确的 API 文档**、**获取标准 C++ 代码模板**、**查阅赛局数据与规则**，写出正确、合规、可直接编译的代码。
 
 ## 工作原理
 
 ```
-你："帮我写一个电机控制程序"
+你："帮我写一段自动代码"
 Claude Code → 自动调用 MCP 工具
-  ├── search_vex_api("电机控制")  → 找到 motor::spin, motor::setVelocity
-  ├── search_vex_rules("电机限制") → 查到 R10 电机限制、R11 子系统限制
-  ├── get_vex_api_detail("spin")  → 确认参数类型和顺序
-  └── 输出正确合规的代码
+  ├── get_vex_game_context()           → 获取赛局数据（场地、时间、计分）
+  ├── get_vex_code_template("autonomous_basic") → 获取标准 C++ 模板
+  ├── search_vex_rules("电机限制")      → 查到 R10 电机限制、R11 子系统限制
+  ├── get_vex_api_detail("spinFor")    → 确认参数类型和顺序
+  └── 输出正确、合规、可编译的代码
 ```
 
 ## 快速开始
@@ -69,13 +70,13 @@ cp CLAUDE.md 你的VEX工作目录/
 
 **步骤 2：修改 `.mcp.json` 中的路径**
 
-复制后的 `.mcp.json` 里 `server.py` 是相对路径，在别的目录找不到。需要改成 `server.py` 的**绝对路径**：
+复制后的 `.mcp.json` 里 `server.py` 是相对路径，在别的目录找不到。需要改成 `server.py` 的**绝对路径**，同时 `python` 也要用安装了 `fastmcp` 的 Python（如 conda）：
 
 ```json
 {
   "mcpServers": {
     "vex-api": {
-      "command": "python",
+      "command": "C:\\Users\\你的用户名\\miniconda3\\python.exe",
       "args": ["C:\\Users\\你的用户名\\...\\VEXmcp\\server.py"]
     }
   }
@@ -101,6 +102,13 @@ cp CLAUDE.md 你的VEX工作目录/
 |------|---------|------|
 | `search_vex_rules` | 检查编程相关的规则限制 | `"电机限制"`, `"AWP条件"`, `"R10"` |
 
+### 代码生成
+
+| 工具 | 何时使用 | 示例 |
+|------|---------|------|
+| `get_vex_code_template` | 写自动/手动/技能赛程序时获取 C++ 模板 | `"competition"`, `"motor_setup"` |
+| `get_vex_game_context` | 查询场地尺寸、赛局时长、计分规则、机器人限制 | — |
+
 Claude Code 会根据工具描述中的触发条件**自动判断何时调用**，无需你手动指定。
 
 ## 数据
@@ -114,20 +122,25 @@ Claude Code 会根据工具描述中的触发条件**自动判断何时调用**�
 
 ```
 VEXmcp/
-├── server.py              # MCP 服务器主程序
+├── server.py              # MCP 服务器主程序（7 个工具）
 ├── CLAUDE.md              # Claude Code 项目指令（自动加载）
 ├── README.md              # 本文件
 ├── requirements.txt       # Python 依赖
-├── vex_cpp_api_v2.json    # API 数据 (184 APIs)
-├── test_server.py         # 安装验证脚本
-├── crawl_vex_api.py       # API 爬虫（维护用）
-├── fix_data.py            # 数据后处理（维护用）
-├── searchindex.js         # Sphinx 索引（爬虫依赖）
-├── objects.inv            # Sphinx 对象清单（爬虫依赖）
 ├── .mcp.json              # MCP 配置
-└── 赛季规则/               # OVERRIDE 2026-27 规则手册
-    ├── override-0.1-game-manual.md      # 英文原版
-    └── V5RC 26-27 OVERRIDE-0.1 CN.md   # 中文翻译
+├── test_server.py         # 安装验证 / 回归测试脚本
+│
+├── vex_cpp_api_v2.json    # API 数据 (184 APIs, 58 类)
+├── templates/
+│   └── override_cpp.json  # 6 个标准 C++ 模板
+├── config/
+│   └── game_rules.json    # 结构化赛局数据（场地、计分、规则）
+├── 赛季规则/               # OVERRIDE 2026-27 规则手册
+│   ├── override-0.1-game-manual.md      # 英文原版
+│   └── V5RC 26-27 OVERRIDE-0.1 CN.md   # 中文翻译
+│
+├── crawl_vex_api.py       # API 爬虫（维护用）
+├── searchindex.js         # Sphinx 索引（爬虫依赖）
+└── objects.inv            # Sphinx 对象清单（爬虫依赖）
 ```
 
 ## 维护
@@ -135,22 +148,22 @@ VEXmcp/
 ### 更新 API 数据
 
 ```bash
-python crawl_vex_api.py       # 重新爬取全部 66 页
-python fix_data.py            # 后处理拆分成员函数
+python crawl_vex_api.py       # 重新爬取全部 66 页，自动后处理
 python test_server.py         # 验证
 ```
 
 ### 更新竞赛规则
 
-将新版规则 `.md` 文件放入 `赛季规则/` 目录，重命名为当前文件名（或修改 `server.py` 中的文件路径）。
+将新版规则 `.md` 文件放入 `赛季规则/` 目录，重命名为当前文件名（或修改 `server.py` 中的文件路径）。规则文本会在服务器启动时自动清洗和索引。
+
 
 ## 常见问题
 
 **Q: 启动 Claude Code 后 MCP 没有加载？**
 A: 确认当前目录是 VEXmcp，且 `.mcp.json` 存在。运行 `python test_server.py` 检查 Python 环境和依赖。
 
-**Q: 我的 Python 命令是 `python3` 不是 `python`？**
-A: 编辑 `.mcp.json`，将 `"command": "python"` 改为 `"command": "python3"`。
+**Q: 显示 `ModuleNotFoundError: No module named 'fastmcp'`？**
+A: MCP 主机使用的 Python 环境没有安装 `fastmcp`。编辑 `.mcp.json`，将 `"command"` 改为安装了 `fastmcp` 的 Python 完整路径（如 conda：`C:\\Users\\...\\miniconda3\\python.exe`）。也可以在该环境中运行 `pip install --upgrade fastmcp mcp`。
 
 **Q: 如何确认 MCP 正在工作？**
 A: 在 Claude Code 中问："列出 VEX 的 motor 类有哪些方法"。如果 Claude 给出了准确的 API 列表，说明 MCP 正常工作。

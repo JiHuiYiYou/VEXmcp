@@ -78,4 +78,31 @@ for query in ["自动阶段", "AWP", "计分", "autonomous"]:
             print(f"    first: {line.strip()[:100]}")
             break
 
+# Test 5: get_vex_code_template
+print("\n" + "="*60)
+print("TEST 5: get_vex_code_template")
+print("="*60)
+
+for tmpl_name in ["competition", "autonomous_basic", "motor_setup"]:
+    result = server.get_vex_code_template(tmpl_name)
+    lines = result.split('\n')
+    print(f"  '{tmpl_name}' → {len(lines)} lines, starts with: {lines[0][:60] if lines else 'EMPTY'}")
+
+# Test 6: get_vex_game_context
+print("\n" + "="*60)
+print("TEST 6: get_vex_game_context")
+print("="*60)
+
+ctx = server.get_vex_game_context()
+if isinstance(ctx, dict):
+    season = ctx.get("season", "N/A")
+    robot = ctx.get("robot_constraints", {})
+    timing = ctx.get("match_timing", {})
+    print(f"  season: {season}")
+    print(f"  starting_size: {robot.get('starting_size', {}).get('value', 'N/A') if isinstance(robot.get('starting_size'), dict) else robot.get('starting_size')}")
+    print(f"  motor_limit: {str(robot.get('motor_limit', {}))[:100]}")
+    print(f"  autonomous: {timing.get('autonomous_duration', {}).get('value', 'N/A') if isinstance(timing.get('autonomous_duration'), dict) else timing.get('autonomous_duration')}")
+else:
+    print(f"  {ctx}")
+
 print("\n[DONE]")

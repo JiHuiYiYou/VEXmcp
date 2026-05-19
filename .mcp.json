@@ -1,7 +1,7 @@
 {
   "mcpServers": {
     "vex-api": {
-      "command": "python",
+      "command": "C:\\Users\\liuzhen\\miniconda3\\python.exe",
       "args": ["server.py"]
     }
   }
