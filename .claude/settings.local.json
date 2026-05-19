@@ -1,5 +1,4 @@
 {
-  "enableAllProjectMcpServers": true,
   "permissions": {
     "allow": [
       "mcp__filesystem__read_text_file",
@@ -16,7 +15,26 @@
       "Bash(where python3:*)",
       "Bash(where python:*)",
       "Bash(ls -la \"C:/Users/liuzhen/Desktop/coding/projects/VEXmcp/\"*.html)",
-      "mcp__filesystem__search_files"
+      "mcp__filesystem__search_files",
+      "Bash(cmd:*)",
+      "Bash(powershell:*)",
+      "Bash(Run the:*)",
+      "Bash(Run cleaning:*)",
+      "Bash(C:/Users/liuzhen/AppData/Roaming/npm/python.cmd:*)",
+      "mcp__filesystem__list_directory_with_sizes",
+      "Bash(echo \"EXIT_CODE=$?\")",
+      "Read(//c/Users/liuzhen/AppData/Roaming/npm/**)",
+      "Read(//c/msys64/ucrt64/bin/**)",
+      "Read(//c/Users/liuzhen/AppData/Local/Programs/Python/**)",
+      "Bash(python3:*)",
+      "Bash(/c/Users/liuzhen/AppData/Local/Microsoft/WindowsApps/python.exe:*)",
+      "mcp__vex-api__search_vex_rules",
+      "mcp__vex-api__search_vex_api",
+      "Bash(/c/msys64/ucrt64/bin/python.exe:*)",
+      "Bash(tee C:/Users/liuzhen/Desktop/coding/projects/VEXmcp/test_output.txt)",
+      "Bash(tee \"C:\\\\Users\\\\liuzhen\\\\Desktop\\\\coding\\\\projects\\\\VEXmcp\\\\test_output.txt\")",
+      "Skill(update-config)"
     ]
-  }
+  },
+  "enableAllProjectMcpServers": true
 }

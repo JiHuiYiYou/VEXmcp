@@ -308,22 +308,261 @@ _RULES_DIR = os.path.join(os.path.dirname(__file__), "赛季规则")
 _RULES_FILE_CN = os.path.join(_RULES_DIR, "V5RC 26-27 OVERRIDE-0.1 CN.md")
 _RULES_FILE_EN = os.path.join(_RULES_DIR, "override-0.1-game-manual.md")
 
-_rules_text: str = ""
-_rules_loaded: bool = False
+_rule_paragraphs: list[dict] = []  # [{text, source, rule_ids, is_qrg}]
+_rules_indexed: bool = False
 
 
-def _load_rules() -> str:
-    global _rules_text, _rules_loaded
-    if not _rules_loaded:
-        # Load both CN and EN for bilingual search
-        texts = []
-        for path in (_RULES_FILE_CN, _RULES_FILE_EN):
-            if os.path.exists(path):
-                with open(path, "r", encoding="utf-8") as f:
-                    texts.append(f.read())
-        _rules_text = '\n'.join(texts)
-        _rules_loaded = True
-    return _rules_text
+def _clean_rule_text(text: str) -> str:
+    """Remove PDF→Markdown conversion noise from rule text."""
+    # Remove form feeds (they can appear mid-line)
+    text = text.replace("\f", "")
+
+    # ── Protect section markers that get merged into copyright lines ──
+    # In the EN file, "Quick Reference Guide" and "Section N" often appear
+    # on the same line as the copyright/version noise after \f removal.
+    # Split them onto separate lines before the noise removal pass.
+    for marker in [
+        "Quick Reference Guide",
+        "Table of Contents",
+        "Changelog",
+        "Prefix",
+        "Scoring Rules",
+        "Specific Game Rules",
+        "Safety Rules",
+        "General Rules",
+        "General Game Rules",
+        "Robot Skills Challenge Rules",
+        "Inspection Rules",
+        "Tournament Rules",
+        "VEX U Game Rules",
+        "VEX U Robot Skills Challenge Rules",
+        "VEX U Tournament Rules",
+        "VEX U Robot Rules",
+        "Field Overview",
+        "Glossary of Terms",
+        "Rule Violations",
+        "Team Classifications",
+    ]:
+        text = re.sub(
+            rf"({re.escape(marker)})",
+            rf"\n\1\n",
+            text,
+        )
+
+    # Re-split Section headings that got merged
+    text = re.sub(r"(Section\s+\d[\s\w\d-]*)", r"\n\1\n", text)
+
+    # ── EN combined header: "VEX V5 Robotics Competition Override - Game ManualCopyright ..."
+    text = re.sub(
+        r"VEX V5 Robotics Competition Override\s*[-–]\s*Game[\s]*Manual\s*Copyright.{0,80}?(?:\n|$)",
+        "\n", text
+    )
+
+    # ── CN copyright + version block (two lines)
+    text = re.sub(
+        r"Copyright 2026, VEX Robotics Inc\.?\s*\n\s*第 0\.\d 版\s*[-–]\s*\d{4} 年 \d+ 月 \d+ 日发布",
+        "", text
+    )
+    # CN standalone version line
+    text = re.sub(r"第 0\.\d 版\s*[-–]\s*\d{4} 年 \d+ 月 \d+ 日发布", "", text)
+    # CN vexrobotics.com noise line (may have copyright on same line)
+    text = re.sub(
+        r"^\s*(?:Copyright 2026, VEX Robotics In[c]?\.?\s*)?vexrobotics\.com\s*$",
+        "", text, flags=re.MULTILINE
+    )
+    # Any copyright line (CN may have "In" without trailing "c.")
+    text = re.sub(
+        r"^\s*Copyright 2026, VEX Robotics In[c]?\.?\s*$",
+        "", text, flags=re.MULTILINE
+    )
+
+    # ── EN standalone noise lines
+    text = re.sub(r"^Game Manual$", "", text, flags=re.MULTILINE)
+    text = re.sub(
+        r"^Version 0\.\d\s*[-–]\s*\w+\s+\d+,\s+\d+(?:Quick Reference Guide)?\s*$",
+        "", text, flags=re.MULTILINE
+    )
+    text = re.sub(r"^Version 0\.\d$", "", text, flags=re.MULTILINE)
+
+    # Fix broken URLs (space in URL, or broken across lines)
+    text = re.sub(r"(https?://\S+)[ \t]+(\S+)", r"\1\2", text)
+    text = re.sub(r"(https?://\S+)\n\s*(\S+)", r"\1\2", text)
+
+    # Remove standalone page numbers (arabic and roman)
+    lines = text.split("\n")
+    filtered = []
+    prev_blank = True
+    for i, line in enumerate(lines):
+        stripped = line.strip()
+        next_blank = (i + 1 >= len(lines)) or not lines[i + 1].strip()
+
+        # Arabic page numbers (1-999) – isolated, surrounded by blanks
+        if stripped and re.match(r"^\d{1,3}$", stripped):
+            if prev_blank and next_blank:
+                continue
+
+        # Roman numeral page numbers (iv–xv)
+        if stripped and re.match(
+            r"^(iv|v|vi|vii|viii|ix|x|xi|xii|xiii|xiv|xv)$", stripped, re.IGNORECASE
+        ):
+            if prev_blank and next_blank:
+                continue
+
+        filtered.append(line)
+        prev_blank = not stripped
+
+    text = "\n".join(filtered)
+
+    # Compress 3+ blank lines → single blank line
+    text = re.sub(r"\n{3,}", "\n\n", text)
+    # Strip trailing whitespace
+    text = re.sub(r"[ \t]+$", "", text, flags=re.MULTILINE)
+    # Remove leading blank lines
+    text = text.lstrip("\n")
+
+    return text
+
+
+def _extract_rule_ids(text: str) -> list[str]:
+    """Extract rule IDs like R8, SG1, GG12 from <TAG> markers in text."""
+    ids = re.findall(
+        r"<(R\d+[a-z]?|S\d+|SG\d+|G\d+|GG\d+|T\d+|SC\d+|RSC\d+|VU[GRSTU]?\d+)>",
+        text
+    )
+    return list(dict.fromkeys(ids))  # dedup, preserve order
+
+
+def _load_and_index_rules() -> list[dict]:
+    """Load raw rule files, clean noise, split into paragraphs, and index."""
+    global _rule_paragraphs, _rules_indexed
+    if _rules_indexed:
+        return _rule_paragraphs
+
+    for path, source in [
+        (_RULES_FILE_CN, "cn"),
+        (_RULES_FILE_EN, "en"),
+    ]:
+        if not os.path.exists(path):
+            continue
+
+        with open(path, "r", encoding="utf-8") as f:
+            raw = f.read()
+
+        cleaned = _clean_rule_text(raw)
+
+        # Split into paragraphs (by blank lines)
+        paragraphs = re.split(r"\n\n+", cleaned)
+
+        # Detect QRG section boundaries
+        in_qrg = False
+        for para in paragraphs:
+            para = para.strip()
+            if not para:
+                continue
+
+            # Track QRG section – starts at "Quick Reference Guide" / "快速查阅指南",
+            # ends at "Section 1" / "第一章"
+            if source == "cn":
+                if "快速查阅指南" in para:
+                    in_qrg = True
+                elif re.search(r"第[一二三四五六七八九十]章[：:]", para):
+                    in_qrg = False
+            else:  # en
+                if "Quick Reference Guide" in para:
+                    in_qrg = True
+                elif re.search(r"^Section\s+1[\s-]", para):
+                    in_qrg = False
+
+            rule_ids = _extract_rule_ids(para)
+
+            # Skip paragraphs with no meaningful text after stripping tags
+            stripped_no_tags = re.sub(r"<[^>]+>", "", para).strip()
+            if not stripped_no_tags or len(stripped_no_tags) < 3:
+                continue
+
+            # Skip title-page / front-matter noise: short paras with no rule IDs
+            # and no section-heading markers
+            if not rule_ids and len(stripped_no_tags) < 50:
+                if not re.match(
+                    r"^(#+|第[一二三四五六七八九十]章|Section\s+\d|Appendix|附录|[A-Z][a-z]+ Rules)",
+                    stripped_no_tags
+                ):
+                    continue
+
+            # Skip paragraphs that are TOC entries (dotted lines + page numbers).
+            # TOC entries have no rule tags; the dotted-line pattern means it's a directory listing.
+            if not rule_ids and re.search(r"\.{5,}\s*\d+", stripped_no_tags):
+                continue
+
+            _rule_paragraphs.append({
+                "text": para,
+                "source": source,
+                "rule_ids": rule_ids,
+                "is_qrg": in_qrg,
+            })
+
+    _rules_indexed = True
+    return _rule_paragraphs
+
+
+# ── Keyword expansion map for Chinese and English search ────────────────────
+_RULE_KEYWORD_EXPANSION: dict[str, list[str]] = {
+    "赛制": ["竞赛规则", "赛局规则", "赛事规则", "赛程", "competition rule", "tournament rule"],
+    "新赛季": ["本赛季", "2026", "override", "0.1"],
+    "场地": ["field", "场地", "尺寸", "规格", "12' x 12'"],
+    "自动": ["autonomous", "自动时段", "autonomous period", "15秒", "15 second"],
+    "手动": ["usercontrol", "driver control", "driver controlled", "手动控制"],
+    "计分": ["scoring", "score", "得分", "scored", "scoring status"],
+    "电机": ["motor", "11w", "5.5w", "智能电机", "smart motor"],
+    "马达": ["motor", "11w", "5.5w"],
+    "气动": ["pneumatic", "pneumatics", "气缸", "气压", "pressure"],
+    "传感器": ["sensor", "vision", "gps", "inertial", "rotation", "optical", "distance"],
+    "尺寸": ["dimension", '18"', "体积", "size", "volume", "expand"],
+    "展开": ["expansion", "expand", "水平展开", "垂直展开"],
+    "停泊": ["park", "parking", "climb", "爬升"],
+    "电池": ["battery", "电池", "power", "电源", "lithium"],
+    "端口": ["port", "triport", "三线端口", "3-wire"],
+    "遥控器": ["controller", "遥控", "手柄", "v5 controller"],
+    "主控": ["brain", "主控器", "v5 brain"],
+}
+
+
+def _score_paragraph(
+    para: dict, terms: list[str], expanded_terms: list[str], full_query: str
+) -> float:
+    """Score a paragraph against search terms. Higher is better."""
+    score = 0.0
+    text_l = para["text"].lower()
+
+    # Full query exact phrase match (strongest signal)
+    if full_query in text_l:
+        score += 80
+
+    # Count individual term matches
+    all_terms = terms + expanded_terms
+    matched = sum(1 for t in all_terms if t in text_l)
+    score += matched * 20
+
+    # Exact rule ID match (e.g., query "r8" → paragraph contains <R8>)
+    for t in terms:
+        t_upper = t.upper().strip("<>")
+        if t_upper in para["rule_ids"]:
+            score += 100
+
+    # Heading / titled paragraph bonus
+    stripped = para["text"].strip()
+    if re.match(r"^(#|<[RSCTG][CGTU]?\d+[a-z]?.*?>)", stripped):
+        score += 20
+
+    # CN source bonus (user is Chinese-speaking, only if already matched)
+    if para["source"] == "cn" and score > 0:
+        score += 10
+
+    # QRG penalty (quick-reference summaries are less authoritative than full text)
+    if para["is_qrg"]:
+        score *= 0.1
+
+    return score
 
 
 @mcp.tool
@@ -340,29 +579,69 @@ def search_vex_rules(query: str) -> str:
 - 计分逻辑：placed pin标准(SC2)、toggle判定(SC4)、联队占有(SC5)、停泊条件
 
 支持中英文关键词，如"R10""motor limit""autonomous""AWP条件""expansion""pneumatic限制"等。返回规则原文段落。"""
-    text = _load_rules()
-    if not text:
+    paragraphs = _load_and_index_rules()
+    if not paragraphs:
         return "未找到竞赛规则文件。"
 
-    q = query.lower()
-    lines = text.split('\n')
-    results = []
-    context = 4  # lines of context before/after
+    q = query.lower().strip()
 
-    for i, line in enumerate(lines):
-        if q in line.lower():
-            start = max(0, i - context)
-            end = min(len(lines), i + context + 1)
-            snippet = '\n'.join(lines[start:end])
-            # Trim snippet if too long
-            if len(snippet) > 500:
-                snippet = snippet[:500] + "..."
-            results.append(snippet)
+    # Split query into individual search terms (whitespace, commas, Chinese commas)
+    terms = [t.strip().lower() for t in re.split(r"[\s,，、]+", q) if t.strip()]
+
+    # Expand keywords: each term may map to more specific search terms
+    expanded_terms: list[str] = []
+    for t in terms:
+        if t in _RULE_KEYWORD_EXPANSION:
+            expanded_terms.extend(_RULE_KEYWORD_EXPANSION[t])
+    # Also try the full query against the expansion map
+    if q in _RULE_KEYWORD_EXPANSION:
+        expanded_terms.extend(_RULE_KEYWORD_EXPANSION[q])
+    # For Chinese text queries, try partial key matches
+    if re.search(r"[\u4e00-\u9fff]", q):
+        for key, exps in _RULE_KEYWORD_EXPANSION.items():
+            if key in q and key not in terms:
+                expanded_terms.extend(exps)
+
+    # Score every paragraph
+    scored: list[tuple[float, dict]] = []
+    for para in paragraphs:
+        s = _score_paragraph(para, terms, expanded_terms, q)
+        if s > 0:
+            scored.append((s, para))
+
+    # Sort descending by score
+    scored.sort(key=lambda x: -x[0])
+
+    # Deduplicate: same rule_ids → keep highest-scoring paragraph
+    seen_ids: set[tuple] = set()
+    results: list[str] = []
+    for s, para in scored:
+        id_key = tuple(para["rule_ids"]) if para["rule_ids"] else hash(para["text"][:80])
+        if id_key in seen_ids:
+            continue
+        seen_ids.add(id_key)
+
+        text = para["text"]
+        if len(text) > 800:
+            text = text[:800] + "..."
+
+        header = f"[{para['source'].upper()}]"
+        if para["rule_ids"]:
+            header += f" {' '.join('<'+r+'>' for r in para['rule_ids'])}"
+        results.append(f"{header}\n{text}")
 
     if not results:
-        return f"未找到与 '{query}' 相关的规则内容。试试中文关键词？"
+        return (
+            f"未找到与 '{query}' 相关的规则内容。\n\n"
+            f"建议尝试：\n"
+            f"  - 规则编号：R8 R9 R10 R11 R25 R26 R28 等\n"
+            f"  - 中文关键词：电机 气动 自动 计分 尺寸 展开 停泊\n"
+            f"  - 英文关键词：motor pneumatic autonomous scoring dimension\n"
+            f"  - 赛局规则：SG1-SG12, GG1-GG18\n"
+            f"  - 安全/通用规则：S1-S5, G1-G6"
+        )
 
-    return '\n\n---\n\n'.join(results[:5])
+    return "\n\n---\n\n".join(results[:10])
 
 
 if __name__ == "__main__":
